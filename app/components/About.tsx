@@ -83,11 +83,11 @@ export default function About() {
                 maxWidth: "58ch",
               }}
             >
-              I&apos;m an AI Automation Specialist at Shoothill, where I design
-              AI agents, build automation workflows, and help businesses figure
-              out where AI actually fits. I work across the full stack of AI
-              tooling — from prompt engineering and LLM integration to no-code
-              platforms like n8n and API orchestration.
+              I&apos;m a Software Developer specialising in AI at Shoothill,
+              where I design AI agents, build automation workflows, and help
+              businesses figure out where AI actually fits. I work across the
+              full stack of AI tooling — from prompt engineering and LLM
+              integration to no-code platforms like n8n and API orchestration.
             </p>
             <p
               style={{

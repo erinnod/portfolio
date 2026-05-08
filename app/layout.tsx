@@ -17,7 +17,7 @@ const epilogue = Epilogue({
 });
 
 export const metadata: Metadata = {
-  title: "Erin Nodland — AI Automation Specialist",
+  title: "Erin Nodland — Software Developer specialising in AI",
   description:
     "I design and build AI agents and automation workflows that solve real business problems.",
 };

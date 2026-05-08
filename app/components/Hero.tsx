@@ -120,7 +120,7 @@ export default function Hero() {
               color: "var(--ink-2)",
             }}
           >
-            AI Automation Specialist
+            Software Developer specialising in AI
           </p>
           <p
             className="hero-tagline-animate"
