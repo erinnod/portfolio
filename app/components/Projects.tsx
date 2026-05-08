@@ -540,8 +540,8 @@ const FIGMA_CAROUSEL: readonly ImageEntry[] = [
   {
     src: "/project-figma-agent-1.png",
     alt: "Figma agent — customer questions page",
-    width: 3002,
-    height: 18788,
+    width: 1775,
+    height: 1767,
     caption: "Customer questions — multi-choice with rationale.",
   },
   {
