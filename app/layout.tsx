@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="en"
       className={`${unbounded.variable} ${epilogue.variable}`}
     >
-      <body>{children}</body>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }
