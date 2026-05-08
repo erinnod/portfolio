@@ -76,10 +76,10 @@ function Lightbox({ onClose, images, startIndex = 0 }: LightboxProps) {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
         padding:
           "clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
         cursor: "zoom-out",
+        overflowY: "auto",
       }}
     >
           {/* Close button */}
@@ -126,11 +126,12 @@ function Lightbox({ onClose, images, startIndex = 0 }: LightboxProps) {
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
               style={{
-                maxWidth: "100%",
-                maxHeight: multi ? "calc(100vh - 11rem)" : "calc(100vh - 9rem)",
-                display: "flex",
+                width: "min(95vw, 1600px)",
+                marginTop: "auto",
+                marginBottom: "auto",
                 cursor: "default",
                 boxShadow: "0 30px 80px -10px oklch(0% 0 0 / 0.5)",
+                lineHeight: 0,
               }}
             >
               <Image
@@ -141,13 +142,8 @@ function Lightbox({ onClose, images, startIndex = 0 }: LightboxProps) {
                 sizes="100vw"
                 priority
                 style={{
-                  maxWidth: "100%",
-                  maxHeight: multi
-                    ? "calc(100vh - 11rem)"
-                    : "calc(100vh - 9rem)",
-                  width: "auto",
+                  width: "100%",
                   height: "auto",
-                  objectFit: "contain",
                   display: "block",
                 }}
               />
@@ -386,22 +382,18 @@ export function ImageCarousel({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.18 }}
-              style={{
-                width: "100%",
-                aspectRatio: "16 / 10",
-                position: "relative",
-                lineHeight: 0,
-              }}
+              style={{ width: "100%", lineHeight: 0 }}
             >
               <Image
                 src={current.src}
                 alt={current.alt}
-                fill
+                width={current.width}
+                height={current.height}
                 sizes={sizes}
                 priority={index === 0}
                 style={{
-                  objectFit: "cover",
-                  objectPosition: "top center",
+                  width: "100%",
+                  height: "auto",
                   display: "block",
                 }}
               />
