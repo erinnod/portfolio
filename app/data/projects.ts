@@ -19,7 +19,7 @@ export const FEATURED_PROJECTS: readonly Project[] = [
     index: "01",
     title: "Figma → spec agent",
     status: "shipped",
-    statusLabel: "Shipped · Awaiting presentation",
+    statusLabel: "Shipped",
     summary:
       "Claude Code / Cursor agent that turns Figma design handoffs into structured specs in under two minutes. Reads every screen, generates two HTML reports — plain-English for client, technical for developer — every question prioritised, tagged, evidence-backed from the design.",
     stack: ["Claude Code", "Figma MCP", "Structured prompts"],
