@@ -83,11 +83,9 @@ export default function About() {
                 maxWidth: "58ch",
               }}
             >
-              I&apos;m a Software Developer specialising in AI at Shoothill,
-              where I design AI agents, build automation workflows, and help
-              businesses figure out where AI actually fits. I work across the
-              full stack of AI tooling — from prompt engineering and LLM
-              integration to no-code platforms like n8n and API orchestration.
+              I&apos;m a Software Developer at Shoothill, working on AI. I
+              design agents, build automation workflows, and integrate LLMs
+              into existing software.
             </p>
             <p
               style={{
@@ -98,10 +96,10 @@ export default function About() {
                 maxWidth: "58ch",
               }}
             >
-              My focus is on applied AI: building things that work in
-              production, not just in demos. I&apos;m working toward AI strategy
-              and leadership, with a clear path from hands-on building to
-              advising businesses on how to adopt AI effectively.
+              Day-to-day: Claude API and Claude Code, MCP servers, n8n, Python
+              orchestration, prompt engineering, and third-party API
+              integration. The projects below show what that looks like in
+              practice.
             </p>
           </div>
         </FadeIn>
