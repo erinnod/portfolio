@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import ClickableImage from "./Lightbox";
 import {
   FEATURED_PROJECTS,
   SECONDARY_PROJECTS,
@@ -63,205 +64,72 @@ function StatusPill({
   );
 }
 
-/* ─── Project visuals ──────────────────────────────────────── */
-
-function ScreenshotVisual({
-  src,
-  alt,
-  bg = "oklch(14% 0.008 240)",
-  position = "center",
-}: {
-  src: string;
-  alt: string;
-  bg?: string;
-  position?: string;
-}) {
-  return (
-    <div
-      style={{
-        position: "absolute",
-        inset: 0,
-        backgroundColor: bg,
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "0.375rem",
-          padding: "0.625rem 0.875rem",
-          borderBottom: "1px solid oklch(100% 0 0 / 0.08)",
-          flexShrink: 0,
-        }}
-      >
-        {[
-          "oklch(65% 0.18 25)",
-          "oklch(72% 0.16 85)",
-          "oklch(68% 0.18 145)",
-        ].map((c, i) => (
-          <span
-            key={i}
-            style={{
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              backgroundColor: c,
-              display: "block",
-            }}
-          />
-        ))}
-      </div>
-      <div style={{ flex: 1, overflow: "hidden", position: "relative" }}>
-        <img
-          src={src}
-          alt={alt}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "contain",
-            objectPosition: position,
-            display: "block",
-          }}
-        />
-      </div>
-    </div>
-  );
-}
+/* ─── Life-OS visual (typographic) ─────────────────────────── */
 
 function LifeOSVisual() {
-  const vault = [
-    "/identity.md",
-    "/goals.md",
-    "/projects/",
-    "/patterns/",
-  ];
+  const vault = ["/identity.md", "/goals.md", "/projects/", "/patterns/"];
   const mcp = ["filesystem", "notion", "figma", "tasknotes"];
 
   return (
     <div
       style={{
-        position: "absolute",
-        inset: 0,
-        backgroundColor: "oklch(93% 0.01 22)",
-        padding: "1.25rem 1.5rem",
-        display: "flex",
-        flexDirection: "column",
-        gap: "0.875rem",
+        backgroundColor: "var(--bg-tint)",
+        padding:
+          "clamp(1.75rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem)",
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "clamp(2rem, 5vw, 4rem)",
+        alignItems: "start",
       }}
     >
-      {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingBottom: "0.625rem",
-          borderBottom: "1px solid oklch(82% 0.01 22)",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: df,
-            fontWeight: 700,
-            fontSize: "0.5rem",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "oklch(32% 0.01 22)",
-          }}
-        >
-          Life-OS · vault
-        </span>
-        <span
-          style={{
-            fontFamily: bf,
-            fontSize: "0.5rem",
-            color: "oklch(60% 0.008 22)",
-          }}
-        >
-          Claude Code
-        </span>
-      </div>
-
       {/* Vault tree */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.3rem" }}>
-        {vault.map((entry) => (
-          <div
-            key={entry}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}
-          >
-            <span
-              style={{
-                width: "5px",
-                height: "5px",
-                backgroundColor: "var(--accent)",
-                display: "block",
-                flexShrink: 0,
-              }}
-            />
-            <span
-              style={{
-                fontFamily: bf,
-                fontSize: "0.6875rem",
-                color: "oklch(28% 0.008 22)",
-                letterSpacing: "0.02em",
-              }}
-            >
-              {entry}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* MCP nodes */}
-      <div
-        style={{
-          marginTop: "auto",
-          paddingTop: "0.75rem",
-          borderTop: "1px solid oklch(82% 0.01 22)",
-        }}
-      >
-        <span
-          style={{
-            fontFamily: df,
-            fontWeight: 700,
-            fontSize: "0.4375rem",
-            letterSpacing: "0.22em",
-            textTransform: "uppercase",
-            color: "oklch(56% 0.008 22)",
-            display: "block",
-            marginBottom: "0.5rem",
-          }}
-        >
-          MCP servers
-        </span>
+      <div>
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "0.4rem 0.75rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+            paddingBottom: "0.875rem",
+            borderBottom: "1px solid var(--border)",
+            marginBottom: "1.25rem",
           }}
         >
-          {mcp.map((node) => (
+          <span
+            style={{
+              fontFamily: df,
+              fontWeight: 700,
+              fontSize: "0.6875rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--ink-2)",
+            }}
+          >
+            Life-OS · vault
+          </span>
+          <span
+            style={{
+              fontFamily: bf,
+              fontSize: "0.6875rem",
+              color: "var(--ink-3)",
+            }}
+          >
+            Claude Code
+          </span>
+        </div>
+
+        <div
+          style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}
+        >
+          {vault.map((entry) => (
             <div
-              key={node}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.375rem",
-              }}
+              key={entry}
+              style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}
             >
               <span
                 style={{
                   width: "6px",
                   height: "6px",
-                  borderRadius: "50%",
-                  border: "1px solid oklch(50% 0.008 22)",
+                  backgroundColor: "var(--accent)",
                   display: "block",
                   flexShrink: 0,
                 }}
@@ -269,9 +137,81 @@ function LifeOSVisual() {
               <span
                 style={{
                   fontFamily: bf,
-                  fontSize: "0.625rem",
-                  color: "oklch(36% 0.008 22)",
-                  letterSpacing: "0.02em",
+                  fontSize: "0.9375rem",
+                  color: "var(--ink)",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                {entry}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* MCP nodes */}
+      <div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+            paddingBottom: "0.875rem",
+            borderBottom: "1px solid var(--border)",
+            marginBottom: "1.25rem",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: df,
+              fontWeight: 700,
+              fontSize: "0.6875rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--ink-2)",
+            }}
+          >
+            MCP servers
+          </span>
+          <span
+            style={{
+              fontFamily: bf,
+              fontSize: "0.6875rem",
+              color: "var(--ink-3)",
+            }}
+          >
+            4 active
+          </span>
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "0.65rem 1rem",
+          }}
+        >
+          {mcp.map((node) => (
+            <div
+              key={node}
+              style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}
+            >
+              <span
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  border: "1px solid var(--ink-2)",
+                  display: "block",
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontFamily: bf,
+                  fontSize: "0.875rem",
+                  color: "var(--ink-2)",
+                  letterSpacing: "0.01em",
                 }}
               >
                 {node}
@@ -284,25 +224,134 @@ function LifeOSVisual() {
   );
 }
 
-const VISUALS: Record<ProjectVisualKey, React.ReactNode> = {
-  figma: (
-    <ScreenshotVisual
-      src="/project-figma-agent.png"
-      alt="Figma → spec agent — project workflow selection screen"
-      bg="oklch(12% 0.006 240)"
-      position="top center"
-    />
-  ),
-  shopify: (
-    <ScreenshotVisual
-      src="/project-n8n-workflow.png"
-      alt="Shopify product automation — n8n workflow with multiple pipeline stages"
-      bg="oklch(10% 0.005 240)"
-      position="center"
-    />
-  ),
-  lifeos: <LifeOSVisual />,
-};
+/* ─── Figure plate (frame + caption) ───────────────────────── */
+
+interface FigurePlateProps {
+  figNumber: string;
+  caption: string;
+  clickable?: boolean;
+  children: React.ReactNode;
+}
+
+function FigurePlate({
+  figNumber,
+  caption,
+  clickable,
+  children,
+}: FigurePlateProps) {
+  return (
+    <figure style={{ margin: 0 }}>
+      <div
+        style={{
+          backgroundColor: "var(--bg-tint)",
+          border: "1px solid var(--border)",
+          overflow: "hidden",
+        }}
+      >
+        {children}
+      </div>
+      <figcaption
+        className="flex flex-col md:flex-row md:items-baseline md:justify-between"
+        style={{
+          marginTop: "0.875rem",
+          gap: "0.5rem 1.5rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: bf,
+            fontSize: "0.75rem",
+            color: "var(--ink-3)",
+            lineHeight: 1.5,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: df,
+              fontWeight: 700,
+              fontSize: "0.625rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              marginRight: "0.6rem",
+              color: "var(--ink-2)",
+            }}
+          >
+            Fig. {figNumber}
+          </span>
+          {caption}
+        </span>
+        {clickable && (
+          <span
+            aria-hidden="true"
+            style={{
+              fontFamily: df,
+              fontWeight: 700,
+              fontSize: "0.625rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Click to expand ↗
+          </span>
+        )}
+      </figcaption>
+    </figure>
+  );
+}
+
+/* ─── Featured visuals dispatch ────────────────────────────── */
+
+interface FeaturedVisualProps {
+  visualKey: ProjectVisualKey;
+  figNumber: string;
+}
+
+function FeaturedVisual({ visualKey, figNumber }: FeaturedVisualProps) {
+  if (visualKey === "figma") {
+    return (
+      <FigurePlate
+        figNumber={figNumber}
+        caption="Project workflow selection screen — Shoothill onboarding modes."
+        clickable
+      >
+        <ClickableImage
+          src="/project-figma-agent.png"
+          alt="Figma → spec agent — project workflow selection screen"
+          width={3002}
+          height={1874}
+          caption="Fig. 01 — Project workflow selection screen"
+        />
+      </FigurePlate>
+    );
+  }
+  if (visualKey === "shopify") {
+    return (
+      <FigurePlate
+        figNumber={figNumber}
+        caption="n8n automation pipeline — image to Shopify product, end to end."
+        clickable
+      >
+        <ClickableImage
+          src="/project-n8n-workflow.png"
+          alt="Shopify product automation — n8n workflow pipeline"
+          width={2514}
+          height={618}
+          caption="Fig. 02 — n8n automation pipeline"
+        />
+      </FigurePlate>
+    );
+  }
+  return (
+    <FigurePlate
+      figNumber={figNumber}
+      caption="Vault structure and active MCP servers — read on every interaction."
+    >
+      <LifeOSVisual />
+    </FigurePlate>
+  );
+}
 
 /* ─── Shared sub-blocks ────────────────────────────────────── */
 
@@ -361,7 +410,7 @@ function DemonstratesLine({ text }: { text: string }) {
   );
 }
 
-/* ─── Featured card ────────────────────────────────────────── */
+/* ─── Featured card (stacked editorial) ────────────────────── */
 
 function FeaturedProjectCard({ project }: { project: Project }) {
   return (
@@ -370,18 +419,17 @@ function FeaturedProjectCard({ project }: { project: Project }) {
       className="px-6 md:px-10"
     >
       <div
-        className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-10 md:gap-16 items-start"
         style={{
           paddingTop: "clamp(3rem, 6vw, 5rem)",
           paddingBottom: "clamp(3rem, 6vw, 5rem)",
         }}
       >
-        <div>
-          {/* Index + title */}
-          <div
-            className="flex items-baseline gap-5"
-            style={{ marginBottom: "1rem" }}
-          >
+        {/* Title row */}
+        <div
+          className="flex flex-col md:flex-row md:items-baseline md:justify-between"
+          style={{ gap: "1rem", marginBottom: "1.5rem" }}
+        >
+          <div className="flex items-baseline gap-5">
             <span
               aria-hidden="true"
               style={{
@@ -399,7 +447,7 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               style={{
                 fontFamily: df,
                 fontWeight: 700,
-                fontSize: "clamp(1.125rem, 2.2vw, 1.75rem)",
+                fontSize: "clamp(1.25rem, 2.4vw, 1.875rem)",
                 lineHeight: 1.1,
                 letterSpacing: "-0.015em",
                 color: "var(--ink)",
@@ -408,21 +456,11 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               {project.title}
             </h3>
           </div>
-
-          {/* Status + qualifier */}
           <div
             className="flex flex-wrap items-center"
-            style={{
-              gap: "0.75rem",
-              marginBottom: "1.75rem",
-              paddingBottom: "1.75rem",
-              borderBottom: "1px solid var(--border-light)",
-            }}
+            style={{ gap: "0.75rem" }}
           >
-            <StatusPill
-              status={project.status}
-              label={project.statusLabel}
-            />
+            <StatusPill status={project.status} label={project.statusLabel} />
             {project.qualifier && (
               <span
                 style={{
@@ -436,44 +474,73 @@ function FeaturedProjectCard({ project }: { project: Project }) {
               </span>
             )}
           </div>
+        </div>
 
-          {/* Summary */}
+        {/* Hairline rule */}
+        <div
+          style={{
+            borderTop: "1px solid var(--border-light)",
+            marginBottom: "clamp(1.75rem, 3vw, 2.5rem)",
+          }}
+        />
+
+        {/* Figure plate */}
+        {project.visualKey && (
+          <div style={{ marginBottom: "clamp(2rem, 4vw, 3rem)" }}>
+            <FeaturedVisual
+              visualKey={project.visualKey}
+              figNumber={project.index}
+            />
+          </div>
+        )}
+
+        {/* Body copy */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-[1fr_360px] gap-8 md:gap-16 items-start"
+        >
           <p
             style={{
               fontFamily: bf,
-              fontSize: "0.9375rem",
-              lineHeight: 1.75,
+              fontSize: "1rem",
+              lineHeight: 1.8,
               color: "var(--ink-2)",
-              maxWidth: "58ch",
-              marginBottom: "1.75rem",
+              maxWidth: "62ch",
             }}
           >
             {project.summary}
           </p>
-
-          {/* Stack */}
-          <StackChips stack={project.stack} />
-
-          {/* Demonstrates */}
-          <DemonstratesLine text={project.demonstrates} />
+          <div>
+            <span
+              style={{
+                fontFamily: df,
+                fontWeight: 700,
+                fontSize: "0.5625rem",
+                letterSpacing: "0.22em",
+                textTransform: "uppercase",
+                color: "var(--ink-3)",
+                display: "block",
+                marginBottom: "0.6rem",
+              }}
+            >
+              Demonstrates
+            </span>
+            <p
+              style={{
+                fontFamily: bf,
+                fontSize: "0.9375rem",
+                lineHeight: 1.65,
+                color: "var(--ink-2)",
+              }}
+            >
+              {project.demonstrates}
+            </p>
+          </div>
         </div>
 
-        {/* Visual */}
-        {project.visualKey && (
-          <div className="md:sticky" style={{ top: "5.5rem" }}>
-            <div
-              style={{
-                aspectRatio: "4 / 3",
-                position: "relative",
-                overflow: "hidden",
-              }}
-              role="img"
-              aria-label={`Visual representation of ${project.title}`}
-            >
-              {VISUALS[project.visualKey]}
-            </div>
-          </div>
-        )}
+        {/* Stack chips */}
+        <div style={{ marginTop: "clamp(1.75rem, 3vw, 2.25rem)" }}>
+          <StackChips stack={project.stack} />
+        </div>
       </div>
     </div>
   );
@@ -493,7 +560,6 @@ function SecondaryProjectCard({ project }: { project: Project }) {
           paddingBottom: "clamp(2rem, 4vw, 3rem)",
         }}
       >
-        {/* Top row: index + title + status */}
         <div
           className="flex flex-col md:flex-row md:items-baseline md:justify-between"
           style={{ gap: "1rem", marginBottom: "1.25rem" }}
@@ -525,11 +591,11 @@ function SecondaryProjectCard({ project }: { project: Project }) {
               {project.title}
             </h3>
           </div>
-          <div className="flex flex-wrap items-center" style={{ gap: "0.75rem" }}>
-            <StatusPill
-              status={project.status}
-              label={project.statusLabel}
-            />
+          <div
+            className="flex flex-wrap items-center"
+            style={{ gap: "0.75rem" }}
+          >
+            <StatusPill status={project.status} label={project.statusLabel} />
             {project.qualifier && (
               <span
                 style={{
@@ -545,7 +611,6 @@ function SecondaryProjectCard({ project }: { project: Project }) {
           </div>
         </div>
 
-        {/* Summary */}
         <p
           style={{
             fontFamily: bf,
@@ -559,10 +624,8 @@ function SecondaryProjectCard({ project }: { project: Project }) {
           {project.summary}
         </p>
 
-        {/* Stack */}
         <StackChips stack={project.stack} />
 
-        {/* Demonstrates */}
         <DemonstratesLine text={project.demonstrates} />
       </div>
     </div>
