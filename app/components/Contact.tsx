@@ -78,7 +78,7 @@ export default function Contact() {
               marginBottom: "clamp(2.5rem, 5vw, 4rem)",
             }}
           >
-            Open to AI roles, project work, or just to talk shop.
+            Open to AI roles, project work, or a chat.
           </p>
         </FadeIn>
 
