@@ -59,8 +59,8 @@ function AccentBreak() {
             maxWidth: "32ch",
           }}
         >
-          Three automations that replaced hours of manual work — built with
-          Claude, n8n, and custom tooling.
+          Seven projects across agents, automation, and applied AI — built
+          with Claude, n8n, MCP, and Python orchestration.
         </p>
       </div>
     </section>
