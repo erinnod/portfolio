@@ -88,7 +88,6 @@ export const SECONDARY_PROJECTS: readonly Project[] = [
     title: "Migration agent",
     status: "building",
     statusLabel: "Building",
-    qualifier: "Approved internally by Simon",
     summary:
       "Four-phase agentic pipeline for migrating legacy products to a modern stack: Crawl (Browser Use + Playwright) → Code read (static analysis) → LLM synthesis (multimodal screenshots + DOM + source) → Plan generation mapped to the new stack's conventions. First target: Shoothill's Bargate (.NET / ASP.NET Core + React SPA + SQL Server) → DannoMini (TanStack + Cloudflare D1 + Drizzle).",
     stack: [
