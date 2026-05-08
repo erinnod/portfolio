@@ -7,9 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const df = "var(--font-unbounded), 'Arial Black', sans-serif";
 const bf = "var(--font-epilogue), system-ui, sans-serif";
 
-interface LightboxProps {
-  open: boolean;
-  onClose: () => void;
+export interface ImageEntry {
   src: string;
   alt: string;
   width: number;
@@ -17,22 +15,31 @@ interface LightboxProps {
   caption?: string;
 }
 
-function Lightbox({
-  open,
-  onClose,
-  src,
-  alt,
-  width,
-  height,
-  caption,
-}: LightboxProps) {
+/* ─── Lightbox modal (multi-image aware) ───────────────────── */
+
+interface LightboxProps {
+  onClose: () => void;
+  images: ImageEntry[];
+  startIndex?: number;
+}
+
+function Lightbox({ onClose, images, startIndex = 0 }: LightboxProps) {
+  const [index, setIndex] = useState(startIndex);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
-  useEffect(() => {
-    if (!open) return;
+  const goPrev = useCallback(() => {
+    setIndex((i) => (i - 1 + images.length) % images.length);
+  }, [images.length]);
 
+  const goNext = useCallback(() => {
+    setIndex((i) => (i + 1) % images.length);
+  }, [images.length]);
+
+  useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
     };
 
     document.addEventListener("keydown", onKey);
@@ -44,34 +51,38 @@ function Lightbox({
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
-  }, [open, onClose]);
+  }, [onClose, goPrev, goNext]);
+
+  const current = images[index];
+  const multi = images.length > 1;
+
+  if (!current) return null;
 
   return (
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          role="dialog"
-          aria-modal="true"
-          aria-label={alt}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.18 }}
-          onClick={onClose}
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "oklch(8% 0.008 22 / 0.94)",
-            zIndex: 100,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding:
-              "clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
-            cursor: "zoom-out",
-          }}
-        >
+    <motion.div
+      role="dialog"
+      aria-modal="true"
+      aria-label={current.alt}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.18 }}
+      onClick={onClose}
+      style={{
+        position: "fixed",
+        inset: 0,
+        backgroundColor: "oklch(8% 0.008 22 / 0.94)",
+        zIndex: 100,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding:
+          "clamp(2.5rem, 5vw, 4rem) clamp(1rem, 4vw, 3rem) clamp(2rem, 4vw, 3rem)",
+        cursor: "zoom-out",
+      }}
+    >
+          {/* Close button */}
           <button
             ref={closeBtnRef}
             type="button"
@@ -105,65 +116,148 @@ function Lightbox({
             Close · Esc
           </button>
 
-          <motion.div
-            initial={{ scale: 0.985 }}
-            animate={{ scale: 1 }}
-            exit={{ scale: 0.985 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: "100%",
-              maxHeight: caption ? "calc(100vh - 9rem)" : "calc(100vh - 7rem)",
-              display: "flex",
-              cursor: "default",
-              boxShadow: "0 30px 80px -10px oklch(0% 0 0 / 0.5)",
-            }}
-          >
-            <Image
-              src={src}
-              alt={alt}
-              width={width}
-              height={height}
-              sizes="100vw"
-              priority
+          {/* Image */}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={current.src}
+              initial={{ opacity: 0, scale: 0.985 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.985 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 maxWidth: "100%",
-                maxHeight: caption ? "calc(100vh - 9rem)" : "calc(100vh - 7rem)",
-                width: "auto",
-                height: "auto",
-                objectFit: "contain",
-                display: "block",
-              }}
-            />
-          </motion.div>
-
-          {caption && (
-            <p
-              style={{
-                fontFamily: bf,
-                fontSize: "0.75rem",
-                letterSpacing: "0.18em",
-                textTransform: "uppercase",
-                color: "oklch(80% 0.005 22)",
-                marginTop: "1.25rem",
-                textAlign: "center",
+                maxHeight: multi ? "calc(100vh - 11rem)" : "calc(100vh - 9rem)",
+                display: "flex",
+                cursor: "default",
+                boxShadow: "0 30px 80px -10px oklch(0% 0 0 / 0.5)",
               }}
             >
-              {caption}
-            </p>
-          )}
-        </motion.div>
-      )}
-    </AnimatePresence>
+              <Image
+                src={current.src}
+                alt={current.alt}
+                width={current.width}
+                height={current.height}
+                sizes="100vw"
+                priority
+                style={{
+                  maxWidth: "100%",
+                  maxHeight: multi
+                    ? "calc(100vh - 11rem)"
+                    : "calc(100vh - 9rem)",
+                  width: "auto",
+                  height: "auto",
+                  objectFit: "contain",
+                  display: "block",
+                }}
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Bottom bar: caption + nav */}
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              marginTop: "1.25rem",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "0.875rem",
+              maxWidth: "100%",
+            }}
+          >
+            {current.caption && (
+              <p
+                style={{
+                  fontFamily: bf,
+                  fontSize: "0.75rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  color: "oklch(82% 0.005 22)",
+                  textAlign: "center",
+                  margin: 0,
+                }}
+              >
+                {current.caption}
+              </p>
+            )}
+
+            {multi && (
+              <div
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.875rem",
+                }}
+              >
+                <button
+                  type="button"
+                  onClick={goPrev}
+                  aria-label="Previous image"
+                  style={lightboxNavBtn}
+                >
+                  ‹
+                </button>
+                <span
+                  style={{
+                    fontFamily: df,
+                    fontWeight: 700,
+                    fontSize: "0.625rem",
+                    letterSpacing: "0.22em",
+                    color: "oklch(82% 0.005 22)",
+                    minWidth: "3.5rem",
+                    textAlign: "center",
+                  }}
+                >
+                  {index + 1} / {images.length}
+                </span>
+                <button
+                  type="button"
+                  onClick={goNext}
+                  aria-label="Next image"
+                  style={lightboxNavBtn}
+                >
+                  ›
+                </button>
+              </div>
+            )}
+          </div>
+    </motion.div>
   );
 }
+
+const lightboxNavBtn = {
+  background: "transparent",
+  border: "1px solid oklch(70% 0.005 22 / 0.4)",
+  color: "oklch(95% 0.005 22)",
+  fontFamily: df,
+  fontSize: "1.125rem",
+  lineHeight: 1,
+  width: "2.25rem",
+  height: "2.25rem",
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+} as const;
+
+/* ─── Frame (shared inner-image styling) ───────────────────── */
+
+const frameStyle = {
+  backgroundColor: "var(--bg-tint)",
+  border: "1px solid var(--border)",
+  overflow: "hidden",
+} as const;
+
+/* ─── Single clickable image (figure plate w/ caption) ─────── */
 
 interface ClickableImageProps {
   src: string;
   alt: string;
   width: number;
   height: number;
-  caption?: string;
+  figNumber: string;
+  caption: string;
   sizes?: string;
 }
 
@@ -172,6 +266,7 @@ export default function ClickableImage({
   alt,
   width,
   height,
+  figNumber,
   caption,
   sizes = "(min-width: 768px) 80vw, 100vw",
 }: ClickableImageProps) {
@@ -179,46 +274,335 @@ export default function ClickableImage({
   const handleOpen = useCallback(() => setOpen(true), []);
   const handleClose = useCallback(() => setOpen(false), []);
 
+  const lightboxImages: ImageEntry[] = [
+    { src, alt, width, height, caption: `Fig. ${figNumber} — ${caption}` },
+  ];
+
   return (
-    <>
+    <figure style={{ margin: 0 }}>
+      <div style={frameStyle}>
+        <button
+          type="button"
+          onClick={handleOpen}
+          aria-label={`View ${alt} at full size`}
+          style={{
+            background: "transparent",
+            border: 0,
+            padding: 0,
+            margin: 0,
+            cursor: "zoom-in",
+            display: "block",
+            width: "100%",
+            lineHeight: 0,
+          }}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            sizes={sizes}
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          />
+        </button>
+      </div>
+      <FigCaption figNumber={figNumber} caption={caption} clickable />
+      <AnimatePresence>
+        {open && (
+          <Lightbox
+            onClose={handleClose}
+            images={lightboxImages}
+            startIndex={0}
+          />
+        )}
+      </AnimatePresence>
+    </figure>
+  );
+}
+
+/* ─── Image carousel (figure plate with prev/next + lightbox) */
+
+interface ImageCarouselProps {
+  images: ImageEntry[];
+  figNumber: string;
+  sizes?: string;
+}
+
+export function ImageCarousel({
+  images,
+  figNumber,
+  sizes = "(min-width: 768px) 80vw, 100vw",
+}: ImageCarouselProps) {
+  const [index, setIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+
+  const goPrev = useCallback(
+    () => setIndex((i) => (i - 1 + images.length) % images.length),
+    [images.length],
+  );
+  const goNext = useCallback(
+    () => setIndex((i) => (i + 1) % images.length),
+    [images.length],
+  );
+
+  const handleOpen = useCallback(() => setOpen(true), []);
+  const handleClose = useCallback(() => setOpen(false), []);
+
+  const current = images[index];
+
+  // Build image list for lightbox with prefixed Fig. captions
+  const lightboxImages: ImageEntry[] = images.map((img) => ({
+    ...img,
+    caption: img.caption ? `Fig. ${figNumber} — ${img.caption}` : undefined,
+  }));
+
+  return (
+    <figure style={{ margin: 0 }}>
+      <div style={frameStyle}>
+        <button
+          type="button"
+          onClick={handleOpen}
+          aria-label={`View ${current.alt} at full size`}
+          style={{
+            background: "transparent",
+            border: 0,
+            padding: 0,
+            margin: 0,
+            cursor: "zoom-in",
+            display: "block",
+            width: "100%",
+            lineHeight: 0,
+            position: "relative",
+          }}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={current.src}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18 }}
+              style={{
+                width: "100%",
+                aspectRatio: "16 / 10",
+                position: "relative",
+                lineHeight: 0,
+              }}
+            >
+              <Image
+                src={current.src}
+                alt={current.alt}
+                fill
+                sizes={sizes}
+                priority={index === 0}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "top center",
+                  display: "block",
+                }}
+              />
+            </motion.div>
+          </AnimatePresence>
+        </button>
+      </div>
+
+      {/* Caption row with nav */}
+      <figcaption
+        className="flex flex-col md:flex-row md:items-baseline md:justify-between"
+        style={{ marginTop: "0.875rem", gap: "0.6rem 1.5rem" }}
+      >
+        <span
+          style={{
+            fontFamily: bf,
+            fontSize: "0.75rem",
+            color: "var(--ink-3)",
+            lineHeight: 1.5,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: df,
+              fontWeight: 700,
+              fontSize: "0.625rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              marginRight: "0.6rem",
+              color: "var(--ink-2)",
+            }}
+          >
+            Fig. {figNumber}.{index + 1}
+          </span>
+          {current.caption}
+        </span>
+
+        <div
+          className="flex items-center"
+          style={{ gap: "1rem", flexShrink: 0 }}
+        >
+          <CarouselNav
+            index={index}
+            total={images.length}
+            onPrev={goPrev}
+            onNext={goNext}
+          />
+          <span
+            aria-hidden="true"
+            style={{
+              fontFamily: df,
+              fontWeight: 700,
+              fontSize: "0.625rem",
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "var(--accent)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Click to expand ↗
+          </span>
+        </div>
+      </figcaption>
+
+      <AnimatePresence>
+        {open && (
+          <Lightbox
+            onClose={handleClose}
+            images={lightboxImages}
+            startIndex={index}
+          />
+        )}
+      </AnimatePresence>
+    </figure>
+  );
+}
+
+/* ─── Carousel nav (arrows + dots + counter) ───────────────── */
+
+function CarouselNav({
+  index,
+  total,
+  onPrev,
+  onNext,
+}: {
+  index: number;
+  total: number;
+  onPrev: () => void;
+  onNext: () => void;
+}) {
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "0.65rem",
+      }}
+    >
       <button
         type="button"
-        onClick={handleOpen}
-        aria-label={`View ${alt} at full size`}
+        onClick={onPrev}
+        aria-label="Previous image"
+        style={navBtn}
+      >
+        ‹
+      </button>
+      <span
         style={{
-          background: "transparent",
-          border: 0,
-          padding: 0,
-          margin: 0,
-          cursor: "zoom-in",
-          display: "block",
-          width: "100%",
-          lineHeight: 0,
+          fontFamily: df,
+          fontWeight: 700,
+          fontSize: "0.625rem",
+          letterSpacing: "0.22em",
+          color: "var(--ink-2)",
+          minWidth: "2.75rem",
+          textAlign: "center",
         }}
       >
-        <Image
-          src={src}
-          alt={alt}
-          width={width}
-          height={height}
-          sizes={sizes}
-          priority={false}
-          style={{
-            width: "100%",
-            height: "auto",
-            display: "block",
-          }}
-        />
+        {index + 1} / {total}
+      </span>
+      <button
+        type="button"
+        onClick={onNext}
+        aria-label="Next image"
+        style={navBtn}
+      >
+        ›
       </button>
-      <Lightbox
-        open={open}
-        onClose={handleClose}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        caption={caption}
-      />
-    </>
+    </div>
+  );
+}
+
+const navBtn = {
+  background: "transparent",
+  border: "1px solid var(--border)",
+  color: "var(--ink-2)",
+  fontFamily: df,
+  fontSize: "1rem",
+  lineHeight: 1,
+  width: "1.85rem",
+  height: "1.85rem",
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+} as const;
+
+/* ─── Static figcaption (used by ClickableImage) ───────────── */
+
+function FigCaption({
+  figNumber,
+  caption,
+  clickable,
+}: {
+  figNumber: string;
+  caption: string;
+  clickable?: boolean;
+}) {
+  return (
+    <figcaption
+      className="flex flex-col md:flex-row md:items-baseline md:justify-between"
+      style={{ marginTop: "0.875rem", gap: "0.5rem 1.5rem" }}
+    >
+      <span
+        style={{
+          fontFamily: bf,
+          fontSize: "0.75rem",
+          color: "var(--ink-3)",
+          lineHeight: 1.5,
+        }}
+      >
+        <span
+          style={{
+            fontFamily: df,
+            fontWeight: 700,
+            fontSize: "0.625rem",
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            marginRight: "0.6rem",
+            color: "var(--ink-2)",
+          }}
+        >
+          Fig. {figNumber}
+        </span>
+        {caption}
+      </span>
+      {clickable && (
+        <span
+          aria-hidden="true"
+          style={{
+            fontFamily: df,
+            fontWeight: 700,
+            fontSize: "0.625rem",
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "var(--accent)",
+            whiteSpace: "nowrap",
+          }}
+        >
+          Click to expand ↗
+        </span>
+      )}
+    </figcaption>
   );
 }

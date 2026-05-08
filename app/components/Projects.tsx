@@ -1,5 +1,8 @@
 import FadeIn from "./FadeIn";
-import ClickableImage from "./Lightbox";
+import ClickableImage, {
+  ImageCarousel,
+  type ImageEntry,
+} from "./Lightbox";
 import {
   FEATURED_PROJECTS,
   SECONDARY_PROJECTS,
@@ -308,39 +311,53 @@ interface FeaturedVisualProps {
   figNumber: string;
 }
 
+const FIGMA_CAROUSEL: readonly ImageEntry[] = [
+  {
+    src: "/project-figma-agent.png",
+    alt: "Figma agent — project workflow mode selection",
+    width: 3002,
+    height: 1874,
+    caption: "Mode selection — pick the entry point for the project.",
+  },
+  {
+    src: "/project-figma-agent-1.png",
+    alt: "Figma agent — customer questions page",
+    width: 3002,
+    height: 18788,
+    caption: "Customer questions — multi-choice with rationale.",
+  },
+  {
+    src: "/project-figma-agent-2.png",
+    alt: "Figma agent — questions generated, developer + customer links",
+    width: 3002,
+    height: 1808,
+    caption: "Questions generated — developer page and customer link.",
+  },
+  {
+    src: "/project-figma-agent-3.png",
+    alt: "Figma agent — CLAUDE.md build prompt page",
+    width: 3002,
+    height: 2240,
+    caption: "CLAUDE.md written — Claude Code build prompt ready.",
+  },
+];
+
 function FeaturedVisual({ visualKey, figNumber }: FeaturedVisualProps) {
   if (visualKey === "figma") {
     return (
-      <FigurePlate
-        figNumber={figNumber}
-        caption="Project workflow selection screen — Shoothill onboarding modes."
-        clickable
-      >
-        <ClickableImage
-          src="/project-figma-agent.png"
-          alt="Figma → spec agent — project workflow selection screen"
-          width={3002}
-          height={1874}
-          caption="Fig. 01 — Project workflow selection screen"
-        />
-      </FigurePlate>
+      <ImageCarousel images={[...FIGMA_CAROUSEL]} figNumber={figNumber} />
     );
   }
   if (visualKey === "shopify") {
     return (
-      <FigurePlate
+      <ClickableImage
+        src="/project-n8n-workflow.png"
+        alt="Shopify product automation — n8n workflow pipeline"
+        width={2514}
+        height={618}
         figNumber={figNumber}
         caption="n8n automation pipeline — image to Shopify product, end to end."
-        clickable
-      >
-        <ClickableImage
-          src="/project-n8n-workflow.png"
-          alt="Shopify product automation — n8n workflow pipeline"
-          width={2514}
-          height={618}
-          caption="Fig. 02 — n8n automation pipeline"
-        />
-      </FigurePlate>
+      />
     );
   }
   return (
