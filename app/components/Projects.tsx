@@ -538,13 +538,6 @@ const FIGMA_CAROUSEL: readonly ImageEntry[] = [
     caption: "Mode selection — pick the entry point for the project.",
   },
   {
-    src: "/project-figma-agent-1.png",
-    alt: "Figma agent — customer questions page",
-    width: 3002,
-    height: 1876,
-    caption: "Customer questions — multi-choice with rationale.",
-  },
-  {
     src: "/project-figma-agent-2.png",
     alt: "Figma agent — questions generated, developer + customer links",
     width: 3002,
