@@ -26,7 +26,7 @@ export default function Hero() {
             color: "var(--ink-ghost)",
           }}
         >
-          Portfolio · 2025
+          Portfolio · 2026
         </span>
         <span
           style={{

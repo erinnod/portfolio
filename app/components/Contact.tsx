@@ -1,4 +1,5 @@
 import FadeIn from "./FadeIn";
+import CopyEmailLink from "./CopyEmailLink";
 
 const displayFont = "var(--font-unbounded), 'Arial Black', sans-serif";
 const bodyFont = "var(--font-epilogue), system-ui, sans-serif";
@@ -77,8 +78,7 @@ export default function Contact() {
               marginBottom: "clamp(2.5rem, 5vw, 4rem)",
             }}
           >
-            Want to talk about AI automation, agents, or how to make your
-            business actually use AI? Get in touch.
+            Open to AI roles, project work, or just to talk shop.
           </p>
         </FadeIn>
 
@@ -90,25 +90,8 @@ export default function Contact() {
               label="LinkedIn"
               external
             />
-            <ContactLink
-              href="mailto:erin.nodland@shoothill.com"
-              label="Email"
-            />
+            <CopyEmailLink email="noderin1@gmail.com" />
           </div>
-
-          {/* Visible email address — fallback for machines without a mail client */}
-          <p
-            style={{
-              fontFamily: bodyFont,
-              fontSize: "0.8125rem",
-              letterSpacing: "0.03em",
-              color: "var(--ink-ghost)",
-              marginTop: "1.25rem",
-              userSelect: "all",
-            }}
-          >
-            erin.nodland@shoothill.com
-          </p>
         </FadeIn>
 
         {/* Footer */}
@@ -132,7 +115,7 @@ export default function Contact() {
                 color: "var(--ink-ghost)",
               }}
             >
-              Erin Nodland &copy; 2025
+              Erin Nodland &copy; 2026
             </p>
             <p
               style={{
