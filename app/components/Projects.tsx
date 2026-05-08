@@ -67,161 +67,379 @@ function StatusPill({
   );
 }
 
-/* ─── Life-OS visual (typographic) ─────────────────────────── */
+/* ─── Life-OS visual (typographic, 4-quadrant) ─────────────── */
+
+function QuadrantHeader({ label, meta }: { label: string; meta: string }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "baseline",
+        paddingBottom: "0.75rem",
+        borderBottom: "1px solid var(--border)",
+        marginBottom: "1.1rem",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: df,
+          fontWeight: 700,
+          fontSize: "0.625rem",
+          letterSpacing: "0.24em",
+          textTransform: "uppercase",
+          color: "var(--ink-2)",
+        }}
+      >
+        {label}
+      </span>
+      <span
+        style={{
+          fontFamily: bf,
+          fontSize: "0.625rem",
+          color: "var(--ink-3)",
+          letterSpacing: "0.05em",
+        }}
+      >
+        {meta}
+      </span>
+    </div>
+  );
+}
+
+function VaultQuadrant() {
+  const entries = [
+    "/identity.md",
+    "/goals.md",
+    "/projects/",
+    "/patterns/",
+    "/skills/",
+    "/decisions/",
+    "/drift.md",
+  ];
+  return (
+    <div>
+      <QuadrantHeader label="Vault" meta="7 entries" />
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem" }}>
+        {entries.map((entry) => (
+          <div
+            key={entry}
+            style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}
+          >
+            <span
+              style={{
+                width: "6px",
+                height: "6px",
+                backgroundColor: "var(--accent)",
+                display: "block",
+                flexShrink: 0,
+              }}
+            />
+            <span
+              style={{
+                fontFamily: bf,
+                fontSize: "0.875rem",
+                color: "var(--ink)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              {entry}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function LoopQuadrant() {
+  return (
+    <div>
+      <QuadrantHeader label="The loop" meta="every interaction" />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "0.4rem",
+        }}
+      >
+        <span
+          style={{
+            fontFamily: df,
+            fontWeight: 700,
+            fontSize: "0.9375rem",
+            letterSpacing: "0.02em",
+            color: "var(--ink)",
+          }}
+        >
+          Claude Code
+        </span>
+        <span
+          aria-hidden="true"
+          style={{
+            fontFamily: df,
+            fontSize: "1.25rem",
+            color: "var(--accent)",
+            lineHeight: 1,
+          }}
+        >
+          ↑↓
+        </span>
+        <span
+          style={{
+            fontFamily: bf,
+            fontSize: "0.6875rem",
+            letterSpacing: "0.18em",
+            textTransform: "uppercase",
+            color: "var(--ink-3)",
+          }}
+        >
+          reads · writes
+        </span>
+        <span
+          aria-hidden="true"
+          style={{
+            fontFamily: df,
+            fontSize: "1.25rem",
+            color: "var(--accent)",
+            lineHeight: 1,
+          }}
+        >
+          ↑↓
+        </span>
+        <span
+          style={{
+            fontFamily: df,
+            fontWeight: 700,
+            fontSize: "0.9375rem",
+            letterSpacing: "0.02em",
+            color: "var(--ink)",
+          }}
+        >
+          Vault
+        </span>
+      </div>
+      <div
+        style={{
+          marginTop: "1.25rem",
+          paddingTop: "0.85rem",
+          borderTop: "1px solid var(--border-light)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.45rem",
+        }}
+      >
+        {["surfaces contradictions", "flags drift"].map((line) => (
+          <div
+            key={line}
+            style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                fontFamily: df,
+                fontWeight: 700,
+                fontSize: "0.75rem",
+                color: "var(--accent)",
+                lineHeight: 1,
+              }}
+            >
+              ↳
+            </span>
+            <span
+              style={{
+                fontFamily: bf,
+                fontSize: "0.8125rem",
+                color: "var(--ink-2)",
+              }}
+            >
+              {line}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SkillsQuadrant() {
+  const skills = [
+    "/skill/init",
+    "/skill/review",
+    "/skill/audit-drift",
+  ];
+  return (
+    <div>
+      <QuadrantHeader label="Skills" meta="self-extending" />
+      <div style={{ display: "flex", flexDirection: "column", gap: "0.55rem" }}>
+        {skills.map((skill) => (
+          <div
+            key={skill}
+            style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}
+          >
+            <span
+              aria-hidden="true"
+              style={{
+                fontFamily: df,
+                fontWeight: 700,
+                fontSize: "0.75rem",
+                color: "var(--ink-3)",
+                lineHeight: 1,
+              }}
+            >
+              →
+            </span>
+            <span
+              style={{
+                fontFamily: bf,
+                fontSize: "0.875rem",
+                color: "var(--ink-2)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              {skill}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div
+        style={{
+          marginTop: "1.1rem",
+          paddingTop: "0.75rem",
+          borderTop: "1px solid var(--border-light)",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.55rem",
+        }}
+      >
+        <span
+          aria-hidden="true"
+          style={{
+            fontFamily: df,
+            fontWeight: 900,
+            fontSize: "0.875rem",
+            color: "var(--accent)",
+            lineHeight: 1,
+          }}
+        >
+          +
+        </span>
+        <span
+          style={{
+            fontFamily: bf,
+            fontStyle: "italic",
+            fontSize: "0.8125rem",
+            color: "var(--ink-3)",
+          }}
+        >
+          extends as new patterns emerge
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function McpQuadrant() {
+  const nodes = ["filesystem", "notion", "figma", "tasknotes"];
+  return (
+    <div>
+      <QuadrantHeader label="MCP servers" meta="4 active" />
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "0.6rem 1rem",
+        }}
+      >
+        {nodes.map((node) => (
+          <div
+            key={node}
+            style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}
+          >
+            <span
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                border: "1px solid var(--ink-2)",
+                display: "block",
+                flexShrink: 0,
+              }}
+            />
+            <span
+              style={{
+                fontFamily: bf,
+                fontSize: "0.875rem",
+                color: "var(--ink-2)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              {node}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function LifeOSVisual() {
-  const vault = ["/identity.md", "/goals.md", "/projects/", "/patterns/"];
-  const mcp = ["filesystem", "notion", "figma", "tasknotes"];
-
   return (
     <div
       style={{
         backgroundColor: "var(--bg-tint)",
-        padding:
-          "clamp(1.75rem, 4vw, 3rem) clamp(2rem, 5vw, 4rem)",
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "clamp(2rem, 5vw, 4rem)",
-        alignItems: "start",
+        padding: "clamp(2rem, 4vw, 3.25rem) clamp(2rem, 5vw, 4rem)",
       }}
     >
-      {/* Vault tree */}
-      <div>
-        <div
+      {/* Top header strip */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "baseline",
+          paddingBottom: "1.25rem",
+          marginBottom: "clamp(1.75rem, 3vw, 2.25rem)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        <span
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            paddingBottom: "0.875rem",
-            borderBottom: "1px solid var(--border)",
-            marginBottom: "1.25rem",
+            fontFamily: df,
+            fontWeight: 900,
+            fontSize: "clamp(1rem, 1.6vw, 1.25rem)",
+            letterSpacing: "-0.01em",
+            color: "var(--ink)",
           }}
         >
-          <span
-            style={{
-              fontFamily: df,
-              fontWeight: 700,
-              fontSize: "0.6875rem",
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "var(--ink-2)",
-            }}
-          >
-            Life-OS · vault
-          </span>
-          <span
-            style={{
-              fontFamily: bf,
-              fontSize: "0.6875rem",
-              color: "var(--ink-3)",
-            }}
-          >
-            Claude Code
-          </span>
-        </div>
-
-        <div
-          style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}
+          Life-OS
+        </span>
+        <span
+          style={{
+            fontFamily: bf,
+            fontSize: "0.6875rem",
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            color: "var(--ink-3)",
+          }}
         >
-          {vault.map((entry) => (
-            <div
-              key={entry}
-              style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}
-            >
-              <span
-                style={{
-                  width: "6px",
-                  height: "6px",
-                  backgroundColor: "var(--accent)",
-                  display: "block",
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: bf,
-                  fontSize: "0.9375rem",
-                  color: "var(--ink)",
-                  letterSpacing: "0.01em",
-                }}
-              >
-                {entry}
-              </span>
-            </div>
-          ))}
-        </div>
+          Claude Code · Obsidian · MCP
+        </span>
       </div>
 
-      {/* MCP nodes */}
-      <div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            paddingBottom: "0.875rem",
-            borderBottom: "1px solid var(--border)",
-            marginBottom: "1.25rem",
-          }}
-        >
-          <span
-            style={{
-              fontFamily: df,
-              fontWeight: 700,
-              fontSize: "0.6875rem",
-              letterSpacing: "0.22em",
-              textTransform: "uppercase",
-              color: "var(--ink-2)",
-            }}
-          >
-            MCP servers
-          </span>
-          <span
-            style={{
-              fontFamily: bf,
-              fontSize: "0.6875rem",
-              color: "var(--ink-3)",
-            }}
-          >
-            4 active
-          </span>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "0.65rem 1rem",
-          }}
-        >
-          {mcp.map((node) => (
-            <div
-              key={node}
-              style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}
-            >
-              <span
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  border: "1px solid var(--ink-2)",
-                  display: "block",
-                  flexShrink: 0,
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: bf,
-                  fontSize: "0.875rem",
-                  color: "var(--ink-2)",
-                  letterSpacing: "0.01em",
-                }}
-              >
-                {node}
-              </span>
-            </div>
-          ))}
-        </div>
+      {/* 4-quadrant grid */}
+      <div
+        className="grid"
+        style={{
+          gridTemplateColumns: "1fr 1fr",
+          rowGap: "clamp(2rem, 4vw, 3rem)",
+          columnGap: "clamp(2rem, 5vw, 4rem)",
+        }}
+      >
+        <VaultQuadrant />
+        <LoopQuadrant />
+        <SkillsQuadrant />
+        <McpQuadrant />
       </div>
     </div>
   );
