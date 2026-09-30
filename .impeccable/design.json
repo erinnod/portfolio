@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-30T22:43:11.379Z",
+  "title": "Design System: Erin Nodland — Workflow Canvas",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Canvas Ground",
+        "canonical": "oklch(95.0% 0.007 115.7)",
+        "tonalRamp": [
+          "#0b0c08",
+          "#252522",
+          "#42423e",
+          "#61625d",
+          "#82837e",
+          "#a5a6a1",
+          "#c9cac5",
+          "#eeefea"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#252525",
+          "#424242",
+          "#616161",
+          "#828282",
+          "#a5a5a5",
+          "#c9c9c9",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graph Ink",
+        "canonical": "oklch(24.0% 0.010 276.7)",
+        "tonalRamp": [
+          "#0a0b0f",
+          "#24252a",
+          "#404247",
+          "#606167",
+          "#818288",
+          "#a3a5ab",
+          "#c7c9d0",
+          "#edeef5"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "oklch(36.6% 0.014 123.9)",
+        "tonalRamp": [
+          "#0a0c06",
+          "#24261f",
+          "#40433b",
+          "#5f635a",
+          "#80847b",
+          "#a3a79d",
+          "#c7cbc1",
+          "#ecf0e6"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Olive-Grey",
+        "canonical": "oklch(48.7% 0.015 122.0)",
+        "tonalRamp": [
+          "#0a0c06",
+          "#24261e",
+          "#41433b",
+          "#60635a",
+          "#81847a",
+          "#a3a79d",
+          "#c7cbc0",
+          "#edf0e6"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Wire Grey",
+        "canonical": "oklch(83.8% 0.012 116.9)",
+        "tonalRamp": [
+          "#0b0c06",
+          "#24261f",
+          "#41433c",
+          "#60625a",
+          "#82837b",
+          "#a4a69d",
+          "#c8cac1",
+          "#eef0e6"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "oklch(60.1% 0.188 35.7)",
+        "tonalRamp": [
+          "#1f0000",
+          "#480c00",
+          "#781c00",
+          "#ac2d00",
+          "#db4a22",
+          "#fc7855",
+          "#ffb4a0",
+          "#ffe9e3"
+        ]
+      },
+      "signal-ink": {
+        "role": "primary",
+        "displayName": "Deep Signal",
+        "canonical": "oklch(51.8% 0.163 36.9)",
+        "tonalRamp": [
+          "#1f0000",
+          "#460f00",
+          "#761f01",
+          "#a93104",
+          "#d15733",
+          "#f97b57",
+          "#ffb49f",
+          "#ffe9e3"
+        ]
+      },
+      "signal-tint": {
+        "role": "primary",
+        "displayName": "Signal Wash",
+        "canonical": "oklch(93.3% 0.030 44.0)",
+        "tonalRamp": [
+          "#150703",
+          "#312019",
+          "#503d35",
+          "#705c54",
+          "#927d74",
+          "#b6a096",
+          "#dbc4ba",
+          "#feeae1"
+        ]
+      },
+      "ok": {
+        "role": "secondary",
+        "displayName": "Shipped Green",
+        "canonical": "oklch(56.0% 0.134 152.5)",
+        "tonalRamp": [
+          "#001003",
+          "#002e14",
+          "#005027",
+          "#04753b",
+          "#33995a",
+          "#5bbd7b",
+          "#80e29f",
+          "#c7ffd5"
+        ]
+      },
+      "ok-ink": {
+        "role": "secondary",
+        "displayName": "Shipped Green Ink",
+        "canonical": "oklch(47.8% 0.107 153.0)",
+        "tonalRamp": [
+          "#001003",
+          "#012e14",
+          "#025028",
+          "#247243",
+          "#4a9563",
+          "#6db985",
+          "#91dea8",
+          "#c7ffd6"
+        ]
+      },
+      "ok-tint": {
+        "role": "secondary",
+        "displayName": "Shipped Green Tint",
+        "canonical": "oklch(93.5% 0.025 156.7)",
+        "tonalRamp": [
+          "#030e07",
+          "#1b2920",
+          "#37463d",
+          "#56665c",
+          "#77877c",
+          "#99aa9f",
+          "#bdcec3",
+          "#e2f4e8"
+        ]
+      },
+      "paused-tint": {
+        "role": "neutral",
+        "displayName": "Paused Grey",
+        "canonical": "oklch(91.9% 0.008 114.2)",
+        "tonalRamp": [
+          "#0b0c08",
+          "#252621",
+          "#42423e",
+          "#61625d",
+          "#82837d",
+          "#a5a6a0",
+          "#c9cac4",
+          "#eeefe9"
+        ]
+      },
+      "wip": {
+        "role": "secondary",
+        "displayName": "In-Progress Blue",
+        "canonical": "oklch(55.4% 0.137 253.4)",
+        "tonalRamp": [
+          "#000a21",
+          "#00254b",
+          "#01427e",
+          "#1a62ac",
+          "#4084d2",
+          "#63a8f8",
+          "#a4cdfe",
+          "#e4f0ff"
+        ]
+      },
+      "wip-ink": {
+        "role": "secondary",
+        "displayName": "In-Progress Blue Ink",
+        "canonical": "oklch(48.5% 0.133 254.6)",
+        "tonalRamp": [
+          "#000a23",
+          "#00244e",
+          "#034180",
+          "#2261aa",
+          "#4584d0",
+          "#68a8f7",
+          "#a6ccfd",
+          "#e4f0fe"
+        ]
+      },
+      "wip-tint": {
+        "role": "secondary",
+        "displayName": "In-Progress Blue Tint",
+        "canonical": "oklch(92.6% 0.024 254.0)",
+        "tonalRamp": [
+          "#050c15",
+          "#1d2631",
+          "#39434f",
+          "#58626f",
+          "#798391",
+          "#9ba6b4",
+          "#bfcad9",
+          "#e4f0ff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Opened node titles; the static-run h1 uses clamp(56px, 9vw, 96px) at 0.9."
+      },
+      "display-finish": {
+        "displayName": "Display Finish",
+        "purpose": "The Contact question on the orange finish field, max 12ch."
+      },
+      "headline-trigger": {
+        "displayName": "Trigger Name",
+        "purpose": "Erin's name inside the trigger node; the opening camera zoom makes it the hero."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The one-line pitch, max 30 to 34ch."
+      },
+      "title": {
+        "displayName": "Node Title",
+        "purpose": "Node-card titles on the graph."
+      },
+      "title-card": {
+        "displayName": "Card Title",
+        "purpose": "Group-scene card titles (18px on phones, 22px from 640px)."
+      },
+      "wordmark": {
+        "displayName": "Wordmark",
+        "purpose": "erin-nodland.workflow in the status line."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Node summaries in ink-2, max 48ch."
+      },
+      "meta": {
+        "displayName": "Node Meta",
+        "purpose": "State mark, state and stack under a node title (15px on phones)."
+      },
+      "step": {
+        "displayName": "Pipeline Step",
+        "purpose": "Step labels: 13px phones, 15px row, 19px chain card."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Status line, Queued, node status words; node-type labels at 700."
+      }
+    },
+    "shadows": [
+      {
+        "name": "node-rest",
+        "value": "0 10px 24px -16px rgba(30,31,36,0.45)",
+        "purpose": "Node cards and pipeline chain cards resting on the canvas."
+      },
+      {
+        "name": "trigger-lift",
+        "value": "0 18px 40px -18px rgba(30,31,36,0.55)",
+        "purpose": "The dark trigger node only."
+      },
+      {
+        "name": "screenshot-drop",
+        "value": "0 30px 60px -30px rgba(30,31,36,0.5)",
+        "purpose": "Project screenshots in a canvas well."
+      },
+      {
+        "name": "bead-glow",
+        "value": "0 4px 10px -2px rgba(217,72,31,0.6)",
+        "purpose": "The travelling orange bead."
+      },
+      {
+        "name": "running-pulse",
+        "value": "0 0 0 0 rgba(31,138,76,0.45) -> 0 0 0 6px rgba(31,138,76,0)",
+        "purpose": "Animated ring on the Running status dot."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-cubic",
+        "value": "1 - (1 - x)^3",
+        "purpose": "All scroll-scrubbed entrances, camera moves and reveals (timeline easeOut)."
+      },
+      {
+        "name": "ease-port-ring",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Trigger output-port ring pulse, 1.6s infinite."
+      },
+      {
+        "name": "running-pulse",
+        "value": "1.8s ease-in-out infinite",
+        "purpose": "Green pulse on the Running status dot."
+      },
+      {
+        "name": "node-spin",
+        "value": "0.8s linear infinite",
+        "purpose": "Executing spinner on a node."
+      },
+      {
+        "name": "nudge",
+        "value": "1.6s ease-in-out infinite, 6px travel",
+        "purpose": "Scroll cue arrow."
+      },
+      {
+        "name": "state-transition",
+        "value": "300ms",
+        "purpose": "Node border and opacity, lit output fill, rail pip width."
+      },
+      {
+        "name": "circle-reveal",
+        "value": "clip-path: circle(r at 50% 50%), r scrubbed by scroll",
+        "purpose": "Opening and closing node panels and the finish field."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Swap to the static stacked run and stop every loop."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "image-sizes",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Node Card",
+      "kind": "card",
+      "refersTo": "node-card",
+      "description": "A project node on the canvas: tinted number badge, title, stack line, state mark. Border turns signal when active.",
+      "html": "<div class=\"ds-node\"><span class=\"ds-node-badge\">01</span><span class=\"ds-node-text\"><span class=\"ds-node-title\">Figma → spec agent</span><span class=\"ds-node-via\">Claude Code · Figma MCP</span></span><svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" aria-hidden=\"true\"><circle cx=\"13\" cy=\"13\" r=\"13\" fill=\"#1f8a4c\"/><path d=\"M7.5 13.5l3.5 3.5 7.5-8\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg></div>",
+      "css": ".ds-node{display:flex;align-items:center;gap:12px;width:340px;height:76px;padding:0 14px;box-sizing:border-box;background:var(--paper);color:var(--ink);border:2px solid var(--ink);border-radius:12px;box-shadow:0 10px 24px -16px rgba(30,31,36,0.45);font-family:'Hanken Grotesk',system-ui,sans-serif;transition:border-color .3s,opacity .3s}.ds-node:hover{border-color:var(--signal)}.ds-node-badge{display:inline-flex;width:40px;height:40px;flex-shrink:0;align-items:center;justify-content:center;border-radius:9px;background:var(--ok-tint);font-size:14px;font-weight:800}.ds-node-text{flex:1;min-width:0}.ds-node-title{display:block;font-size:17px;font-weight:800}.ds-node-via{display:block;margin-top:2px;font-size:12px;color:var(--muted)}"
+    },
+    {
+      "name": "Node Card (Queued)",
+      "kind": "card",
+      "refersTo": "node-card",
+      "description": "Before its turn: dashed wire-grey border at 0.7 opacity.",
+      "html": "<div class=\"ds-nodeq\"><span class=\"ds-nodeq-badge\">06</span><span class=\"ds-nodeq-text\"><b>Migration agent</b><small>Browser Use · Playwright · Claude</small></span><span class=\"ds-nodeq-state\">Queued</span></div>",
+      "css": ".ds-nodeq{display:flex;align-items:center;gap:12px;width:340px;height:76px;padding:0 14px;box-sizing:border-box;background:var(--paper);color:var(--ink);border:2px dashed var(--line);border-radius:12px;opacity:.7;font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-nodeq-badge{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:9px;background:var(--wip-tint);font-size:14px;font-weight:800}.ds-nodeq-text{flex:1}.ds-nodeq-text b{display:block;font-size:17px;font-weight:800}.ds-nodeq-text small{display:block;font-size:12px;color:var(--muted)}.ds-nodeq-state{font-size:12px;font-weight:800;color:var(--muted)}"
+    },
+    {
+      "name": "Trigger Node",
+      "kind": "custom",
+      "refersTo": "trigger-node",
+      "description": "The dark start node carrying Erin's name, with a pulsing signal output port.",
+      "html": "<div class=\"ds-trigger\"><p class=\"ds-trigger-type\">Trigger</p><p class=\"ds-trigger-name\">Erin Nodland</p><span class=\"ds-trigger-port\"></span><span class=\"ds-trigger-ring\"></span></div>",
+      "css": ".ds-trigger{position:relative;width:280px;height:120px;padding:18px 20px;box-sizing:border-box;background:var(--ink);color:var(--paper);border-radius:14px;box-shadow:0 18px 40px -18px rgba(30,31,36,0.55);font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-trigger p{margin:0}.ds-trigger-type{font-size:12px;font-weight:700;color:#b9bcb2}.ds-trigger .ds-trigger-name{margin-top:6px;font-size:38px;font-weight:900;line-height:.95;letter-spacing:-.03em}.ds-trigger-port,.ds-trigger-ring{position:absolute;right:-9px;top:51px;width:18px;height:18px;border-radius:50%;box-sizing:border-box}.ds-trigger-port{background:var(--signal)}.ds-trigger-ring{border:2px solid var(--signal);animation:ds-ring 1.6s cubic-bezier(.16,1,.3,1) infinite}@keyframes ds-ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(2.6);opacity:0}}@media (prefers-reduced-motion:reduce){.ds-trigger-ring{animation:none}}"
+    },
+    {
+      "name": "Output Node",
+      "kind": "custom",
+      "refersTo": "output-node",
+      "description": "Contact Erin: signal-bordered paper; fills with signal once every wire has landed (shown on hover here).",
+      "html": "<div class=\"ds-output\"><p>Output</p><p class=\"ds-output-name\">Contact Erin</p></div>",
+      "css": ".ds-output{width:240px;height:76px;box-sizing:border-box;padding:14px 18px;background:var(--paper);color:var(--ink);border:2px solid var(--signal);border-radius:12px;font-family:'Hanken Grotesk',system-ui,sans-serif;transition:background-color .3s,color .3s}.ds-output p{margin:0;font-size:12px;font-weight:700;opacity:.8}.ds-output .ds-output-name{margin-top:2px;font-size:20px;font-weight:900;opacity:1}.ds-output:hover{background:var(--signal);color:var(--paper)}"
+    },
+    {
+      "name": "Pipeline",
+      "kind": "chip",
+      "refersTo": "pipeline-step",
+      "description": "A project's steps as bordered chips joined by 3px ink connectors; the final step is inverted.",
+      "html": "<ol class=\"ds-pipe\"><li class=\"ds-step\">Drive upload</li><li class=\"ds-wire\"></li><li class=\"ds-step\">Crop + background</li><li class=\"ds-wire\"></li><li class=\"ds-step\">LLM writes copy</li><li class=\"ds-wire\"></li><li class=\"ds-step ds-step-last\">Publish to Shopify</li></ol>",
+      "css": ".ds-pipe{display:flex;align-items:center;list-style:none;margin:0;padding:0;font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-step{padding:10px 12px;border:2px solid var(--ink);border-radius:10px;background:var(--paper);color:var(--ink);font-size:15px;font-weight:800;line-height:1.25}.ds-step-last{background:var(--ink);color:var(--paper)}.ds-wire{flex:1;min-width:12px;height:3px;background:var(--ink)}"
+    },
+    {
+      "name": "Outline Link Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "In-panel action such as Read the code on GitHub.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Read the code on GitHub</a>",
+      "css": ".ds-btn-outline{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:2px solid var(--ink);border-radius:10px;color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:800;text-decoration:none}.ds-btn-outline:hover{background:var(--ink);color:var(--paper)}.ds-btn-outline:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Finish Actions",
+      "kind": "button",
+      "refersTo": "button-finish-primary",
+      "description": "The Contact field: signal-ink ground, display question, ink primary and paper-outline secondary; focus rings turn paper.",
+      "html": "<div class=\"ds-finish\"><h2>Got a process that should run itself?</h2><div class=\"ds-finish-row\"><a class=\"ds-btn-fp\" href=\"#\">Message on LinkedIn</a><button class=\"ds-btn-fs\" type=\"button\">Copy email address</button></div></div>",
+      "css": ".ds-finish{background:var(--signal-ink);color:var(--paper);padding:48px;font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-finish h2{margin:0;max-width:12ch;font-size:clamp(52px,8vw,96px);font-weight:900;line-height:.9;letter-spacing:-.04em}.ds-finish-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}.ds-btn-fp,.ds-btn-fs{display:inline-flex;align-items:center;min-height:56px;padding:0 24px;box-sizing:border-box;border-radius:12px;font:inherit;font-size:17px;font-weight:800;text-decoration:none;cursor:pointer}.ds-btn-fp{background:var(--ink);color:var(--paper);border:0}.ds-btn-fp:hover{background:var(--paper);color:var(--signal-ink)}.ds-btn-fs{background:transparent;color:var(--paper);border:2px solid var(--paper)}.ds-btn-fs:hover{background:var(--paper);color:var(--ink)}.ds-finish :focus-visible{outline:3px solid var(--paper);outline-offset:3px}"
+    },
+    {
+      "name": "Status Meta Line",
+      "kind": "custom",
+      "refersTo": "node-card",
+      "description": "State mark plus state in the tone's ink colour plus stack, under an opened node's title.",
+      "html": "<p class=\"ds-meta\"><span class=\"ds-meta-state\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"8.5\" fill=\"none\" stroke=\"#2f74c0\" stroke-width=\"2.5\"/><path d=\"M10 1.5a8.5 8.5 0 0 1 0 17z\" fill=\"#2f74c0\"/></svg><span class=\"ds-wip\">In progress</span></span><span class=\"ds-sep\" aria-hidden=\"true\">·</span><span class=\"ds-via\">Browser Use · Playwright · Claude</span></p>",
+      "css": ".ds-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;font-family:'Hanken Grotesk',system-ui,sans-serif;font-size:16px;font-weight:700}.ds-meta-state{display:inline-flex;align-items:center;gap:10px}.ds-wip{color:var(--wip-ink)}.ds-sep,.ds-via{color:var(--muted)}"
+    },
+    {
+      "name": "Jump Rail",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Vertical scene navigation: 44px targets, ring pips filled when visited, current pip stretched to a pill.",
+      "html": "<nav class=\"ds-rail\" aria-label=\"Jump to a node\"><button type=\"button\" aria-label=\"Jump to Start\"><span class=\"on\"></span></button><button type=\"button\" aria-label=\"Jump to 01\" aria-current=\"step\"><span class=\"on cur\"></span></button><button type=\"button\" aria-label=\"Jump to 02\"><span></span></button><button type=\"button\" aria-label=\"Jump to Contact\"><span></span></button></nav>",
+      "css": ".ds-rail{display:flex;flex-direction:column}.ds-rail button{display:inline-flex;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:0;cursor:pointer}.ds-rail span{display:block;width:10px;height:10px;box-sizing:border-box;border:2px solid var(--ink);border-radius:9999px;transition:width .3s,transform .3s}.ds-rail span.on{background:var(--ink)}.ds-rail span.cur{width:26px}.ds-rail button:hover span{transform:scale(1.25)}.ds-rail button:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}"
+    },
+    {
+      "name": "Canvas Well",
+      "kind": "card",
+      "refersTo": "canvas-well",
+      "description": "The dotted patch of canvas holding an opened node's visual column (640px and up).",
+      "html": "<div class=\"ds-well\"><div class=\"ds-well-card\">Screenshot or node chain</div></div>",
+      "css": ".ds-well{background-color:var(--ground);background-image:radial-gradient(var(--line) 1.3px,transparent 1.3px);background-size:22px 22px;border-radius:20px;padding:32px}.ds-well-card{padding:24px;background:var(--paper);border:2px solid var(--ink);border-radius:12px;box-shadow:0 30px 60px -30px rgba(30,31,36,0.5);font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:800}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Running Workflow",
+    "overview": "The site is a node graph that executes. A dark trigger node carrying Erin's name feeds seven white project nodes over bezier wires into a Contact output node, all laid on a pale dotted canvas. Scrolling is execution: a camera travels the graph, an orange bead runs each wire, a node spins, and the node opens (a circular clip-path reveal) into a full-screen white panel that builds its own pipeline. The run ends when the Contact node opens into a full-bleed burnt-orange field.\n\nDensity is low and the voice is heavy: one grotesque at weight 900 with tight negative tracking for headings, calm 400 body in ink-2, and 2px ink borders on everything that sits on the canvas. Colour is almost entirely neutral. Orange means \"live now\", and three separate tones (green, blue and grey) report the honest status of each project, so a status can never be mistaken for the live signal. The world is its own: its palette, type and marks are not n8n's, even though one screenshot shows an n8n canvas.\n\nMotion is scrubbed from scroll progress with a cubic ease-out, and only transform, opacity and clip-path animate. Under reduced motion, or without JS, the same content renders as a static stacked run with the graph settled at its finished state and every panel open in normal flow.",
+    "keyCharacteristics": [
+      "Dotted canvas ground (22px dot grid) as the world; white paper for opened nodes.",
+      "2px borders on every canvas object: ink at rest, signal when active, dashed line when queued.",
+      "Hanken Grotesk only, weight-driven hierarchy (400 / 700 / 800 / 900).",
+      "Signal orange reserved for what is live; status uses its own tones, each paired with a mark shape.",
+      "Circle clip-path reveals open and close nodes; a camera, not page sections, moves the eye."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Is Current Rule",
+        "body": "Orange marks only what is executing or actionable right now. That means the bead, the port, the spinner, the active border, the lit output and the finish. A project's status is never orange. In-progress work is blue precisely so orange stays free.",
+        "section": "colors"
+      },
+      {
+        "name": "The Small Orange Goes Deep Rule",
+        "body": "Signal (#d9481f) is for fills, marks and large type only. Any orange text under 24px uses signal-ink.",
+        "section": "colors"
+      },
+      {
+        "name": "The Tone Trio Rule",
+        "body": "Every status tone ships as base (the mark), ink (the label text) and tint (the badge fill). Never set a label in the base colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Face Rule",
+        "body": "Hanken Grotesk is the only typeface. Never add a serif, a mono or a second display face. Reach for weight instead.",
+        "section": "typography"
+      },
+      {
+        "name": "The Heavy and Tight Rule",
+        "body": "Headings that name something are set at 900 with -0.02em to -0.04em tracking and line-height of 0.95 or less. Body copy never goes above 400.",
+        "section": "typography"
+      },
+      {
+        "name": "The Resting Card Rule",
+        "body": "Shadows are soft, ink-tinted, offset downward and pulled in with negative spread. Never use hard offset shadows, and never put a shadow on a full-bleed panel.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** put every object on the canvas in a 2px border: ink at rest, signal when active, dashed line (#c9cbc2) when queued.",
+      "**Do** pair every status with its mark shape and set its label in the tone's ink colour (ok-ink, wip-ink, muted).",
+      "**Do** set anything that names a node at 900 weight with negative tracking (-0.02em to -0.04em) and line-height of 0.95 or less.",
+      "**Do** place an opened node's visual column on a canvas well (ground plus 22px dots, 20px corners, 32px padding) from 640px up.",
+      "**Do** animate only transform, opacity and clip-path. Open and close nodes with a circular reveal, and ease with a cubic ease-out.",
+      "**Do** provide the static stacked run for `prefers-reduced-motion` and no-JS, and stop every looping animation (port ring, spinner, nudge, running pulse).",
+      "**Do** switch focus rings to paper on the orange finish field."
+    ],
+    "donts": [
+      "**Don't** use signal orange for a project status, a decorative accent, or small text. Small orange text is signal-ink.",
+      "**Don't** add a second typeface. Hanken Grotesk carries every role.",
+      "**Don't** put kickers or eyebrows above headings. Node-type labels (\"Trigger\", \"Output\") are native to the graph and belong only on graph nodes and the Contact frame.",
+      "**Don't** use hard offset shadows or shadows on full-bleed panels.",
+      "**Don't** borrow n8n's palette, marks or node styling. The world must not read as a clone of that product.",
+      "**Don't** let a status read by colour alone."
+    ]
+  }
+}
