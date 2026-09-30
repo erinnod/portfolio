@@ -37,22 +37,31 @@ function Solo({ project, t, headingId }: { project: Project; t: number; headingI
         )}
       </div>
       <div className="flex flex-col gap-7">
-        <ol className="flex flex-wrap items-center gap-y-3.5" aria-label={`${project.title} pipeline`}>
+        {/* One unbroken pipeline: a column on phones, a single row from sm up (steps wrap their own text, never the row). */}
+        <ol className="flex flex-col items-start sm:flex-row sm:items-center" aria-label={`${project.title} pipeline`}>
           {project.steps.map((step, j) => {
             const a = local(t, 0.34 + j * 0.07, 0.08);
             const w = local(t, 0.38 + j * 0.07, 0.06);
             const last = j === project.steps.length - 1;
             return (
-              <li key={step} className="flex items-center" style={rise(a, 14)}>
+              <li
+                key={step}
+                className={`flex min-w-0 flex-col items-start sm:flex-row sm:items-center ${last ? "sm:flex-none" : "sm:flex-1"}`}
+                style={rise(a, 14)}
+              >
                 <span
-                  className={`whitespace-nowrap rounded-[10px] border-2 border-ink px-3.5 py-3 text-[15px] font-extrabold ${
+                  className={`rounded-[10px] border-2 border-ink px-3 py-2.5 text-[15px] leading-tight font-extrabold ${
                     last ? "bg-ink text-paper" : "bg-paper"
                   }`}
                 >
                   {step}
                 </span>
                 {!last && (
-                  <span aria-hidden="true" className="block h-0.75 w-9 origin-left bg-ink" style={{ transform: `scaleX(${w})` }} />
+                  <span
+                    aria-hidden="true"
+                    className="ml-5 block h-4 w-0.75 origin-top bg-ink [transform:scaleY(var(--w))] sm:ml-0 sm:h-0.75 sm:w-auto sm:min-w-3 sm:flex-1 sm:origin-left sm:[transform:scaleX(var(--w))]"
+                    style={{ "--w": w } as React.CSSProperties}
+                  />
                 )}
               </li>
             );
