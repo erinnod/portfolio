@@ -1,169 +1,85 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand accent — warm vermillion, not blue */
-  --accent: oklch(52% 0.22 22);
-  --accent-hover: oklch(45% 0.22 22);
-  --panel-text: oklch(97% 0.005 22);
-  --panel-secondary: oklch(80% 0.05 22);
-
-  /* Backgrounds — warm white, tinted toward red hue */
-  --bg: oklch(97% 0.006 22);
-  --bg-tint: oklch(93% 0.01 22);
-  --bg-tint-2: oklch(90% 0.012 22);
-
-  /* Text — near-black, warm-tinted */
-  --ink: oklch(12% 0.008 22);
-  --ink-2: oklch(38% 0.008 22);
-  --ink-3: oklch(56% 0.006 22);
-  --ink-ghost: oklch(82% 0.005 22);
-
-  /* Borders — warm-tinted neutral */
-  --border: oklch(88% 0.006 22);
-  --border-light: oklch(92% 0.004 22);
+  --ground: #eeefea;
+  --paper: #ffffff;
+  --ink: #1e1f24;
+  --ink-2: #3d4038;
+  --muted: #5e6158;
+  --line: #c9cbc2;
+  --line-soft: #d6d8d0;
+  --signal: #d9481f;
+  --signal-ink: #b23a12;
+  --signal-tint: #fbe3d9;
+  --ok: #1f8a4c;
+  --ok-ink: #1f6e3f;
+  --ok-tint: #ddefe3;
+  --paused-tint: #e4e5df;
 }
 
 @theme inline {
-  --color-accent: var(--accent);
-  --color-bg: var(--bg);
-  --color-bg-tint: var(--bg-tint);
+  --color-ground: var(--ground);
+  --color-paper: var(--paper);
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
-  --color-ink-3: var(--ink-3);
-  --color-ink-ghost: var(--ink-ghost);
-  --color-border: var(--border);
-  --font-display: var(--font-unbounded), "Arial Black", sans-serif;
-  --font-body: var(--font-epilogue), system-ui, sans-serif;
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-signal: var(--signal);
+  --color-signal-ink: var(--signal-ink);
+  --color-signal-tint: var(--signal-tint);
+  --color-ok: var(--ok);
+  --color-ok-ink: var(--ok-ink);
+  --color-ok-tint: var(--ok-tint);
+  --color-paused-tint: var(--paused-tint);
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
 }
 
 html {
-  scroll-behavior: smooth;
+  background: var(--ground);
+  color-scheme: light;
+  scrollbar-color: var(--ink) var(--ground);
 }
 
 body {
-  background-color: var(--bg);
+  background: var(--ground);
   color: var(--ink);
-  font-family: var(--font-epilogue), system-ui, sans-serif;
+  font-family: var(--font-hanken), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 ::selection {
-  background-color: var(--accent);
-  color: var(--panel-text);
+  background: var(--signal);
+  color: var(--paper);
 }
 
-/* ── Hero name animation ── */
-@keyframes letterUp {
-  from {
-    opacity: 0;
-    transform: translateY(0.15em);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.letter-animate {
-  display: inline-block;
-  animation: letterUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.hero-meta-animate {
-  animation: fadeIn 0.6s ease both;
-  animation-delay: 0.2s;
-}
-
-.hero-subtitle-animate {
-  animation: fadeIn 0.7s ease both;
-  animation-delay: 1s;
-}
-
-.hero-tagline-animate {
-  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-  animation-delay: 1.15s;
-}
-
-/* ── Scroll-triggered reveal ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.32s; }
-
-/* ── Scroll offset for fixed nav ── */
-section[id] {
-  scroll-margin-top: 4.5rem;
-}
-
-/* ── Focus styles ── */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--signal);
   outline-offset: 3px;
-  border-radius: 1px;
+  border-radius: 4px;
 }
 
-:focus:not(:focus-visible) {
-  outline: none;
+.dotted {
+  background-color: var(--ground);
+  background-image: radial-gradient(var(--line) 1.3px, transparent 1.3px);
+  background-size: 22px 22px;
 }
 
-/* ── Visually hidden (screen readers only) ── */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+@keyframes port-ring {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+@keyframes node-spin { to { transform: rotate(360deg); } }
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
 }
 
-/* ── Reduced motion ── */
+.port-ring { animation: port-ring 1.6s cubic-bezier(0.16, 1, 0.3, 1) infinite; }
+.node-spin { animation: node-spin 0.8s linear infinite; }
+.nudge { animation: nudge 1.6s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .letter-animate {
-    animation: fadeIn 0.2s ease both;
-  }
-
-  .hero-meta-animate,
-  .hero-subtitle-animate,
-  .hero-tagline-animate {
-    animation: none;
-    opacity: 1;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .port-ring, .node-spin, .nudge { animation: none; }
 }

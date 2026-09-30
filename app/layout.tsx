@@ -1,37 +1,23 @@
 import type { Metadata } from "next";
-import { Unbounded, Epilogue } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const unbounded = Unbounded({
-  weight: ["400", "700", "900"],
+const hanken = Hanken_Grotesk({
+  weight: ["400", "500", "700", "800", "900"],
   subsets: ["latin"],
-  variable: "--font-unbounded",
-  display: "swap",
-});
-
-const epilogue = Epilogue({
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  variable: "--font-epilogue",
+  variable: "--font-hanken",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Erin Nodland — Software Developer specialising in AI",
+  title: "Erin Nodland — AI workflows that ship",
   description:
-    "I design and build AI agents and automation workflows that solve real business problems.",
+    "Software developer at Shoothill building AI agents and automation workflows that run in production.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${unbounded.variable} ${epilogue.variable}`}
-    >
+    <html lang="en" className={hanken.variable}>
       <body suppressHydrationWarning>{children}</body>
     </html>
   );
