@@ -157,7 +157,8 @@ export function finishOpen(progress: number): number {
 export function railTargets(): number[] {
   return [
     0,
-    ...SCENES.map((_, k) => OVER + k * SCN + 0.5 * SCN),
+    // t = 0.76: every pipeline step and the image have finished revealing (≤ 0.70), and the panel hasn't started closing (0.84).
+    ...SCENES.map((_, k) => OVER + k * SCN + 0.76 * SCN),
     CONTACT_START + 0.9 * (1 - CONTACT_START),
   ];
 }

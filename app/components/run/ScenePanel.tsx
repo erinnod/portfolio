@@ -13,7 +13,7 @@ export default function ScenePanel({ progress, vp }: { progress: number; vp: Vie
       className="absolute inset-0 overflow-hidden bg-paper"
       style={{ clipPath: `circle(${radius}px at 50% 50%)` }}
     >
-      <SceneContent sceneIndex={s.sceneIndex} t={s.t} />
+      <SceneContent sceneIndex={s.sceneIndex} t={s.t} inStage />
     </section>
   );
 }

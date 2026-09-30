@@ -5,7 +5,7 @@ import { PITCH } from "../../data/projects";
 import { SCENES } from "../../lib/timeline";
 
 // The whole run laid out in normal flow: the no-JS and reduced-motion version.
-export default function StaticRun({ graph }: { graph?: ReactNode }) {
+export default function StaticRun({ graph, idPrefix = "" }: { graph?: ReactNode; idPrefix?: string }) {
   return (
     <div>
       <header className="dotted px-[clamp(20px,5vw,72px)] pb-12 pt-10">
@@ -15,12 +15,12 @@ export default function StaticRun({ graph }: { graph?: ReactNode }) {
         {graph}
       </header>
       {SCENES.map((_, k) => (
-        <section key={k} aria-labelledby={`scene-${k}-title`} className="border-t-2 border-ink bg-paper">
-          <SceneContent sceneIndex={k} t={1} />
+        <section key={k} aria-labelledby={`${idPrefix}scene-${k}-title`} className="border-t-2 border-ink bg-paper">
+          <SceneContent sceneIndex={k} t={1} idPrefix={idPrefix} />
         </section>
       ))}
-      <section aria-labelledby="finish-title" className="bg-signal text-paper">
-        <FinishContent t={1} />
+      <section aria-labelledby={`${idPrefix}finish-title`} className="bg-signal-ink text-paper">
+        <FinishContent t={1} idPrefix={idPrefix} />
       </section>
     </div>
   );

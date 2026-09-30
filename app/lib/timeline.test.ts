@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   CONTACT_START, OVER, SCN, SCENES, TRIGGER,
   sceneAt, camera, fitScale, nodeCenter, nodeState, wireProgress,
-  panelOpen, finishOpen, railTargets, railIndex, beadAt, statusLine,
+  panelOpen, finishOpen, railTargets, railIndex, beadAt, statusLine, local,
 } from "./timeline.ts";
 
 const DESK = { w: 1440, h: 900 };
@@ -79,9 +79,13 @@ test("rail targets land on fully open scenes and the open finish", () => {
   assert.equal(targets[0], 0);
   for (let k = 0; k < SCENES.length; k++) {
     const p = targets[k + 1];
-    assert.equal(sceneAt(p).sceneIndex, k);
+    const s = sceneAt(p);
+    assert.equal(s.sceneIndex, k);
     assert.ok(panelOpen(p) > 0.99);
     assert.equal(railIndex(p), k + 1);
+    // A jump must land on a finished panel: the last pipeline step (5 steps max) and the image are fully revealed.
+    assert.ok(local(s.t, 0.34 + 4 * 0.07, 0.08) === 1, `scene ${k} pipeline unfinished at t=${s.t.toFixed(2)}`);
+    assert.ok(local(s.t, 0.5, 0.18) === 1, `scene ${k} image unfinished at t=${s.t.toFixed(2)}`);
   }
   const last = targets[targets.length - 1];
   assert.ok(finishOpen(last) > 0.99);

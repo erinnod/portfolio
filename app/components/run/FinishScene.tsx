@@ -10,10 +10,10 @@ export default function FinishScene({ progress, vp }: { progress: number; vp: Vi
     <section
       aria-labelledby="finish-title"
       inert={open < 0.6}
-      className="absolute inset-0 bg-signal text-paper"
+      className="absolute inset-0 bg-signal-ink text-paper"
       style={{ clipPath: `circle(${radius}px at 50% 50%)` }}
     >
-      <FinishContent t={s.t} />
+      <FinishContent t={s.t} inStage />
     </section>
   );
 }
