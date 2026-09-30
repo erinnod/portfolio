@@ -1,5 +1,6 @@
 export type ProjectStatus = "shipped" | "live" | "running" | "in-progress" | "paused";
-export type StatusTone = "ok" | "signal" | "muted";
+// "wip" is its own cool tone: signal orange stays reserved for live wires and the primary action.
+export type StatusTone = "ok" | "wip" | "muted";
 
 export interface ProjectImage { src: string; alt: string; width: number; height: number }
 
@@ -32,13 +33,12 @@ export const STATUS_TONE: Record<ProjectStatus, StatusTone> = {
   shipped: "ok",
   live: "ok",
   running: "ok",
-  "in-progress": "signal",
+  "in-progress": "wip",
   paused: "muted",
 };
 
 export const GROUP_INTRO = {
   title: "Also on the canvas",
-  status: "Three more workflows",
   summary: "One runs every day, one is being hardened, and one is honestly paused.",
 };
 
@@ -67,10 +67,10 @@ export const PROJECTS: readonly Project[] = [
       "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, Claude writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
     steps: ["Drive upload", "Crop + background", "Claude writes copy", "Publish to Shopify"],
     image: {
-      src: "/project-n8n-workflow.png",
-      alt: "The n8n workflow behind the Shopify product automation",
-      width: 2514,
-      height: 618,
+      src: "/project-n8n-ai-stage.png",
+      alt: "The n8n workflow's AI stage: Claude analyses product photos, groups them and writes titles and descriptions",
+      width: 576,
+      height: 360,
     },
   },
   {

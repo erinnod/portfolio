@@ -72,30 +72,45 @@ export function fitScale(v: Viewport): number {
   return Math.min(v.w / 1400, v.h / 940);
 }
 
+/** Width of the phone jump-rail column; the camera frames everything left of it. */
+export const RAIL_W = 64;
+const PHONE_MAX_W = 640;
+/** Centre of the seven-node column (world x 520..860, y 60..826): the phone overview's home. */
+const COLUMN: Point = { x: 690, y: 443 };
+
 export function camera(progress: number, v: Viewport): Camera {
   const s = sceneAt(progress);
+  const phone = v.w < PHONE_MAX_W;
+  const usable = phone ? v.w - RAIL_W : v.w;
   const fit = fitScale(v);
-  let focus = OVERVIEW;
-  let scale = fit;
+  // Desktop fits the whole graph. Phones frame the node column instead (trigger and Contact may crop at the
+  // edges): fitting the full 1300-wide world would leave the labels ~4px.
+  const base = phone ? Math.min((v.h - 56) / 810, (usable - 24) / 340) : fit;
+  const home = phone ? COLUMN : OVERVIEW;
+  let focus = home;
+  let scale = base;
   if (s.phase === "intro") {
     const k = easeOut(s.t);
-    // Opening zoom: 2.7x the height fit, capped so the 280-wide trigger card spans at most 86% of the width
-    // (on narrow phones the height fit alone would leave the name tiny).
-    const open = Math.min((v.h / 940) * 2.7, (v.w * 0.86) / 280);
-    focus = { x: lerp(TRIGGER.x, OVERVIEW.x, k), y: TRIGGER.y };
-    scale = lerp(open, fit, k);
+    // Opening zoom: 2.7x the height fit, capped so the 280-wide trigger card spans at most 86% of the usable width.
+    const open = Math.min((v.h / 940) * 2.7, (usable * 0.86) / 280);
+    focus = { x: lerp(TRIGGER.x, home.x, k), y: lerp(TRIGGER.y, home.y, k) };
+    scale = lerp(open, base, k);
   } else if (s.phase === "scene") {
     const ids = SCENES[s.sceneIndex];
     const target = ids.length > 1 ? nodeCenter(5) : nodeCenter(ids[0]);
     const k = easeOut(s.t / 0.2) * (1 - easeOut((s.t - 0.85) / 0.15));
-    focus = { x: lerp(OVERVIEW.x, target.x, k), y: lerp(OVERVIEW.y, target.y, k) };
-    scale = lerp(fit, fit * (ids.length > 1 ? 1.8 : 3.2), k);
+    const zoom = phone
+      ? ids.length > 1 ? base : Math.min(base * 1.3, (usable - 16) / 340)
+      : fit * (ids.length > 1 ? 1.8 : 3.2);
+    focus = { x: lerp(home.x, target.x, k), y: lerp(home.y, target.y, k) };
+    scale = lerp(base, zoom, k);
   } else if (s.phase === "finish") {
     const k = easeOut((s.t - 0.3) / 0.25);
-    focus = { x: lerp(OVERVIEW.x, CONTACT.x, k), y: CONTACT.y };
-    scale = lerp(fit, fit * 3.4, k);
+    const zoom = phone ? Math.min(base * 1.6, (usable - 16) / 240) : fit * 3.4;
+    focus = { x: lerp(home.x, CONTACT.x, k), y: lerp(home.y, CONTACT.y, k) };
+    scale = lerp(base, zoom, k);
   }
-  return { x: v.w / 2 - focus.x * scale, y: v.h / 2 - focus.y * scale, scale };
+  return { x: usable / 2 - focus.x * scale, y: v.h / 2 - focus.y * scale, scale };
 }
 
 export function activeIds(progress: number): readonly number[] {

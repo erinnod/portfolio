@@ -28,21 +28,50 @@ test("camera opens centred on the trigger at 2.7x fit", () => {
   near(c.y + TRIGGER.y * c.scale, DESK.h / 2);
 });
 
-test("camera opening makes the trigger fill most of a phone's width", () => {
+test("camera opening makes the trigger fill most of a phone's usable width (left of the rail)", () => {
   const c = camera(0, PHONE);
+  const usable = PHONE.w - 64;
   const triggerOnScreen = 280 * c.scale; // trigger card is 280 world units wide
-  assert.ok(triggerOnScreen > PHONE.w * 0.8, `trigger only ${triggerOnScreen.toFixed(0)}px wide`);
-  assert.ok(triggerOnScreen <= PHONE.w * 0.9, `trigger overflows at ${triggerOnScreen.toFixed(0)}px`);
-  near(c.x + TRIGGER.x * c.scale, PHONE.w / 2);
+  assert.ok(triggerOnScreen > usable * 0.8, `trigger only ${triggerOnScreen.toFixed(0)}px wide`);
+  assert.ok(triggerOnScreen <= usable * 0.9, `trigger overflows at ${triggerOnScreen.toFixed(0)}px`);
+  near(c.x + TRIGGER.x * c.scale, usable / 2);
+});
+
+const PHONE_SHORT = { w: 390, h: 664 }; // iPhone Safari with toolbars
+const RAIL = 64; // phone jump-rail column the camera must keep clear of
+
+test("phone overview frames the node column readably and clear of the rail", () => {
+  for (const v of [PHONE, PHONE_SHORT]) {
+    const c = camera(0.1, v);
+    assert.ok(c.scale >= 0.6, `node labels too small: scale ${c.scale.toFixed(2)} at ${v.w}x${v.h}`);
+    const left = c.x + 520 * c.scale, right = c.x + 860 * c.scale; // node column spans world x 520..860
+    const top = c.y + nodeCenter(0).y * c.scale - 38 * c.scale, bottom = c.y + nodeCenter(6).y * c.scale + 38 * c.scale;
+    assert.ok(left >= 8 && right <= v.w - RAIL, `column ${left.toFixed(0)}..${right.toFixed(0)} hits the edge or rail`);
+    assert.ok(top >= 40 && bottom <= v.h - 8, `column ${top.toFixed(0)}..${bottom.toFixed(0)} leaves the stage`);
+  }
+});
+
+test("phone opening and zoomed node stay clear of the rail", () => {
+  const open = camera(0, PHONE);
+  const portX = open.x + (TRIGGER.x + 140 + 9) * open.scale; // trigger card right edge + output port
+  assert.ok(portX <= PHONE.w - RAIL, `output port at ${portX.toFixed(0)} sits under the rail`);
+  const zoomed = camera(OVER + SCN * 1 + SCN * 0.5, PHONE);
+  const nodeRight = zoomed.x + 860 * zoomed.scale;
+  assert.ok(nodeRight <= PHONE.w - RAIL, `zoomed node right edge ${nodeRight.toFixed(0)} under the rail`);
+});
+
+test("desktop framing is unchanged by the phone rail", () => {
+  const c = camera(0.1, DESK);
+  near(c.scale, fitScale(DESK));
+  near(c.x + 650 * c.scale, DESK.w / 2);
 });
 
 test("camera keeps the focused node centred on a phone viewport", () => {
   const mid = OVER + SCN * 1 + SCN * 0.5; // scene 1 (node 02), fully zoomed
   const c = camera(mid, PHONE);
   const n = nodeCenter(1);
-  near(c.x + n.x * c.scale, PHONE.w / 2);
+  near(c.x + n.x * c.scale, (PHONE.w - 64) / 2);
   near(c.y + n.y * c.scale, PHONE.h / 2);
-  near(c.scale, fitScale(PHONE) * 3.2);
 });
 
 test("nodeState walks queued → executing → done", () => {

@@ -69,6 +69,8 @@ export default function RunStage() {
   }, []);
 
   const cam = camera(progress, vp);
+  // Dot grid follows the camera's zoom, but never packs tighter than its native 22px (it moirés when zoomed out).
+  const dot = Math.max(22, 22 * cam.scale);
   return (
     <>
       <div className="run-live">
@@ -77,7 +79,7 @@ export default function RunStage() {
           <div
             ref={stageRef}
             className="dotted sticky top-0 h-dvh overflow-hidden"
-            style={{ backgroundPosition: `${cam.x}px ${cam.y}px`, backgroundSize: `${22 * cam.scale}px ${22 * cam.scale}px` }}
+            style={{ backgroundPosition: `${cam.x}px ${cam.y}px`, backgroundSize: `${dot}px ${dot}px` }}
           >
             <Graph progress={progress} cam={cam} />
             <Intro progress={progress} />

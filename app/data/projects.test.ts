@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { PROJECTS } from "./projects.ts";
+import { PROJECTS, STATUS_TONE } from "./projects.ts";
 import { SCENES } from "../lib/timeline.ts";
 
 test("seven projects numbered 01–07", () => {
@@ -28,6 +28,10 @@ test("the two public repos are linked", () => {
     "https://github.com/erinnod/rag-assistant",
     "https://github.com/erinnod/multi-agent-outreach",
   ]);
+});
+
+test("no project status spends the signal orange (reserved for live wires and the primary action)", () => {
+  for (const [status, tone] of Object.entries(STATUS_TONE)) assert.notEqual(tone, "signal", status);
 });
 
 test("group-scene projects carry a short summary", () => {

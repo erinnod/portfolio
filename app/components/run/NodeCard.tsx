@@ -1,8 +1,8 @@
 import { STATUS_LABEL, STATUS_TONE, type Project } from "../../data/projects";
 import { nodeTop, type NodeRunState } from "../../lib/timeline";
 
-const TINT = { ok: "bg-ok-tint", signal: "bg-signal-tint", muted: "bg-paused-tint" } as const;
-const TEXT = { ok: "text-ok-ink", signal: "text-signal-ink", muted: "text-muted" } as const;
+const TINT = { ok: "bg-ok-tint", wip: "bg-wip-tint", muted: "bg-paused-tint" } as const;
+const TEXT = { ok: "text-ok-ink", wip: "text-wip-ink", muted: "text-muted" } as const;
 
 function Check() {
   return (
