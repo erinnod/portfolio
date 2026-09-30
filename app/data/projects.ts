@@ -61,14 +61,14 @@ export const PROJECTS: readonly Project[] = [
   {
     no: "02",
     title: "Shopify product automation",
-    via: "n8n · Claude · Shopify Admin API",
+    via: "n8n · LLM · Shopify Admin API",
     status: "live",
     summary:
-      "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, Claude writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
-    steps: ["Drive upload", "Crop + background", "Claude writes copy", "Publish to Shopify"],
+      "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, an LLM writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
+    steps: ["Drive upload", "Crop + background", "LLM writes copy", "Publish to Shopify"],
     image: {
       src: "/project-n8n-ai-stage.png",
-      alt: "The n8n workflow's AI stage: Claude analyses product photos, groups them and writes titles and descriptions",
+      alt: "The n8n workflow's AI stage: an LLM analyses product photos, groups them and writes titles and descriptions",
       width: 576,
       height: 360,
     },

@@ -13,7 +13,7 @@ function OutputFrame({ a }: { a: number }) {
           <path key={y} d={`M0 ${y} C 55 ${y}, 45 50, 100 50`} fill="none" stroke="var(--paper)" strokeOpacity="0.5" strokeWidth="2" vectorEffect="non-scaling-stroke" />
         ))}
       </svg>
-      <div className="absolute inset-x-3 top-16 bottom-3 rounded-3xl border-2 border-paper/50 sm:top-20 sm:bottom-10 sm:left-[18%] sm:right-10">
+      <div className="absolute left-3 right-20 top-16 bottom-3 rounded-3xl border-2 border-paper/50 sm:top-20 sm:bottom-10 sm:left-[18%] sm:right-28">
         <span className="absolute -top-2.5 left-6 bg-signal-ink px-2 text-xs font-bold leading-5 text-paper">Output · Contact Erin</span>
       </div>
       <span className="absolute left-[18%] top-1/2 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper sm:block" />
@@ -24,7 +24,7 @@ function OutputFrame({ a }: { a: number }) {
 /** Sits on the --signal-ink field. `inStage`: the live finish (output frame, rail-safe padding); `idPrefix` keeps the heading id unique. */
 export default function FinishContent({ t, inStage = false, idPrefix = "" }: { t: number; inStage?: boolean; idPrefix?: string }) {
   const a = local(t, 0.68, 0.15);
-  const pad = inStage ? "pl-8 pr-16 sm:pl-[calc(18%+56px)] sm:pr-24" : "px-[clamp(20px,7vw,120px)]";
+  const pad = inStage ? "pl-8 pr-24 sm:pl-[calc(18%+56px)] sm:pr-36" : "px-[clamp(20px,7vw,120px)]";
   return (
     <div className="on-dark relative h-full">
       {inStage && <OutputFrame a={local(t, 0.6, 0.15)} />}

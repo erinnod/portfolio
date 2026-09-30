@@ -39,10 +39,14 @@ function StatusMark({ status }: { status: ProjectStatus }) {
 /** Node meta line under the title: state mark, state, and what the node runs on. */
 function NodeMeta({ project }: { project: Project }) {
   return (
-    <p className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[15px] font-bold sm:mt-4 sm:text-base">
-      <StatusMark status={project.status} />
-      <span className={TONE_TEXT[STATUS_TONE[project.status]]}>{STATUS_LABEL[project.status]}</span>
-      <span className="text-muted">· {project.via}</span>
+    // Phones: state on one line, the stack on the next (no separator). From sm up: one line, even gaps around "·".
+    <p className="mt-3 flex flex-col gap-1 text-[15px] font-bold sm:mt-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2 sm:text-base">
+      <span className="inline-flex items-center gap-2.5 whitespace-nowrap">
+        <StatusMark status={project.status} />
+        <span className={TONE_TEXT[STATUS_TONE[project.status]]}>{STATUS_LABEL[project.status]}</span>
+      </span>
+      <span aria-hidden="true" className="hidden text-muted sm:inline">·</span>
+      <span className="text-muted">{project.via}</span>
     </p>
   );
 }
