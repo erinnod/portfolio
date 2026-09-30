@@ -79,8 +79,11 @@ export function camera(progress: number, v: Viewport): Camera {
   let scale = fit;
   if (s.phase === "intro") {
     const k = easeOut(s.t);
+    // Opening zoom: 2.7x the height fit, capped so the 280-wide trigger card spans at most 86% of the width
+    // (on narrow phones the height fit alone would leave the name tiny).
+    const open = Math.min((v.h / 940) * 2.7, (v.w * 0.86) / 280);
     focus = { x: lerp(TRIGGER.x, OVERVIEW.x, k), y: TRIGGER.y };
-    scale = lerp(fit * 2.7, fit, k);
+    scale = lerp(open, fit, k);
   } else if (s.phase === "scene") {
     const ids = SCENES[s.sceneIndex];
     const target = ids.length > 1 ? nodeCenter(5) : nodeCenter(ids[0]);

@@ -28,6 +28,14 @@ test("camera opens centred on the trigger at 2.7x fit", () => {
   near(c.y + TRIGGER.y * c.scale, DESK.h / 2);
 });
 
+test("camera opening makes the trigger fill most of a phone's width", () => {
+  const c = camera(0, PHONE);
+  const triggerOnScreen = 280 * c.scale; // trigger card is 280 world units wide
+  assert.ok(triggerOnScreen > PHONE.w * 0.8, `trigger only ${triggerOnScreen.toFixed(0)}px wide`);
+  assert.ok(triggerOnScreen <= PHONE.w * 0.9, `trigger overflows at ${triggerOnScreen.toFixed(0)}px`);
+  near(c.x + TRIGGER.x * c.scale, PHONE.w / 2);
+});
+
 test("camera keeps the focused node centred on a phone viewport", () => {
   const mid = OVER + SCN * 1 + SCN * 0.5; // scene 1 (node 02), fully zoomed
   const c = camera(mid, PHONE);
