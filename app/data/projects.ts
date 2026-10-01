@@ -4,6 +4,9 @@ export type StatusTone = "ok" | "wip" | "muted";
 
 export interface ProjectImage { src: string; alt: string; width: number; height: number }
 
+/** A figure drawn in code instead of a raster (crisp at any size). */
+export type ProjectFigure = "n8n-section-03";
+
 export interface Project {
   no: string;
   title: string;
@@ -14,6 +17,7 @@ export interface Project {
   steps: readonly string[];
   link?: { label: string; href: string };
   image?: ProjectImage;
+  figure?: ProjectFigure;
 }
 
 export const EMAIL = "noderin1@gmail.com";
@@ -66,12 +70,7 @@ export const PROJECTS: readonly Project[] = [
     summary:
       "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, an LLM writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
     steps: ["Drive upload", "Crop + background", "LLM writes copy", "Publish to Shopify"],
-    image: {
-      src: "/project-n8n-section-03.png",
-      alt: "The n8n workflow's AI stage: an LLM analyses product photos, groups them and writes titles and descriptions",
-      width: 568,
-      height: 308,
-    },
+    figure: "n8n-section-03",
   },
   {
     no: "03",
@@ -99,8 +98,8 @@ export const PROJECTS: readonly Project[] = [
     via: "Hono · Cloudflare Workers · Postgres (Neon) · Drizzle",
     status: "shipped",
     summary:
-      "A strangler-fig toolkit for moving a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers one endpoint at a time, with responses matched byte for byte so the client can't tell which backend answered. Built migrating a production CRM: ~200 endpoints and 130+ tables, while the app stayed fully usable.",
-    steps: ["Strangler Worker", "JWTs valid both ways", "Guarded data CLIs", "Port ~200 endpoints", "Rehearsed cutover"],
+      "A strangler-fig toolkit for moving a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers one endpoint at a time, with responses matched byte for byte so the client can't tell which backend answered. It handles any number of endpoints; on a production CRM it moved 200+ endpoints and 130+ tables while the app stayed fully usable.",
+    steps: ["Strangler Worker", "JWTs valid both ways", "Guarded data CLIs", "Port every endpoint", "Rehearsed cutover"],
   },
   {
     no: "06",

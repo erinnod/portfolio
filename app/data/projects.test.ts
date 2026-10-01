@@ -40,7 +40,10 @@ test("migration project reflects Erin's write-up: strangler-fig ASP.NET → Hono
   assert.match(m.via, /Hono/);
   assert.match(m.via, /Cloudflare Workers/);
   assert.match(m.summary, /strangler-fig/i);
-  assert.match(m.summary, /~200 endpoints/);
+  // Not capped at a number: the CRM had 200+ endpoints, and the method scales to any count (Erin, 2026-10-01).
+  assert.match(m.summary, /200\+ endpoints/);
+  assert.match(m.summary, /any number of endpoints/i);
+  for (const text of [m.summary, ...m.steps]) assert.doesNotMatch(text, /~200/);
   assert.match(m.summary, /130\+ tables/);
   for (const text of [m.summary, m.via, ...m.steps, GROUP_INTRO.summary]) {
     assert.doesNotMatch(text, /blocked|harden|in progress|Browser Use|Playwright|crawl/i);

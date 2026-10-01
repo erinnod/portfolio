@@ -3,6 +3,8 @@ import {
   GROUP_INTRO, PROJECTS, STATUS_LABEL, STATUS_TONE, type Project, type ProjectStatus, type StatusTone,
 } from "../../data/projects";
 import { SCENES, local } from "../../lib/timeline";
+import { N8N_SECTION_03 } from "../../data/n8nSection03";
+import N8nSectionFigure from "./N8nSectionFigure";
 
 const TONE_TEXT: Record<StatusTone, string> = { ok: "text-ok-ink", wip: "text-wip-ink", muted: "text-muted" };
 
@@ -132,7 +134,7 @@ function Solo({ project, t, headingId }: { project: Project; t: number; headingI
         )}
       </div>
       <div className="canvas-well flex flex-col gap-5 sm:gap-7">
-        <Pipeline project={project} t={t} chain={!project.image} />
+        <Pipeline project={project} t={t} chain={!project.image && !project.figure} />
         {project.image && (
           <Image
             src={project.image.src}
@@ -153,6 +155,18 @@ function Solo({ project, t, headingId }: { project: Project; t: number; headingI
               transform: `translateY(${(1 - img) * 60}px) rotate(${(1 - img) * 2.5}deg)`,
             } as React.CSSProperties}
           />
+        )}
+        {project.figure === "n8n-section-03" && (
+          <div
+            className="hidden w-[min(100%,calc(42svh*var(--ar)))] self-start shadow-[0_30px_60px_-30px_rgba(30,31,36,0.5)] sm:block"
+            style={{
+              "--ar": N8N_SECTION_03.width / N8N_SECTION_03.height,
+              opacity: img,
+              transform: `translateY(${(1 - img) * 60}px) rotate(${(1 - img) * 2.5}deg)`,
+            } as React.CSSProperties}
+          >
+            <N8nSectionFigure drawn={local(t, 0.55, 0.2)} />
+          </div>
         )}
       </div>
     </>
