@@ -10,6 +10,12 @@ export default function SrSummary() {
           <li key={p.no}>
             <h3>{p.title}</h3>
             <p>{STATUS_LABEL[p.status]}. {p.summary}</p>
+            {p.notes && (
+              <>
+                <h4>{p.notes.title}</h4>
+                <ul>{p.notes.items.map((n) => <li key={n}>{n}</li>)}</ul>
+              </>
+            )}
             {/* Out of the Tab order: sighted keyboard users would focus something invisible. Screen readers still reach it. */}
             {p.link && <a href={p.link.href} tabIndex={-1}>{p.link.label}</a>}
           </li>

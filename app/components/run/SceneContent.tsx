@@ -61,9 +61,11 @@ const rise = (a: number, px: number) => ({ opacity: a, transform: `translateY(${
  * becomes the column's main visual: a chain of full node cards joined by drawn wires.
  */
 function Pipeline({ project, t, chain }: { project: Project; t: number; chain: boolean }) {
+  // Phones are short on room: where the notes exist, they replace the pipeline, which repeats the summary.
+  const display = project.notes ? "hidden sm:flex" : "flex";
   return (
     <ol
-      className={`flex flex-col items-start ${chain ? "sm:items-stretch" : "sm:flex-row sm:items-center"}`}
+      className={`${display} flex-col items-start ${chain ? "sm:items-stretch" : "sm:flex-row sm:items-center"}`}
       aria-label={`${project.title} pipeline`}
     >
       {project.steps.map((step, j) => {
@@ -135,6 +137,19 @@ function Solo({ project, t, headingId, inStage }: { project: Project; t: number;
       </div>
       <div className="canvas-well flex flex-col gap-5 sm:gap-7">
         <Pipeline project={project} t={t} chain={!project.image && !project.figure} />
+        {project.notes && (
+          <div className="rounded-xl border-2 border-ink bg-paper p-3.5 sm:p-5" style={rise(img, 24)}>
+            <h3 className="text-base font-black tracking-[-0.02em] sm:text-[19px]">{project.notes.title}</h3>
+            <ul className="mt-2 flex flex-col gap-1.5 text-[13px] leading-snug text-ink-2 sm:mt-3 sm:gap-2.5 sm:text-[15px]">
+              {project.notes.items.map((item) => (
+                <li key={item} className="flex gap-2.5">
+                  <span aria-hidden="true" className="mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full bg-ink" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         {project.image && (
           <Image
             src={project.image.src}

@@ -84,3 +84,14 @@ test("contact routes include GitHub", async () => {
   const mod = await import("./projects.ts");
   assert.equal(mod.GITHUB, "https://github.com/erinnod");
 });
+
+test("Life-OS shows how it stays reliable, without mapping the setup for an attacker", () => {
+  const l = PROJECTS.find((p) => p.title === "Life-OS")!;
+  assert.ok(l.notes && l.notes.items.length >= 2 && l.notes.items.length <= 3, "two or three reliability notes");
+  assert.ok(l.notes.items.some((n) => /silent/i.test(n)), "the silent-delivery outage");
+  assert.ok(l.notes.items.some((n) => /three fallback/i.test(n)), "the rotator's three-fallback guard");
+  for (const text of [l.notes.title, ...l.notes.items]) {
+    // No addresses, ports, auth/dashboard internals, endpoint or model names, or scraping workarounds.
+    assert.doesNotMatch(text, /\d+\.\d+\.\d+\.\d+|\bport\b|auth|dashboard|endpoint|password|token gate|DeepSeek|Reddit|Trakt|scrap|Cloudflare/i);
+  }
+});

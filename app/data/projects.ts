@@ -17,6 +17,8 @@ export interface Project {
   link?: { label: string; href: string };
   image?: ProjectImage;
   figure?: ProjectFigure;
+  /** A short titled list under the pipeline: how the thing is kept honest in production. */
+  notes?: { title: string; items: readonly string[] };
   /** Shorter label/stack for the graph's node card, where each must fit one line; the panel shows the full ones. */
   node?: { title?: string; via?: string };
 }
@@ -113,7 +115,15 @@ export const PROJECTS: readonly Project[] = [
     node: { via: "Hermes Agent · Python · Pi 5" },
     status: "running",
     summary:
-      "A personal AI operating system that runs 24/7 on a Raspberry Pi 5. It reads a 132-note Obsidian vault, runs 18 scheduled jobs and hands work to five specialist agents, then sends one Telegram message: a 06:00 brief with exactly two tasks, each tied to a quarterly goal. Jobs that need no judgement run as plain scripts at zero token cost, and watchdogs treat a silent delivery failure as an outage. In daily use since May 2026.",
+      "A personal AI operating system that runs 24/7 on a Raspberry Pi 5. It reads a 132-note Obsidian vault, runs 18 scheduled jobs and hands work to five specialist agents, then sends one Telegram message: a 06:00 brief with exactly two tasks, each tied to a quarterly goal. In daily use since May 2026.",
     steps: ["Vault + live data", "18 scheduled jobs", "Five specialist agents", "One 06:00 brief"],
+    notes: {
+      title: "Built to stay up",
+      items: [
+        "Caught a silent outage: jobs kept firing but nothing arrived. Delivery is now tracked, so a green check can't hide a broken system.",
+        "The daily model rotator won't save a new list unless at least three fallback models survive.",
+        "Jobs that need no judgement run as plain scripts, so half the schedule costs zero tokens.",
+      ],
+    },
   },
 ];
