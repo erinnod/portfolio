@@ -56,3 +56,9 @@ test("Shopify shows the full redrawn workflow, and its summary counts the real n
   assert.equal(shopify.image, undefined);
   assert.match(shopify.summary, /25-node n8n workflow/);
 });
+
+test("the original n8n screenshot is never shipped (it shows the server IP and the client's store)", async () => {
+  const { readdirSync } = await import("node:fs");
+  const shipped = readdirSync(new URL("../../public/", import.meta.url));
+  assert.ok(!shipped.some((f) => /n8n/i.test(f)), `public/ ships: ${shipped.join(", ")}`);
+});

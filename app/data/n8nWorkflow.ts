@@ -1,5 +1,6 @@
-// The live Shopify n8n workflow, all four sections, redrawn as vector from Erin's screenshot
-// (public/project-n8n-workflow.png). Labels, layout and wiring are copied from it, not invented. Two sub-labels
+// The live Shopify n8n workflow, all four sections, redrawn as vector from Erin's screenshot. The screenshot is
+// deliberately not shipped (it shows the server IP and the client's store). Labels, layout and wiring are copied
+// from it, not invented. Two sub-labels
 // are deliberately left out: the Remove Background server's IP and the HTTP Request's store domain (it names the
 // client). Model nodes keep their own labels and no provider mark, matching the site's provider-neutral wording.
 
