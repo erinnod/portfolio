@@ -10,7 +10,7 @@ import JumpRail from "./JumpRail";
 import SrSummary from "./SrSummary";
 import StaticRun from "./StaticRun";
 import StaticGraph from "./StaticGraph";
-import { camera, clamp01, finishOpen, panelOpen, sceneAt, type Viewport } from "../../lib/timeline";
+import { camera, clamp01, contactTarget, finishOpen, nodeTarget, panelOpen, sceneAt, type Viewport } from "../../lib/timeline";
 
 // Both versions are server-rendered; CSS picks one (see .run-live / .run-static in globals.css), so there is no
 // swap after hydration. Without JS, the <noscript> style shows the static run.
@@ -134,7 +134,13 @@ export default function RunStage() {
               className="dot-layer pointer-events-none absolute left-0 top-0 h-[calc(100%+44px)] w-[calc(100%+44px)] origin-top-left"
               style={{ transform: `translate3d(${ox}px, ${oy}px, 0) scale(${k})` }}
             />
-            <Graph progress={progress} cam={cam} />
+            <Graph
+              progress={progress}
+              cam={cam}
+              covered={panelLive}
+              onSelectNode={(i) => jumpTo(nodeTarget(i))}
+              onSelectContact={() => jumpTo(contactTarget())}
+            />
             <Intro progress={progress} />
             <StatusLine progress={progress} />
             <JumpRail progress={progress} onJump={jumpTo} />

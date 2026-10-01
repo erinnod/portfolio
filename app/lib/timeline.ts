@@ -181,6 +181,18 @@ export function railTargets(): number[] {
   ];
 }
 
+/** Scroll progress that opens project node `i`'s scene, fully built (same landing point as its rail button). */
+export function nodeTarget(i: number): number {
+  const k = SCENES.findIndex((ids) => ids.includes(i));
+  return railTargets()[k + 1];
+}
+
+/** Scroll progress of the open finish (the Contact node). */
+export function contactTarget(): number {
+  const t = railTargets();
+  return t[t.length - 1];
+}
+
 export function railIndex(progress: number): number {
   const s = sceneAt(progress);
   if (s.phase === "finish") return SCENES.length + 1;

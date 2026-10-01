@@ -18,6 +18,8 @@ export interface Project {
   link?: { label: string; href: string };
   image?: ProjectImage;
   figure?: ProjectFigure;
+  /** Shorter label/stack for the graph's node card, where each must fit one line; the panel shows the full ones. */
+  node?: { title?: string; via?: string };
 }
 
 export const EMAIL = "noderin1@gmail.com";
@@ -66,6 +68,7 @@ export const PROJECTS: readonly Project[] = [
     no: "02",
     title: "Shopify product automation",
     via: "n8n · LLM · Shopify Admin API",
+    node: { title: "Shopify automation" },
     status: "live",
     summary:
       "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, an LLM writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
@@ -96,6 +99,7 @@ export const PROJECTS: readonly Project[] = [
     no: "05",
     title: "ASP.NET → Hono migration",
     via: "Hono · Cloudflare Workers · Postgres (Neon) · Drizzle",
+    node: { title: "ASP.NET → Hono", via: "Hono · Workers · Postgres · Drizzle" },
     status: "shipped",
     summary:
       "A strangler-fig toolkit for moving a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers one endpoint at a time, with responses matched byte for byte so the client can't tell which backend answered. It handles any number of endpoints; on a production CRM it moved 200+ endpoints and 130+ tables while the app stayed fully usable.",

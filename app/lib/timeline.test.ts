@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import {
   CONTACT_START, OVER, SCN, SCENES, TRIGGER,
   sceneAt, camera, fitScale, nodeCenter, nodeState, wireProgress,
-  panelOpen, finishOpen, railTargets, railIndex, beadAt, statusLine, local,
+  panelOpen, finishOpen, railTargets, railIndex, beadAt, statusLine, local, nodeTarget, contactTarget,
 } from "./timeline.ts";
 
 const DESK = { w: 1440, h: 900 };
@@ -119,6 +119,17 @@ test("rail targets land on fully open scenes and the open finish", () => {
   const last = targets[targets.length - 1];
   assert.ok(finishOpen(last) > 0.99);
   assert.equal(railIndex(last), SCENES.length + 1);
+});
+
+test("clicking a project node targets that project's fully built panel; Contact targets the open finish", () => {
+  for (let i = 0; i < 7; i++) {
+    const p = nodeTarget(i);
+    const s = sceneAt(p);
+    assert.equal(s.phase, "scene", `node ${i}`);
+    assert.ok(SCENES[s.sceneIndex].includes(i), `node ${i} lands on scene ${s.sceneIndex}`);
+    assert.ok(panelOpen(p) > 0.99, `node ${i} panel not open`);
+  }
+  assert.ok(finishOpen(contactTarget()) > 0.99);
 });
 
 test("the bead only travels while a wire is drawing", () => {
