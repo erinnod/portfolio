@@ -1,5 +1,5 @@
 import CopyEmailLink from "../CopyEmailLink";
-import { EMAIL, LINKEDIN } from "../../data/projects";
+import { GITHUB, LINKEDIN } from "../../data/projects";
 import { local } from "../../lib/timeline";
 
 const WIRE_YS = [8, 22, 36, 50, 64, 78, 92];
@@ -14,7 +14,7 @@ function OutputFrame({ a }: { a: number }) {
         ))}
       </svg>
       <div className="absolute left-3 right-20 top-16 bottom-3 rounded-3xl border-2 border-paper/50 sm:top-20 sm:bottom-10 sm:left-[18%] sm:right-28">
-        <span className="absolute -top-2.5 left-6 bg-signal-ink px-2 text-xs font-bold leading-5 text-paper">Output · Contact Erin</span>
+        <span className="absolute -top-2.5 left-6 bg-signal-ink px-2 text-xs font-bold leading-5 text-paper">Output · Get in touch</span>
       </div>
       <span className="absolute left-[18%] top-1/2 hidden h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-paper sm:block" />
     </div>
@@ -36,14 +36,17 @@ export default function FinishContent({ t, inStage = false, idPrefix = "" }: { t
           <div className="mt-10 flex flex-wrap gap-3">
             <a
               href={LINKEDIN}
-              className="inline-flex min-h-14 items-center rounded-xl bg-ink px-6 text-[17px] font-extrabold text-paper hover:bg-paper hover:text-signal-ink"
+              className="inline-flex min-h-14 items-center rounded-xl bg-ink px-6 text-[15px] font-extrabold text-paper hover:bg-paper hover:text-signal-ink sm:text-[17px]"
             >
               Message on LinkedIn
             </a>
-            <CopyEmailLink
-              email={EMAIL}
-              className="min-h-14 cursor-pointer rounded-xl border-2 border-paper px-6 text-[17px] font-extrabold text-paper hover:bg-paper hover:text-ink"
-            />
+            <a
+              href={GITHUB}
+              className="inline-flex min-h-14 items-center rounded-xl bg-ink px-6 text-[15px] font-extrabold text-paper hover:bg-paper hover:text-signal-ink sm:text-[17px]"
+            >
+              GitHub
+            </a>
+            <CopyEmailLink className="min-h-14 max-w-full cursor-pointer rounded-xl border-2 border-paper px-5 text-left text-[15px] font-extrabold text-paper hover:bg-paper hover:text-ink sm:px-6 sm:text-[17px]" />
           </div>
         </div>
       </div>

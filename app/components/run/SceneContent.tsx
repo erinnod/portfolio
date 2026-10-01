@@ -3,8 +3,8 @@ import {
   GROUP_INTRO, PROJECTS, STATUS_LABEL, STATUS_TONE, type Project, type ProjectStatus, type StatusTone,
 } from "../../data/projects";
 import { SCENES, local } from "../../lib/timeline";
-import { N8N_SECTION_03 } from "../../data/n8nSection03";
-import N8nSectionFigure from "./N8nSectionFigure";
+import { N8N_WORKFLOW } from "../../data/n8nWorkflow";
+import N8nWorkflowFigure from "./N8nWorkflowFigure";
 
 const TONE_TEXT: Record<StatusTone, string> = { ok: "text-ok-ink", wip: "text-wip-ink", muted: "text-muted" };
 
@@ -112,7 +112,7 @@ function Pipeline({ project, t, chain }: { project: Project; t: number; chain: b
   );
 }
 
-function Solo({ project, t, headingId }: { project: Project; t: number; headingId: string }) {
+function Solo({ project, t, headingId, inStage }: { project: Project; t: number; headingId: string; inStage: boolean }) {
   const text = local(t, 0.28, 0.14);
   const img = local(t, 0.5, 0.18);
   return (
@@ -156,16 +156,16 @@ function Solo({ project, t, headingId }: { project: Project; t: number; headingI
             } as React.CSSProperties}
           />
         )}
-        {project.figure === "n8n-section-03" && (
+        {project.figure === "n8n-workflow" && (
           <div
             className="hidden w-[min(100%,calc(42svh*var(--ar)))] self-start shadow-[0_30px_60px_-30px_rgba(30,31,36,0.5)] sm:block"
             style={{
-              "--ar": N8N_SECTION_03.width / N8N_SECTION_03.height,
+              "--ar": N8N_WORKFLOW.width / N8N_WORKFLOW.height,
               opacity: img,
               transform: `translateY(${(1 - img) * 60}px) rotate(${(1 - img) * 2.5}deg)`,
             } as React.CSSProperties}
           >
-            <N8nSectionFigure drawn={local(t, 0.55, 0.2)} />
+            <N8nWorkflowFigure tabs={inStage} drawn={local(t, 0.55, 0.2)} />
           </div>
         )}
       </div>
@@ -227,7 +227,7 @@ export default function SceneContent({
   return (
     <div className={`grid h-full grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] content-center-safe gap-[clamp(16px,4vw,64px)] ${pad}`}>
       {ids.length === 1 ? (
-        <Solo project={PROJECTS[ids[0]]} t={t} headingId={headingId} />
+        <Solo project={PROJECTS[ids[0]]} t={t} headingId={headingId} inStage={inStage} />
       ) : (
         <Group ids={ids} t={t} headingId={headingId} />
       )}

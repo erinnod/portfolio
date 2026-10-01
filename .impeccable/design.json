@@ -400,8 +400,8 @@
       "name": "Output Node",
       "kind": "custom",
       "refersTo": "output-node",
-      "description": "Contact Erin: signal-bordered paper; fills with signal once every wire has landed (shown on hover here).",
-      "html": "<div class=\"ds-output\"><p>Output</p><p class=\"ds-output-name\">Contact Erin</p></div>",
+      "description": "Get in touch: signal-bordered paper; fills with signal once every wire has landed (shown on hover here).",
+      "html": "<div class=\"ds-output\"><p>Output</p><p class=\"ds-output-name\">Get in touch</p></div>",
       "css": ".ds-output{width:240px;height:76px;box-sizing:border-box;padding:14px 18px;background:var(--paper);color:var(--ink);border:2px solid var(--signal);border-radius:12px;font-family:'Hanken Grotesk',system-ui,sans-serif;transition:background-color .3s,color .3s}.ds-output p{margin:0;font-size:12px;font-weight:700;opacity:.8}.ds-output .ds-output-name{margin-top:2px;font-size:20px;font-weight:900;opacity:1}.ds-output:hover{background:var(--signal);color:var(--paper)}"
     },
     {

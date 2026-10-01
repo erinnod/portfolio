@@ -5,7 +5,7 @@ export type StatusTone = "ok" | "wip" | "muted";
 export interface ProjectImage { src: string; alt: string; width: number; height: number }
 
 /** A figure drawn in code instead of a raster (crisp at any size). */
-export type ProjectFigure = "n8n-section-03";
+export type ProjectFigure = "n8n-workflow";
 
 export interface Project {
   no: string;
@@ -22,7 +22,14 @@ export interface Project {
   node?: { title?: string; via?: string };
 }
 
-export const EMAIL = "noderin1@gmail.com";
+const EMAIL_USER = "noderin1";
+const EMAIL_DOMAIN = ["gmail", "com"] as const;
+/** Shown on the page so scrapers can't harvest it; the real address only exists once someone clicks to copy. */
+export const EMAIL_DISPLAY = `${EMAIL_USER} [at] ${EMAIL_DOMAIN[0]} (dot) ${EMAIL_DOMAIN[1]}`;
+export function emailAddress(): string {
+  return `${EMAIL_USER}@${EMAIL_DOMAIN.join(".")}`;
+}
+export const GITHUB = "https://github.com/erinnod";
 export const LINKEDIN = "https://www.linkedin.com/in/erin-nodland/";
 export const PITCH =
   "Software developer at Shoothill. I build AI workflows that are still running after the demo ends.";
@@ -71,9 +78,9 @@ export const PROJECTS: readonly Project[] = [
     node: { title: "Shopify automation" },
     status: "live",
     summary:
-      "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, an LLM writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
+      "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, an LLM writes titles and descriptions from the images, and a 25-node n8n workflow publishes them to Shopify.",
     steps: ["Drive upload", "Crop + background", "LLM writes copy", "Publish to Shopify"],
-    figure: "n8n-section-03",
+    figure: "n8n-workflow",
   },
   {
     no: "03",

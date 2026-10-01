@@ -311,7 +311,7 @@ Status is never shown by colour alone. Each tone has a shape: a filled green che
 - **Jump rail:** a vertical column of 44px buttons on the right, each holding a 10px ring pip. Visited pips are filled, and the current pip stretches to a 26px pill (width transitions over 300ms). Pips are ink on the canvas and paper on the finish field.
 
 ### Contact Output (signature)
-The finish is the Contact node opened. The field is signal-ink, filled by a circular clip-path reveal. From 640px up, seven paper wires at 50% opacity converge on a paper input port, and a 24px-radius paper frame at 50% opacity carries the node-type label "Output · Contact Erin", set on the frame border. The display question and the two finish buttons sit inside the frame.
+The finish is the Contact node opened. The field is signal-ink, filled by a circular clip-path reveal. From 640px up, seven paper wires at 50% opacity converge on a paper input port, and a 24px-radius paper frame at 50% opacity carries the node-type label "Output · Get in touch", set on the frame border. The display question and the two finish buttons sit inside the frame.
 
 ## Do's and Don'ts
 

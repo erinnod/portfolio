@@ -18,7 +18,7 @@
 - Banned: monospace, gradient text, glow, glass, eyebrow/kicker labels above headings, emoji or unicode glyphs as icons (draw icons as SVG), and hard offset shadows.
 - `--signal` is for fills and large text only. Small orange text uses `--signal-ink`. Body text contrast must be ≥4.5:1.
 - Animate only `transform`, `opacity` and `clip-path`.
-- Copy comes from `PRODUCT.md`. No invented metrics, clients or testimonials. Email is `noderin1@gmail.com`, LinkedIn is `https://www.linkedin.com/in/erin-nodland/`.
+- Copy comes from `PRODUCT.md`. No invented metrics, clients or testimonials. Email is shown as `noderin1 [at] gmail (dot) com`, LinkedIn is `https://www.linkedin.com/in/erin-nodland/`.
 - Timeline constants (exact): `INTRO 0.08`, `OVER 0.15`, `SCN 0.14`, `SCENES [[0],[1],[2],[3],[4,5,6]]`, `CONTACT_START 0.85`, and world size 1300×860.
 - Work on branch `redesign/workflow-canvas`, never on `main`.
 
@@ -500,7 +500,7 @@ export interface Project {
   image?: ProjectImage;
 }
 
-export const EMAIL = "noderin1@gmail.com";
+export const EMAIL = "<email>"; // superseded: the site now builds the address from parts on click
 export const LINKEDIN = "https://www.linkedin.com/in/erin-nodland/";
 export const PITCH =
   "Software developer at Shoothill. I build AI workflows that are still running after the demo ends.";
@@ -991,7 +991,6 @@ export default function Home() {
       <StaticRun />
       <footer className="flex flex-wrap justify-between gap-4 px-[clamp(20px,5vw,72px)] py-10 text-sm font-bold text-muted">
         <span>© 2026 Erin Nodland</span>
-        <span>Built with Claude Code</span>
       </footer>
     </main>
   );
@@ -1145,7 +1144,7 @@ export default function Graph({ progress, cam }: { progress: number; cam: Camera
         }`}
       >
         <p className="text-xs font-bold opacity-80">Output</p>
-        <p className="mt-0.5 text-xl font-black">Contact Erin</p>
+        <p className="mt-0.5 text-xl font-black">Get in touch</p>
       </div>
 
       {bead && (
@@ -1197,7 +1196,7 @@ In `app/page.tsx`, change `<StaticRun />` to `<StaticRun graph={<StaticGraph />}
 - [ ] **Step 5: Verify**
 
 Run: `npm run lint && npm run build`, then `npm run dev`.
-Expected: under the pitch, the finished graph renders: dark trigger, seven white nodes, and all wires drawn in ink into an orange "Contact Erin".
+Expected: under the pitch, the finished graph renders: dark trigger, seven white nodes, and all wires drawn in ink into an orange "Get in touch".
 - Nodes 01–04 show green checks.
 - Life-OS shows "Running", the migration agent "In progress" in dark orange, and the morning brief "Paused".
 - Resizing the window rescales the graph with no horizontal scroll.

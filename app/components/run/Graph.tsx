@@ -44,7 +44,7 @@ export default function Graph({
   const contactBody = (
     <>
       <span className="block text-xs font-bold">Output</span>
-      <span className="mt-0.5 block text-xl font-black">Contact Erin</span>
+      <span className="mt-0.5 block text-xl font-black">Get in touch</span>
     </>
   );
   return (
@@ -84,11 +84,11 @@ export default function Graph({
       ))}
 
       {onSelectContact ? (
-        <button type="button" data-contact className={contactClass} onClick={onSelectContact} aria-label="Contact Erin">
+        <button type="button" data-contact className={contactClass} onClick={onSelectContact} aria-label="Get in touch">
           {contactBody}
         </button>
       ) : contactHref ? (
-        <a data-contact href={contactHref} tabIndex={-1} className={contactClass} aria-label="Contact Erin">
+        <a data-contact href={contactHref} tabIndex={-1} className={contactClass} aria-label="Get in touch">
           {contactBody}
         </a>
       ) : (

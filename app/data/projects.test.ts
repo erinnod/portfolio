@@ -60,3 +60,19 @@ test("the migration toolkit gets its own scene; the group holds Life-OS and the 
 test("group-scene projects carry a short summary", () => {
   for (const i of SCENES[SCENES.length - 1]) assert.ok(PROJECTS[i].short, PROJECTS[i].title);
 });
+
+test("email is shown scraper-resistant and only assembled from parts", async () => {
+  const mod = await import("./projects.ts");
+  assert.equal(mod.EMAIL_DISPLAY, "noderin1 [at] gmail (dot) com");
+  assert.equal(mod.emailAddress(), ["noderin1", "gmail.com"].join("@"));
+  // No export carries the plain address as a ready-made string.
+  for (const [name, value] of Object.entries(mod)) {
+    if (typeof value === "function") continue;
+    assert.doesNotMatch(JSON.stringify(value) ?? "", /noderin1@/, name);
+  }
+});
+
+test("contact routes include GitHub", async () => {
+  const mod = await import("./projects.ts");
+  assert.equal(mod.GITHUB, "https://github.com/erinnod");
+});

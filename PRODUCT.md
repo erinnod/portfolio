@@ -26,7 +26,7 @@ Erin ships real AI systems, not demos: an n8n + LLM pipeline live in production 
 
 ## Capabilities and Constraints
 
-- Single-page site: hero, about, projects, contact. LinkedIn link and click-to-copy email (noderin1@gmail.com); CV download deliberately not offered.
+- Single-page site: hero, about, projects, contact. LinkedIn and GitHub (github.com/erinnod) links, and a click-to-copy email shown scraper-resistant as "noderin1 [at] gmail (dot) com" (the real address is only assembled on click); CV download deliberately not offered.
 - Next.js 16 (App Router), React 19, Tailwind v4; motion is hand-rolled from scroll progress (no animation library). Next 16 has breaking changes: consult `node_modules/next/dist/docs/` before editing.
 - Project copy is sourced from Erin's career-evidence inventory (life-OS vault `Work/portfolio.md`); keep in sync.
 

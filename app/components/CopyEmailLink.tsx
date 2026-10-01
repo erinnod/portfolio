@@ -1,8 +1,13 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { EMAIL_DISPLAY, emailAddress } from "../data/projects";
 
-export default function CopyEmailLink({ email, className }: { email: string; className?: string }) {
+/**
+ * Shows the scraper-resistant address ("name [at] gmail (dot) com"). The real address is assembled only on
+ * click, then copied to the clipboard, so it never sits in the page's HTML.
+ */
+export default function CopyEmailLink({ className }: { className?: string }) {
   const [copied, setCopied] = useState(false);
 
   const flash = useCallback(() => {
@@ -11,13 +16,14 @@ export default function CopyEmailLink({ email, className }: { email: string; cla
   }, []);
 
   const handleClick = useCallback(async () => {
+    const address = emailAddress();
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(address);
       flash();
     } catch {
       // Clipboard API unavailable: fall back to a selection copy.
       const el = document.createElement("span");
-      el.textContent = email;
+      el.textContent = address;
       document.body.appendChild(el);
       const range = document.createRange();
       range.selectNode(el);
@@ -32,16 +38,16 @@ export default function CopyEmailLink({ email, className }: { email: string; cla
         document.body.removeChild(el);
       }
     }
-  }, [email, flash]);
+  }, [flash]);
 
   return (
     <button
       type="button"
       onClick={handleClick}
-      aria-label={copied ? `Email address ${email} copied` : `Copy email address ${email}`}
+      aria-label={copied ? "Email address copied to clipboard" : `Copy email address: ${EMAIL_DISPLAY}`}
       className={className}
     >
-      {copied ? "Email copied" : "Copy email address"}
+      <span aria-live="polite">{copied ? "Email copied" : EMAIL_DISPLAY}</span>
     </button>
   );
 }
