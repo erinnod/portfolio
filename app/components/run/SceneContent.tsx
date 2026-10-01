@@ -6,6 +6,7 @@ import { SCENES, local } from "../../lib/timeline";
 
 const TONE_TEXT: Record<StatusTone, string> = { ok: "text-ok-ink", wip: "text-wip-ink", muted: "text-muted" };
 
+const NBSP = String.fromCharCode(160);
 const TITLE = "text-[clamp(34px,6.4vw,96px)] font-black leading-[0.92] tracking-[-0.04em] text-balance";
 const SUMMARY = "mt-4 max-w-[48ch] text-[clamp(15px,1.35vw,19px)] leading-relaxed text-ink-2 sm:mt-6";
 
@@ -116,7 +117,8 @@ function Solo({ project, t, headingId }: { project: Project; t: number; headingI
     <>
       <div style={rise(text, 24)}>
         <h2 id={headingId} className={TITLE}>
-          {project.title}
+          {/* Keep "→" on the line before it, so a flow arrow never starts a line ("ASP.NET →" / "Hono migration"). */}
+          {project.title.replaceAll(" →", NBSP + "→")}
         </h2>
         <NodeMeta project={project} />
         <p className={SUMMARY}>{project.summary}</p>

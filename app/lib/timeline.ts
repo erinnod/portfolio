@@ -4,9 +4,11 @@ export const WORLD_W = 1300;
 export const WORLD_H = 860;
 export const INTRO = 0.08;
 export const OVER = 0.15;
-export const SCN = 0.14;
-export const SCENES: readonly (readonly number[])[] = [[0], [1], [2], [3], [4, 5, 6]];
-export const CONTACT_START = OVER + SCN * SCENES.length;
+/** Solo scenes for 01–05, then one group scene for 06–07. */
+export const SCENES: readonly (readonly number[])[] = [[0], [1], [2], [3], [4], [5, 6]];
+export const CONTACT_START = 0.85;
+/** Each scene's share of the run: the span between the overview and the finish, split evenly. */
+export const SCN = (CONTACT_START - OVER) / SCENES.length;
 
 export interface Point { x: number; y: number }
 export interface Viewport { w: number; h: number }
@@ -97,7 +99,8 @@ export function camera(progress: number, v: Viewport): Camera {
     scale = lerp(open, base, k);
   } else if (s.phase === "scene") {
     const ids = SCENES[s.sceneIndex];
-    const target = ids.length > 1 ? nodeCenter(5) : nodeCenter(ids[0]);
+    const first = nodeCenter(ids[0]), last = nodeCenter(ids[ids.length - 1]);
+    const target = { x: first.x, y: (first.y + last.y) / 2 };
     const k = easeOut(s.t / 0.2) * (1 - easeOut((s.t - 0.85) / 0.15));
     const zoom = phone
       ? ids.length > 1 ? base : Math.min(base * 1.3, (usable - 16) / 340)

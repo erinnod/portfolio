@@ -15,7 +15,7 @@ test("sceneAt maps progress to phases and clamps overscroll", () => {
   assert.equal(sceneAt(0).phase, "intro");
   assert.equal(sceneAt(0.1).phase, "overview");
   assert.deepEqual(sceneAt(OVER), { phase: "scene", sceneIndex: 0, t: 0 });
-  assert.equal(sceneAt(CONTACT_START - 0.001).sceneIndex, 4);
+  assert.equal(sceneAt(CONTACT_START - 0.001).sceneIndex, SCENES.length - 1);
   assert.equal(sceneAt(CONTACT_START).phase, "finish");
   assert.deepEqual(sceneAt(-0.3), { phase: "intro", sceneIndex: -1, t: 0 });
   assert.deepEqual(sceneAt(1.4), { phase: "finish", sceneIndex: -1, t: 1 });
@@ -132,6 +132,7 @@ test("statusLine narrates the run", () => {
   assert.equal(statusLine(0), "Waiting for trigger");
   assert.equal(statusLine(0.1), "Trigger fired · 7 nodes queued");
   assert.equal(statusLine(OVER + SCN * 1.5), "Executing node 02");
-  assert.equal(statusLine(OVER + SCN * 4.5), "Executing nodes 05–07");
+  assert.equal(statusLine(OVER + SCN * 4.5), "Executing node 05");
+  assert.equal(statusLine(OVER + SCN * 5.5), "Executing nodes 06–07");
   assert.equal(statusLine(0.95), "Workflow finished");
 });

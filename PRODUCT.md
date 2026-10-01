@@ -32,13 +32,13 @@ Erin ships real AI systems, not demos: an n8n + LLM pipeline live in production 
 
 ## Evidence on Hand
 
-Real projects and their verified status (as of 2026-09-30):
+Real projects and their verified status (as of 2026-10-01):
 
 - **Figma → spec agent** — shipped. Figma link in, two HTML reports (client + developer) out in under two minutes. Screenshots: `public/project-figma-agent*.png`.
 - **Shopify product automation** — shipped, live in production for a Shoothill client. ~20-node n8n workflow: Drive → crop/background → LLM-written titles & descriptions → Shopify (model provider deliberately unnamed on the site). Screenshot: `public/project-n8n-workflow.png`.
 - **RAG support assistant** — shipped 2026-05-19. Cited Q&A, 20-question eval (retrieval hit-rate + answer quality). https://github.com/erinnod/rag-assistant
 - **Multi-agent outreach pipeline** — shipped 2026-05-28. Researcher → Drafter → Critic, shared state, Python orchestrator with no LangChain, run on 10 real companies. https://github.com/erinnod/multi-agent-outreach
-- **Migration agent** — in progress (code-complete; crawl phase blocked). Four phases: crawl (Browser Use + Playwright) → code read → multimodal synthesis → plan. Approved internally at Shoothill.
+- **ASP.NET → Hono migration toolkit** — shipped (Erin's write-up, 2026-10-01). Strangler-fig migration of a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers, one endpoint at a time, with byte-for-byte response contracts. Built migrating a production line-of-business CRM: ~200 endpoints, 130+ tables (537 stored procedures, 46 views), dual-valid JWTs, guarded and verified data CLIs (introspect → schema → dump → reset → verify), Vitest in real `workerd` against Neon branches, a .NET behaviour-compatibility layer, Azure Blob → R2, HangFire → Queues, a rehearsed cutover runbook. D1 first, moved to Postgres (Neon) on evidence. Packaged as a reusable agent skill (`migrating-aspnet-to-hono`). Client not named. Replaces the earlier crawl/plan "migration agent" description.
 - **Life-OS** — running. Personal AI OS on Claude Code + Obsidian + MCP.
 - **Morning brief agent** — built, paused. n8n + Telegram + Claude.
 

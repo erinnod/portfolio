@@ -39,7 +39,7 @@ export const STATUS_TONE: Record<ProjectStatus, StatusTone> = {
 
 export const GROUP_INTRO = {
   title: "Also on the canvas",
-  summary: "Three more systems built from the same toolkit.",
+  summary: "Two more systems built from the same toolkit.",
 };
 
 export const PROJECTS: readonly Project[] = [
@@ -95,6 +95,15 @@ export const PROJECTS: readonly Project[] = [
   },
   {
     no: "05",
+    title: "ASP.NET → Hono migration",
+    via: "Hono · Cloudflare Workers · Postgres (Neon) · Drizzle",
+    status: "shipped",
+    summary:
+      "A strangler-fig toolkit for moving a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers one endpoint at a time, with responses matched byte for byte so the client can't tell which backend answered. Built migrating a production CRM: ~200 endpoints and 130+ tables, while the app stayed fully usable.",
+    steps: ["Strangler Worker", "JWTs valid both ways", "Guarded data CLIs", "Port ~200 endpoints", "Rehearsed cutover"],
+  },
+  {
+    no: "06",
     title: "Life-OS",
     via: "Claude Code · Obsidian · MCP",
     status: "running",
@@ -102,16 +111,6 @@ export const PROJECTS: readonly Project[] = [
       "A personal AI operating system. Claude Code reads a structured Obsidian vault on every interaction, writes back as life happens, flags drift and proposes its own new skills.",
     short: "A personal AI OS that reads a structured vault on every interaction and writes back.",
     steps: ["Read the vault", "Act through MCP", "Write back"],
-  },
-  {
-    no: "06",
-    title: "Migration agent",
-    via: "Browser Use · Playwright · Claude",
-    status: "shipped",
-    summary:
-      "A four-phase agentic pipeline for moving legacy products to a modern stack: crawl, code read, multimodal synthesis, migration plan.",
-    short: "Crawl, code read, multimodal synthesis, migration plan, for legacy products moving to a modern stack.",
-    steps: ["Crawl", "Code read", "Synthesis", "Plan"],
   },
   {
     no: "07",
