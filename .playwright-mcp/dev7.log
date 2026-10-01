@@ -1,0 +1,23 @@
+▲ Next.js 16.3.8 (Turbopack)
+- Local:         http://localhost:3007
+- Network:       http://192.168.0.143:3007
+✓ Ready in 1859ms
+✓ Running next.config.ts took 181ms
+
+ GET / 200 in 1112ms (next.js: 855ms, application-code: 257ms)
+ GET / 200 in 82ms (next.js: 15ms, application-code: 67ms)
+ GET / 200 in 82ms (next.js: 4ms, application-code: 79ms)
+ GET / 200 in 66ms (next.js: 3ms, application-code: 62ms)
+ GET / 200 in 71ms (next.js: 3ms, application-code: 67ms)
+ GET / 200 in 185ms (next.js: 21ms, application-code: 164ms)
+ GET / 200 in 75ms (next.js: 3ms, application-code: 72ms)
+[browser] Image with src "/project-figma-agent.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET / 200 in 84ms (next.js: 4ms, application-code: 79ms)
+[browser] Image with src "/project-figma-agent.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET / 200 in 76ms (next.js: 5ms, application-code: 71ms)
+[browser] Image with src "/project-figma-agent.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading
+ GET / 200 in 82ms (next.js: 4ms, application-code: 78ms)
+[?25h
