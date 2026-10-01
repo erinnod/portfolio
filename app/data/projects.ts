@@ -80,26 +80,6 @@ export const PROJECTS: readonly Project[] = [
   },
   {
     no: "03",
-    title: "RAG support assistant",
-    via: "Python · Claude API · embeddings",
-    status: "shipped",
-    summary:
-      "Retrieval-augmented Q&A with citations over a real document set, scored by a 20-question eval on retrieval hit-rate and answer quality.",
-    steps: ["Ingest docs", "Chunk + embed", "Retrieve", "Answer + cite", "20-question eval"],
-    link: { label: "Read the code on GitHub", href: "https://github.com/erinnod/rag-assistant" },
-  },
-  {
-    no: "04",
-    title: "Multi-agent outreach",
-    via: "Python · Claude API · tool use",
-    status: "shipped",
-    summary:
-      "Three Claude agents with shared state and structured tool use, run end to end on ten real companies. The Python orchestrator is built from scratch, with no LangChain.",
-    steps: ["Researcher", "Drafter", "Critic", "Ten real companies"],
-    link: { label: "Read the code on GitHub", href: "https://github.com/erinnod/multi-agent-outreach" },
-  },
-  {
-    no: "05",
     title: "ASP.NET → Hono migration",
     via: "Hono · Cloudflare Workers · Postgres (Neon) · Drizzle",
     node: { title: "ASP.NET → Hono", via: "Hono · Workers · Postgres · Drizzle" },
@@ -109,7 +89,7 @@ export const PROJECTS: readonly Project[] = [
     steps: ["Strangler Worker", "JWTs valid both ways", "Guarded data CLIs", "Port every endpoint", "Rehearsed cutover"],
   },
   {
-    no: "06",
+    no: "04",
     title: "Life-OS",
     via: "Hermes Agent · Python · OpenRouter · Obsidian · Telegram",
     node: { via: "Hermes Agent · Python · Pi 5" },

@@ -5,7 +5,7 @@ export const WORLD_H = 860;
 export const INTRO = 0.08;
 export const OVER = 0.15;
 /** One scene per project. A scene may hold several ids; the camera and status line handle groups. */
-export const SCENES: readonly (readonly number[])[] = [[0], [1], [2], [3], [4], [5]];
+export const SCENES: readonly (readonly number[])[] = [[0], [1], [2], [3]];
 const NODE_COUNT = SCENES.flat().length;
 const NODE_H = 76;
 const NODE_GAP = 110;

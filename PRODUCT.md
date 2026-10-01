@@ -8,7 +8,7 @@ web
 
 ## Users
 
-Hiring managers, recruiters and technical leads filling AI Automation Specialist / AI engineer roles. They arrive from a CV, LinkedIn or a job application, skim fast (often under a minute), and are deciding whether Erin is worth an interview. Secondary: engineers on the hiring panel who click through to the GitHub repos to check the work is real.
+Hiring managers, recruiters and technical leads filling AI Automation Specialist / AI engineer roles. They arrive from a CV, LinkedIn or a job application, skim fast (often under a minute), and are deciding whether Erin is worth an interview. Secondary: engineers on the hiring panel who check the work is real (screenshots, the redrawn workflow, the GitHub profile).
 
 ## Product Purpose
 
@@ -16,7 +16,7 @@ Erin Nodland's personal portfolio. It exists to turn a skim into an interview fo
 
 ## Positioning
 
-Erin ships real AI systems, not demos: an n8n + LLM pipeline live in production for a Shoothill client, agents her team uses, and multi-agent / RAG systems built from scratch with public code. The claim is "in production and in use", which a tutorial-driven portfolio cannot truthfully copy.
+Erin ships real AI systems, not demos: an n8n + LLM pipeline live in production for a Shoothill client, agents Erin's team uses, a migration toolkit that moved a production CRM, and a personal AI OS in daily use. The claim is "in production and in use", which a tutorial-driven portfolio cannot truthfully copy.
 
 ## Operating Context
 
@@ -36,8 +36,7 @@ Real projects and their verified status (as of 2026-10-01):
 
 - **Figma → spec agent** — shipped. Figma link in, two HTML reports (client + developer) out in under two minutes. Screenshots: `public/project-figma-agent*.png`.
 - **Shopify product automation** — shipped, live in production for a Shoothill client. 25-node n8n workflow: Drive → crop/background → LLM-written titles & descriptions → Shopify (model provider deliberately unnamed on the site). Shown as a vector redraw of the 25-node workflow; the original screenshot is not shipped (it shows the server IP and the client's store).
-- **RAG support assistant** — shipped 2026-05-19. Cited Q&A, 20-question eval (retrieval hit-rate + answer quality). https://github.com/erinnod/rag-assistant
-- **Multi-agent outreach pipeline** — shipped 2026-05-28. Researcher → Drafter → Critic, shared state, Python orchestrator with no LangChain, run on 10 real companies. https://github.com/erinnod/multi-agent-outreach
+- **Not on the site (Erin, 2026-10-01):** a RAG assistant and a multi-agent outreach pipeline are on the todo list, not built. Add them only once they exist and their repos are public.
 - **ASP.NET → Hono migration toolkit** — shipped (Erin's write-up, 2026-10-01). Strangler-fig migration of a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers, one endpoint at a time, with byte-for-byte response contracts. Built migrating a production line-of-business CRM: 200+ endpoints (the method itself isn't bounded by endpoint count), 130+ tables (537 stored procedures, 46 views), dual-valid JWTs, guarded and verified data CLIs (introspect → schema → dump → reset → verify), Vitest in real `workerd` against Neon branches, a .NET behaviour-compatibility layer, Azure Blob → R2, HangFire → Queues, a rehearsed cutover runbook. D1 first, moved to Postgres (Neon) on evidence. Packaged as a reusable agent skill (`migrating-aspnet-to-hono`). Client not named. Replaces the earlier crawl/plan "migration agent" description.
 - **Life-OS** — running (daily since May 2026). Personal AI OS on a Raspberry Pi 5: Hermes Agent, a 132-note Obsidian vault, 18 scheduled jobs, five specialist agents, one 06:00 Telegram brief. The morning brief is part of it, not a separate project. Public copy keeps to engineering facts; nothing personal from the vault.
 

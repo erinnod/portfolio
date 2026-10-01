@@ -45,7 +45,7 @@ test("phone overview frames the node column readably and clear of the rail", () 
     const c = camera(0.1, v);
     assert.ok(c.scale >= 0.6, `node labels too small: scale ${c.scale.toFixed(2)} at ${v.w}x${v.h}`);
     const left = c.x + 520 * c.scale, right = c.x + 860 * c.scale; // node column spans world x 520..860
-    const top = c.y + nodeCenter(0).y * c.scale - 38 * c.scale, bottom = c.y + nodeCenter(5).y * c.scale + 38 * c.scale;
+    const top = c.y + nodeCenter(0).y * c.scale - 38 * c.scale, bottom = c.y + nodeCenter(3).y * c.scale + 38 * c.scale;
     assert.ok(left >= 8 && right <= v.w - RAIL, `column ${left.toFixed(0)}..${right.toFixed(0)} hits the edge or rail`);
     assert.ok(top >= 40 && bottom <= v.h - 8, `column ${top.toFixed(0)}..${bottom.toFixed(0)} leaves the stage`);
   }
@@ -75,16 +75,16 @@ test("camera keeps the focused node centred on a phone viewport", () => {
 });
 
 test("nodeState walks queued → executing → done", () => {
-  for (let i = 0; i < 6; i++) assert.equal(nodeState(i, 0.1), "queued");
+  for (let i = 0; i < 4; i++) assert.equal(nodeState(i, 0.1), "queued");
   const early = OVER + SCN * 1 + SCN * 0.1; // scene 1, t = 0.1
   assert.equal(nodeState(0, early), "done");
   assert.equal(nodeState(1, early), "executing");
   assert.equal(nodeState(2, early), "queued");
-  for (let i = 0; i < 6; i++) assert.equal(nodeState(i, 0.95), "done");
+  for (let i = 0; i < 4; i++) assert.equal(nodeState(i, 0.95), "done");
 });
 
 test("wireProgress never decreases as the visitor scrolls down", () => {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 4; i++) {
     let prev = 0;
     for (let p = 0; p <= 1.0001; p += 0.001) {
       const w = wireProgress(i, p);
@@ -122,7 +122,7 @@ test("rail targets land on fully open scenes and the open finish", () => {
 });
 
 test("clicking a project node targets that project's fully built panel; Contact targets the open finish", () => {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 4; i++) {
     const p = nodeTarget(i);
     const s = sceneAt(p);
     assert.equal(s.phase, "scene", `node ${i}`);
@@ -141,13 +141,12 @@ test("the bead only travels while a wire is drawing", () => {
 
 test("statusLine narrates the run", () => {
   assert.equal(statusLine(0), "Waiting for trigger");
-  assert.equal(statusLine(0.1), "Trigger fired · 6 nodes queued");
+  assert.equal(statusLine(0.1), "Trigger fired · 4 nodes queued");
   assert.equal(statusLine(OVER + SCN * 1.5), "Executing node 02");
-  assert.equal(statusLine(OVER + SCN * 4.5), "Executing node 05");
-  assert.equal(statusLine(OVER + SCN * 5.5), "Executing node 06");
+  assert.equal(statusLine(OVER + SCN * 3.5), "Executing node 04");
   assert.equal(statusLine(0.95), "Workflow finished");
 });
 
-test("the six-node column is centred on the trigger → Contact line", () => {
-  near((nodeCenter(0).y + nodeCenter(5).y) / 2, TRIGGER.y);
+test("the node column is centred on the trigger → Contact line", () => {
+  near((nodeCenter(0).y + nodeCenter(3).y) / 2, TRIGGER.y);
 });

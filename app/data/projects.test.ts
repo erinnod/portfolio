@@ -3,30 +3,28 @@ import assert from "node:assert/strict";
 import { PROJECTS, STATUS_TONE } from "./projects.ts";
 import { SCENES } from "../lib/timeline.ts";
 
-test("six projects numbered 01–06", () => {
-  assert.deepEqual(PROJECTS.map((p) => p.no), ["01", "02", "03", "04", "05", "06"]);
+test("four projects numbered 01–04", () => {
+  assert.deepEqual(PROJECTS.map((p) => p.no), ["01", "02", "03", "04"]);
+});
+
+test("only built work is on the canvas: the RAG assistant and multi-agent outreach are still on Erin's todo list", () => {
+  for (const p of PROJECTS) assert.doesNotMatch(`${p.title} ${p.summary}`, /RAG|outreach|multi-agent/i, p.title);
 });
 
 test("every project appears in exactly one scene", () => {
-  assert.deepEqual([...SCENES.flat()].sort(), [0, 1, 2, 3, 4, 5]);
+  assert.deepEqual([...SCENES.flat()].sort(), [0, 1, 2, 3]);
 });
 
 test("statuses match PRODUCT.md as of 2026-10-01", () => {
   const byTitle = Object.fromEntries(PROJECTS.map((p) => [p.title, p.status]));
   assert.equal(byTitle["Figma → spec agent"], "shipped");
   assert.equal(byTitle["Shopify product automation"], "live");
-  assert.equal(byTitle["RAG support assistant"], "shipped");
-  assert.equal(byTitle["Multi-agent outreach"], "shipped");
   assert.equal(byTitle["Life-OS"], "running");
   assert.equal(byTitle["ASP.NET → Hono migration"], "shipped");
 });
 
-test("the two public repos are linked", () => {
-  const links = PROJECTS.flatMap((p) => (p.link ? [p.link.href] : []));
-  assert.deepEqual(links, [
-    "https://github.com/erinnod/rag-assistant",
-    "https://github.com/erinnod/multi-agent-outreach",
-  ]);
+test("no project links to a repo visitors can't open (both old links were private and 404ed)", () => {
+  assert.deepEqual(PROJECTS.flatMap((p) => (p.link ? [p.link.href] : [])), []);
 });
 
 test("no project status spends the signal orange (reserved for live wires and the primary action)", () => {

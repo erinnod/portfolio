@@ -143,7 +143,7 @@ export default function RunStage() {
   return (
     <>
       <div className="run-live">
-        <section id="run" ref={runRef} className="relative h-[1250svh]">
+        <section id="run" ref={runRef} className="relative h-[900svh]">
           <h1 className="sr-only">Erin Nodland</h1>
           <div ref={stageRef} className="sticky top-0 h-dvh overflow-hidden bg-ground">
             <div

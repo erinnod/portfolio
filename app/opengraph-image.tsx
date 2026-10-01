@@ -17,8 +17,8 @@ const C = {
 const PORT = { x: 503, y: 300 };
 const NODES = [
   { no: "02", title: "Shopify automation" },
-  { no: "05", title: "ASP.NET → Hono" },
-  { no: "06", title: "Life-OS" },
+  { no: "03", title: "ASP.NET → Hono" },
+  { no: "04", title: "Life-OS" },
 ].map((n, i) => ({ ...n, y: 150 + i * 126 }));
 const NODE_X = 580, NODE_W = 362, NODE_H = 78;
 const OUT = { x: 984, y: 255, w: 192, h: 90 };
