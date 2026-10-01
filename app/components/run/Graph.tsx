@@ -35,7 +35,7 @@ export default function Graph({ progress, cam }: { progress: number; cam: Camera
       </svg>
 
       <div className="absolute left-10 top-92.5 h-30 w-70 rounded-[14px] bg-ink px-5 py-4.5 text-paper shadow-[0_18px_40px_-18px_rgba(30,31,36,0.55)]">
-        <p className="text-xs font-bold text-[#B9BCB2]">Trigger</p>
+        <p className="text-xs font-bold text-line">Trigger</p>
         <p className="mt-1.5 text-[38px] font-black leading-[0.95] tracking-[-0.03em]">Erin Nodland</p>
         <span className="absolute -right-2.25 top-12.75 h-4.5 w-4.5 rounded-full bg-signal" />
         <span className="port-ring absolute -right-2.25 top-12.75 h-4.5 w-4.5 rounded-full border-2 border-signal" />
@@ -46,11 +46,11 @@ export default function Graph({ progress, cam }: { progress: number; cam: Camera
       ))}
 
       <div
-        className={`absolute left-255 top-98 h-19 w-60 rounded-xl border-2 border-signal px-4.5 py-3.5 transition-colors duration-300 ${
-          lit ? "bg-signal text-paper" : "bg-paper text-ink"
+        className={`absolute left-255 top-98 h-19 w-60 rounded-xl border-2 px-4.5 py-3.5 transition-colors duration-300 ${
+          lit ? "border-signal-ink bg-signal-ink text-paper" : "border-signal bg-paper text-ink"
         }`}
       >
-        <p className="text-xs font-bold opacity-80">Output</p>
+        <p className="text-xs font-bold">Output</p>
         <p className="mt-0.5 text-xl font-black">Contact Erin</p>
       </div>
 

@@ -29,8 +29,8 @@ export default function NodeCard({
   const border = active ? "border-signal" : queued ? "border-line border-dashed" : "border-ink";
   return (
     <div
-      className={`absolute left-130 flex h-19 w-85 items-center gap-3 rounded-xl border-2 bg-paper px-3.5 shadow-[0_10px_24px_-16px_rgba(30,31,36,0.45)] transition-[border-color,opacity] duration-300 ${border}`}
-      style={{ top: nodeTop(index), opacity: queued ? 0.7 : 1 }}
+      className={`absolute left-130 flex h-19 w-85 items-center gap-3 rounded-xl border-2 px-3.5 shadow-[0_10px_24px_-16px_rgba(30,31,36,0.45)] transition-[border-color,background-color] duration-300 ${border} ${queued ? "bg-ground" : "bg-paper"}`}
+      style={{ top: nodeTop(index) }}
     >
       <span className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-[9px] text-sm font-extrabold ${TINT[tone]}`}>
         {project.no}

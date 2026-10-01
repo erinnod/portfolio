@@ -347,7 +347,7 @@
       {
         "name": "state-transition",
         "value": "300ms",
-        "purpose": "Node border and opacity, lit output fill, rail pip width."
+        "purpose": "Node border and fill, lit output fill, rail pip width."
       },
       {
         "name": "circle-reveal",
@@ -384,7 +384,7 @@
       "name": "Node Card (Queued)",
       "kind": "card",
       "refersTo": "node-card",
-      "description": "Before its turn: dashed wire-grey border at 0.7 opacity.",
+      "description": "Before its turn: dashed wire-grey border on a ground fill, full opacity.",
       "html": "<div class=\"ds-nodeq\"><span class=\"ds-nodeq-badge\">06</span><span class=\"ds-nodeq-text\"><b>Migration agent</b><small>Browser Use · Playwright · Claude</small></span><span class=\"ds-nodeq-state\">Queued</span></div>",
       "css": ".ds-nodeq{display:flex;align-items:center;gap:12px;width:340px;height:76px;padding:0 14px;box-sizing:border-box;background:var(--paper);color:var(--ink);border:2px dashed var(--line);border-radius:12px;opacity:.7;font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-nodeq-badge{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;border-radius:9px;background:var(--wip-tint);font-size:14px;font-weight:800}.ds-nodeq-text{flex:1}.ds-nodeq-text b{display:block;font-size:17px;font-weight:800}.ds-nodeq-text small{display:block;font-size:12px;color:var(--muted)}.ds-nodeq-state{font-size:12px;font-weight:800;color:var(--muted)}"
     },
@@ -426,7 +426,7 @@
       "refersTo": "button-finish-primary",
       "description": "The Contact field: signal-ink ground, display question, ink primary and paper-outline secondary; focus rings turn paper.",
       "html": "<div class=\"ds-finish\"><h2>Got a process that should run itself?</h2><div class=\"ds-finish-row\"><a class=\"ds-btn-fp\" href=\"#\">Message on LinkedIn</a><button class=\"ds-btn-fs\" type=\"button\">Copy email address</button></div></div>",
-      "css": ".ds-finish{background:var(--signal-ink);color:var(--paper);padding:48px;font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-finish h2{margin:0;max-width:12ch;font-size:clamp(52px,8vw,96px);font-weight:900;line-height:.9;letter-spacing:-.04em}.ds-finish-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}.ds-btn-fp,.ds-btn-fs{display:inline-flex;align-items:center;min-height:56px;padding:0 24px;box-sizing:border-box;border-radius:12px;font:inherit;font-size:17px;font-weight:800;text-decoration:none;cursor:pointer}.ds-btn-fp{background:var(--ink);color:var(--paper);border:0}.ds-btn-fp:hover{background:var(--paper);color:var(--signal-ink)}.ds-btn-fs{background:transparent;color:var(--paper);border:2px solid var(--paper)}.ds-btn-fs:hover{background:var(--paper);color:var(--ink)}.ds-finish :focus-visible{outline:3px solid var(--paper);outline-offset:3px}"
+      "css": ".ds-finish{background:var(--signal-ink);color:var(--paper);padding:48px;font-family:'Hanken Grotesk',system-ui,sans-serif;}.ds-finish h2{margin:0;max-width:12ch;font-size:clamp(40px,8vw,96px);font-weight:900;line-height:.9;letter-spacing:-.04em}.ds-finish-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}.ds-btn-fp,.ds-btn-fs{display:inline-flex;align-items:center;min-height:56px;padding:0 24px;box-sizing:border-box;border-radius:12px;font:inherit;font-size:17px;font-weight:800;text-decoration:none;cursor:pointer}.ds-btn-fp{background:var(--ink);color:var(--paper);border:0}.ds-btn-fp:hover{background:var(--paper);color:var(--signal-ink)}.ds-btn-fs{background:transparent;color:var(--paper);border:2px solid var(--paper)}.ds-btn-fs:hover{background:var(--paper);color:var(--ink)}.ds-finish :focus-visible{outline:3px solid var(--paper);outline-offset:3px}"
     },
     {
       "name": "Status Meta Line",

@@ -27,7 +27,7 @@ typography:
     letterSpacing: "-0.04em"
   display-finish:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
-    fontSize: "clamp(52px, 8vw, 96px)"
+    fontSize: "clamp(40px, 8vw, 96px)"
     fontWeight: 900
     lineHeight: 0.9
     letterSpacing: "-0.04em"
@@ -71,11 +71,17 @@ typography:
     fontSize: "15px"
     fontWeight: 800
     lineHeight: 1.25
+  step-compact:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 800
+    lineHeight: 1.25
   label:
     fontFamily: "Hanken Grotesk, system-ui, sans-serif"
     fontSize: "12px"
     fontWeight: 800
 rounded:
+  focus: "4px"
   badge: "9px"
   step: "10px"
   node: "12px"
@@ -119,7 +125,7 @@ components:
     width: "240px"
     height: "76px"
   output-node-lit:
-    backgroundColor: "{colors.signal}"
+    backgroundColor: "{colors.signal-ink}"
     textColor: "{colors.paper}"
     rounded: "{rounded.node}"
   pipeline-step:
@@ -201,7 +207,7 @@ Motion is scrubbed from scroll progress with a cubic ease-out, and only transfor
 Warm-grey neutrals with a single burnt-orange signal and three status tones, each a trio of base, ink (small text) and tint (fills).
 
 ### Primary
-- **Signal Orange** (signal): the live current. It appears on the travelling bead, the trigger's pulsing output port, the executing spinner, the active node's border, the lit Contact node, focus rings and text selection. It is used for fills and marks, never for small text.
+- **Signal Orange** (signal): the live current. It appears on the travelling bead, the trigger's pulsing output port, the executing spinner, the active node's border, the unlit Contact node's border, focus rings and text selection. Where paper text must sit on the live colour (the lit Contact node, the finish field) the fill deepens to signal-ink. It is used for fills and marks, never for small text.
 - **Deep Signal** (signal-ink): the small-text and field version of the signal. It covers the "Scroll to run the workflow" cue, the full-bleed finish field (paper text on it) and the Contact frame label.
 - **Signal Wash** (signal-tint): the track of the executing spinner.
 
@@ -235,7 +241,7 @@ Warm-grey neutrals with a single burnt-orange signal and three status tones, eac
 
 ### Hierarchy
 - **Display** (900, clamp(34px, 6.4vw, 96px), 0.92, -0.04em, text-balance): the opened node's title. The static-run h1 uses clamp(56px, 9vw, 96px) at 0.9.
-- **Display Finish** (900, clamp(52px, 8vw, 96px), 0.9, max 12ch): the Contact question on the orange field.
+- **Display Finish** (900, clamp(40px, 8vw, 96px), 0.9, max 12ch; 40px on phones so it sets in at most four lines inside the frame): the Contact question on the orange field.
 - **Headline Trigger** (900, 38px, 0.95, -0.03em): "Erin Nodland" inside the trigger node. The camera's opening zoom (about 2.7x) is what makes it read as the hero.
 - **Lead** (700, clamp(20px, 2vw, 28px), 1.375, max 30 to 34ch): the one-line pitch.
 - **Title** (800, 17px): node-card titles. **Title Card** (900, 18px to 22px, -0.02em) is used for group-scene cards.
@@ -291,7 +297,7 @@ Heavy, bordered and blunt. Every action is at least 48px tall, and the finish ac
 - **Chain variant:** when a project has no screenshot, from 640px up the steps become full node cards. These are at least 64px tall with 12px corners, the node-rest shadow, a numbered 32px badge (ground fill, or paper at 15% on the final step) and 19px text, stacked with 24px vertical wires.
 
 ### Cards / Containers
-- **Node card:** 340×76 on paper with a 2px border and 12px corners, holding a 40px number badge in the status tint, a 17px/800 title, a 12px muted stack line and a state mark on the right. The border is ink when done, signal when active, and a dashed line (at 0.7 opacity) when queued. Border colour and opacity transition over 300ms.
+- **Node card:** 340×76 on paper with a 2px border and 12px corners, holding a 40px number badge in the status tint, a 17px/800 title, a 12px muted stack line and a state mark on the right. The border is ink when done, signal when active, and a dashed line on a ground-coloured fill when queued (always full opacity, so the 12px labels keep AA contrast). Border and fill colour transition over 300ms.
 - **Trigger node:** a 280×120 ink block with 14px corners and the trigger-lift shadow. It carries a signal output port with an expanding ring pulse.
 - **Output node:** a 240×76 paper block with a 2px signal border. It fills with signal (paper text) once every wire has drawn in.
 - **Group card:** paper with a 2px ink border, 12px corners and 12px to 16px padding. It holds a title, a status row and a one-line summary, laid out in an auto-fit grid (min 200px).

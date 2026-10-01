@@ -1,4 +1,4 @@
-import { PROJECTS, STATUS_LABEL } from "../../data/projects";
+import { EMAIL, LINKEDIN, PROJECTS, STATUS_LABEL } from "../../data/projects";
 
 // Screen-reader copy of every project, so nothing depends on scroll position.
 export default function SrSummary() {
@@ -15,6 +15,9 @@ export default function SrSummary() {
           </li>
         ))}
       </ol>
+      <h2>Contact</h2>
+      <p>Open to AI roles, project work or a chat. Email {EMAIL}.</p>
+      <a href={LINKEDIN} tabIndex={-1}>Message Erin on LinkedIn</a>
     </div>
   );
 }

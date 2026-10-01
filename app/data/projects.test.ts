@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { PROJECTS, STATUS_TONE } from "./projects.ts";
+import { GROUP_INTRO, PROJECTS, STATUS_TONE } from "./projects.ts";
 import { SCENES } from "../lib/timeline.ts";
 
 test("seven projects numbered 01–07", () => {
@@ -32,6 +32,15 @@ test("the two public repos are linked", () => {
 
 test("no project status spends the signal orange (reserved for live wires and the primary action)", () => {
   for (const [status, tone] of Object.entries(STATUS_TONE)) assert.notEqual(tone, "signal", status);
+});
+
+test("migration agent copy says the crawl phase is blocked, as PRODUCT.md does (not softened)", () => {
+  const m = PROJECTS.find((p) => p.title === "Migration agent")!;
+  for (const text of [m.summary, m.short ?? ""]) {
+    assert.match(text, /blocked/i);
+    assert.doesNotMatch(text, /harden/i);
+  }
+  assert.doesNotMatch(GROUP_INTRO.summary, /harden/i);
 });
 
 test("group-scene projects carry a short summary", () => {

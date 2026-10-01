@@ -30,7 +30,7 @@ export default function FinishContent({ t, inStage = false, idPrefix = "" }: { t
       {inStage && <OutputFrame a={local(t, 0.6, 0.15)} />}
       <div className={`relative flex h-full flex-col justify-center py-20 ${pad}`}>
         <div style={{ opacity: a, transform: `translateY(${(1 - a) * 24}px)` }}>
-          <h2 id={`${idPrefix}finish-title`} className="max-w-[12ch] text-[clamp(52px,8vw,96px)] font-black leading-[0.9] tracking-[-0.04em] text-balance">
+          <h2 id={`${idPrefix}finish-title`} className="max-w-[12ch] text-[clamp(40px,8vw,96px)] font-black leading-[0.9] tracking-[-0.04em] text-balance">
             Got a process that should run itself?
           </h2>
           <div className="mt-10 flex flex-wrap gap-3">

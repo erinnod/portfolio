@@ -7,7 +7,6 @@
   --ink-2: #3d4038;
   --muted: #5e6158;
   --line: #c9cbc2;
-  --line-soft: #d6d8d0;
   --signal: #d9481f;
   --signal-ink: #b23a12;
   --signal-tint: #fbe3d9;
@@ -27,7 +26,6 @@
   --color-ink-2: var(--ink-2);
   --color-muted: var(--muted);
   --color-line: var(--line);
-  --color-line-soft: var(--line-soft);
   --color-signal: var(--signal);
   --color-signal-ink: var(--signal-ink);
   --color-signal-tint: var(--signal-tint);
@@ -76,6 +74,11 @@ body {
 /* On the burnt-orange finish field the signal-coloured ring would vanish. */
 .on-dark :focus-visible {
   outline-color: var(--paper);
+}
+
+.dot-layer {
+  background-image: radial-gradient(var(--line) 1.3px, transparent 1.3px);
+  background-size: 22px 22px;
 }
 
 .dotted {

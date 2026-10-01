@@ -39,7 +39,7 @@ export const STATUS_TONE: Record<ProjectStatus, StatusTone> = {
 
 export const GROUP_INTRO = {
   title: "Also on the canvas",
-  summary: "One runs every day, one is being hardened, and one is honestly paused.",
+  summary: "One runs every day, one is blocked at its crawl phase, and one is honestly paused.",
 };
 
 export const PROJECTS: readonly Project[] = [
@@ -109,8 +109,8 @@ export const PROJECTS: readonly Project[] = [
     via: "Browser Use · Playwright · Claude",
     status: "in-progress",
     summary:
-      "A four-phase agentic pipeline for moving legacy products to a modern stack: crawl, code read, multimodal synthesis, migration plan. Code complete; the crawl phase is being hardened for legacy UIs.",
-    short: "Crawl, code read, multimodal synthesis, migration plan. Code complete; crawl being hardened.",
+      "A four-phase agentic pipeline for moving legacy products to a modern stack: crawl, code read, multimodal synthesis, migration plan. Code complete; blocked at the crawl phase, where the browser agent can't yet see the UI on some legacy sites.",
+    short: "Crawl, code read, multimodal synthesis, migration plan. Code complete; blocked at the crawl phase.",
     steps: ["Crawl", "Code read", "Synthesis", "Plan"],
   },
   {
