@@ -1,0 +1,62 @@
+[
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\erinn\\Documents\\Projects\\portfolio\\app\\components\\run\\SceneContent.tsx",
+    "line": 78,
+    "snippet": "text-[…] class: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "ScenePanel.tsx",
+      "StaticRun.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\erinn\\Documents\\Projects\\portfolio\\app\\components\\run\\SceneContent.tsx",
+    "line": 168,
+    "snippet": "text-[…] class: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "ScenePanel.tsx",
+      "StaticRun.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-font-size",
+    "name": "Font size outside DESIGN.md",
+    "description": "A literal font-size is off the type ramp documented in DESIGN.md typography. Use a documented size step or update the design system if the new step is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\erinn\\Documents\\Projects\\portfolio\\app\\components\\run\\SceneContent.tsx",
+    "line": 172,
+    "snippet": "text-[…] class: 13px is off the DESIGN.md type ramp",
+    "advisory": true,
+    "ignoreValue": "13px",
+    "importedBy": [
+      "ScenePanel.tsx",
+      "StaticRun.tsx"
+    ]
+  },
+  {
+    "antipattern": "design-system-radius",
+    "name": "Radius outside DESIGN.md",
+    "description": "A border-radius value is outside the DESIGN.md rounded scale. Use a documented radius token or update the design system if the new shape is intentional.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "C:\\Users\\erinn\\Documents\\Projects\\portfolio\\app\\globals.css",
+    "line": 64,
+    "snippet": "border-radius: 4px is outside the DESIGN.md rounded scale",
+    "advisory": true,
+    "ignoreValue": "4px"
+  }
+]

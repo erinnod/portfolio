@@ -1,0 +1,108 @@
+- generic [active] [ref=f2e1]:
+  - main [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - generic [ref=f2e4]:
+        - paragraph [ref=f2e5]: erin-nodland.workflow
+        - heading "Erin Nodland" [level=1] [ref=f2e6]
+        - paragraph [ref=f2e7]: Software developer at Shoothill. I build AI workflows that are still running after the demo ends.
+      - region [ref=f2e8]:
+        - generic [ref=f2e9]:
+          - generic [ref=f2e10]:
+            - paragraph [ref=f2e11]: Shipped
+            - heading "Figma → spec agent" [level=2] [ref=f2e13]
+            - paragraph [ref=f2e14]: "Paste a Figma handoff and it reads every screen, then writes two reports in under two minutes: plain English for the client, technical for the developer. Every question is backed by evidence from the design."
+          - generic [ref=f2e15]:
+            - list "Figma → spec agent pipeline" [ref=f2e16]:
+              - listitem [ref=f2e17]:
+                - generic [ref=f2e18]: Figma link
+              - listitem [ref=f2e20]:
+                - generic [ref=f2e21]: Read every screen
+              - listitem [ref=f2e23]:
+                - generic [ref=f2e24]: Client report
+              - listitem [ref=f2e26]:
+                - generic [ref=f2e27]: Developer report
+            - 'img "Figma spec agent: choosing the entry point for a project" [ref=f2e28]'
+      - region [ref=f2e29]:
+        - generic [ref=f2e30]:
+          - generic [ref=f2e31]:
+            - paragraph [ref=f2e32]: Shipped · live in production
+            - heading "Shopify product automation" [level=2] [ref=f2e34]
+            - paragraph [ref=f2e35]: Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, Claude writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.
+          - generic [ref=f2e36]:
+            - list "Shopify product automation pipeline" [ref=f2e37]:
+              - listitem [ref=f2e38]:
+                - generic [ref=f2e39]: Drive upload
+              - listitem [ref=f2e41]:
+                - generic [ref=f2e42]: Crop + background
+              - listitem [ref=f2e44]:
+                - generic [ref=f2e45]: Claude writes copy
+              - listitem [ref=f2e47]:
+                - generic [ref=f2e48]: Publish to Shopify
+            - img "The n8n workflow behind the Shopify product automation" [ref=f2e49]
+      - region [ref=f2e50]:
+        - generic [ref=f2e51]:
+          - generic [ref=f2e52]:
+            - paragraph [ref=f2e53]: Shipped
+            - heading "RAG support assistant" [level=2] [ref=f2e55]
+            - paragraph [ref=f2e56]: Retrieval-augmented Q&A with citations over a real document set, scored by a 20-question eval on retrieval hit-rate and answer quality.
+            - link "Read the code on GitHub" [ref=f2e57] [cursor=pointer]:
+              - /url: https://github.com/erinnod/rag-assistant
+          - list "RAG support assistant pipeline" [ref=f2e59]:
+            - listitem [ref=f2e60]:
+              - generic [ref=f2e61]: Ingest docs
+            - listitem [ref=f2e63]:
+              - generic [ref=f2e64]: Chunk + embed
+            - listitem [ref=f2e66]:
+              - generic [ref=f2e67]: Retrieve
+            - listitem [ref=f2e69]:
+              - generic [ref=f2e70]: Answer + cite
+            - listitem [ref=f2e72]:
+              - generic [ref=f2e73]: 20-question eval
+      - region [ref=f2e74]:
+        - generic [ref=f2e75]:
+          - generic [ref=f2e76]:
+            - paragraph [ref=f2e77]: Shipped
+            - heading "Multi-agent outreach" [level=2] [ref=f2e79]
+            - paragraph [ref=f2e80]: Three Claude agents with shared state and structured tool use, run end to end on ten real companies. The Python orchestrator is built from scratch, with no LangChain.
+            - link "Read the code on GitHub" [ref=f2e81] [cursor=pointer]:
+              - /url: https://github.com/erinnod/multi-agent-outreach
+          - list "Multi-agent outreach pipeline" [ref=f2e83]:
+            - listitem [ref=f2e84]:
+              - generic [ref=f2e85]: Researcher
+            - listitem [ref=f2e87]:
+              - generic [ref=f2e88]: Drafter
+            - listitem [ref=f2e90]:
+              - generic [ref=f2e91]: Critic
+            - listitem [ref=f2e93]:
+              - generic [ref=f2e94]: Ten real companies
+      - region [ref=f2e95]:
+        - generic [ref=f2e96]:
+          - generic [ref=f2e97]:
+            - paragraph [ref=f2e98]: Three more workflows
+            - heading "Also on the canvas" [level=2] [ref=f2e100]
+            - paragraph [ref=f2e101]: One runs every day, one is being hardened, and one is honestly paused.
+          - list [ref=f2e102]:
+            - listitem [ref=f2e103]:
+              - paragraph [ref=f2e104]: Running
+              - heading "Life-OS" [level=3] [ref=f2e105]
+              - paragraph [ref=f2e106]: A personal AI OS that reads a structured vault on every interaction and writes back.
+            - listitem [ref=f2e107]:
+              - paragraph [ref=f2e108]: In progress
+              - heading "Migration agent" [level=3] [ref=f2e109]
+              - paragraph [ref=f2e110]: Crawl, code read, multimodal synthesis, migration plan. Code complete; crawl being hardened.
+            - listitem [ref=f2e111]:
+              - paragraph [ref=f2e112]: Paused
+              - heading "Morning brief" [level=3] [ref=f2e113]
+              - paragraph [ref=f2e114]: A daily Telegram brief written by Claude. Built; paused for newer work.
+      - region [ref=f2e115]:
+        - generic [ref=f2e117]:
+          - paragraph [ref=f2e118]: Workflow finished · 7 nodes run
+          - heading "Got a process that should run itself?" [level=2] [ref=f2e119]
+          - generic [ref=f2e120]:
+            - link "Message on LinkedIn" [ref=f2e121] [cursor=pointer]:
+              - /url: https://www.linkedin.com/in/erin-nodland/
+            - button "Copy email address noderin1@gmail.com" [ref=f2e122] [cursor=pointer]: Copy email address
+    - generic [ref=f2e123]:
+      - generic [ref=f2e124]: © 2026 Erin Nodland
+      - generic [ref=f2e125]: Built with Claude Code
+  - button "Open Next.js Dev Tools" [ref=f2e131] [cursor=pointer]

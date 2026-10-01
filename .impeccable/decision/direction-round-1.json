@@ -1,0 +1,132 @@
+{
+  "title": "Choose the visual world",
+  "question": "The roll assigned the Departures Board. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Departures Board",
+      "kicker": "THE ROLL",
+      "lineage": "Solari split-flap boards in rail and airport concourses",
+      "thesis": "Every project is a departure: shipped ones have left, and the board never lies about which.",
+      "palette": ["#1C3F94", "#111111", "#F2EFE6", "#F5B700", "#E4E8F2"],
+      "materials": ["enamel signage panels", "black split-flap tiles", "mechanical flip"],
+      "viewport": "A full-width departures board as the hero: ERIN NODLAND clacks in flap by flap, then seven project rows resolve with DEPARTED / BOARDING / DELAYED, on a flat enamel-blue concourse sign.",
+      "risk": "Tips into theme-park kitsch if the flap mechanics are faked or the signage type is set timidly.",
+      "raised": [
+        { "from": "challenger-hypercard", "raise": "Every departure row is its own deep link, and back returns you to the exact board position." },
+        { "from": "challenger-phosphor", "raise": "Status is the board's own printed text in its own columns; no pills, badges or chrome." },
+        { "from": "challenger-automata", "raise": "One orchestrated flip timeline drives the whole board, replayable with a Refresh board control and stilled under reduced motion." },
+        { "from": "challenger-cityscape", "raise": "Open a departure and you follow one journey end to end: its route strip shows the pipeline as stations." },
+        { "from": "challenger-zoo-map", "raise": "Flat, unmodulated enamel colour committed at page scale; no gradients, glow or glass anywhere." },
+        { "from": "challenger-livery", "raise": "Each project owns one line colour that carries from its board row into its route strip, read before any word." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Workflow Canvas",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "node-based automation editors like n8n",
+      "thesis": "The portfolio is a live workflow: projects are nodes, and data visibly runs between them.",
+      "palette": ["#F3F4F1", "#1E1F24", "#FF6D5A", "#3B82F6"],
+      "materials": ["dotted canvas", "node cards", "bezier wires with travelling packets"],
+      "viewport": "A pannable canvas with a trigger node named Erin feeding into seven project nodes, one executing live.",
+      "risk": "The most literal reading of the subject; it risks looking like a screenshot of the tool rather than a site."
+    },
+    {
+      "id": "challenger-phosphor",
+      "label": "Phosphor Terminal",
+      "verdict": "declined",
+      "lineage": "green-phosphor terminals",
+      "thesis": "The portfolio as one continuous typed transcript on glass.",
+      "palette": ["#0A0F0A", "#33FF66", "#1F7A3A"],
+      "materials": ["curved glass", "scanline bloom"],
+      "viewport": "An 80-column transcript that prints each project as a session.",
+      "case": "Fuses cleanly but is the category default you already rejected as too AI.",
+      "kept": "System states print themselves rather than appearing as chrome.",
+      "risk": "Indistinguishable from every AI developer portfolio.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-phosphor-terminal-midnight-hero.webp"
+    },
+    {
+      "id": "challenger-hypercard",
+      "label": "HyperCard Stack",
+      "verdict": "declined",
+      "lineage": "1987 HyperCard shoebox stacks",
+      "thesis": "Each project is a one-bit card you flip through with painted buttons.",
+      "palette": ["#FFFFFF", "#000000", "#8C8C8C"],
+      "materials": ["one-bit dither", "painted buttons"],
+      "viewport": "A single fixed card with bitmap menus and a stack of project cards behind it.",
+      "case": "Hiring managers do not identify with it, and one-bit screenshots bury the proof.",
+      "kept": "Every card is addressable, and back retraces your trail.",
+      "risk": "Reads as nostalgia for a tool the audience never used.",
+      "hero": "https://impeccable.style/worlds/cards/medium-native-hypercard-stack-shoebox-hero.webp"
+    },
+    {
+      "id": "challenger-automata",
+      "label": "Paper Automata",
+      "verdict": "declined",
+      "lineage": "hand-cranked cut-paper automata",
+      "thesis": "Turn a crank and each project performs as a paper figure.",
+      "palette": ["#C9A77A", "#FFFFFF", "#2B2B2B", "#C8102E"],
+      "materials": ["cut paper", "kraft board", "cast shadow"],
+      "viewport": "A procession of paper figures along one crank line.",
+      "case": "Charming but hides what the systems do behind metaphor.",
+      "kept": "One shared timeline drives all motion, with pause and reverse.",
+      "risk": "Whimsy undercuts the ships-real-systems claim.",
+      "hero": "https://impeccable.style/worlds/cards/kinetic-sculpture-automata-crank-paper-menagerie-hero.webp"
+    },
+    {
+      "id": "challenger-cityscape",
+      "label": "Rain-Night City",
+      "verdict": "declined",
+      "lineage": "blue-hour urban nocturnes",
+      "thesis": "Projects as lit buildings and transit lines across a night skyline.",
+      "palette": ["#1B2A6B", "#0B0B0F", "#FFB347", "#C9D1D9"],
+      "materials": ["wet reflections", "neon signs"],
+      "viewport": "A skyline band with amber transit stitching project towers together.",
+      "case": "Atmospheric, but the mood competes with the evidence.",
+      "kept": "Following one light journey end to end.",
+      "risk": "Pretty wallpaper with the work pushed to the margins.",
+      "hero": "https://impeccable.style/worlds/cards/light-shadow-caustics-rain-night-cityscape-hero.webp"
+    },
+    {
+      "id": "challenger-zoo-map",
+      "label": "Guide Map",
+      "verdict": "declined",
+      "lineage": "zoo and gardens guide maps",
+      "thesis": "Each project is a swelling lobe of flat colour on a cream coast.",
+      "palette": ["#8ED462", "#F5F1E4", "#2C2E2A", "#FF705D"],
+      "materials": ["flat colour", "SVG coastline"],
+      "viewport": "One green lobe fills the viewport with a yellow GATE capsule.",
+      "case": "Joyful, but hiring managers read it as a leisure brand, not engineering.",
+      "kept": "Flat, unmodulated colour committed at page scale.",
+      "risk": "Tone mismatch with the audience.",
+      "hero": "https://impeccable.style/worlds/cards/aww2-zoo-gardens-guide-map-hero.webp"
+    },
+    {
+      "id": "challenger-livery",
+      "label": "Endurance Livery",
+      "verdict": "declined",
+      "lineage": "Gulf and Martini racing liveries",
+      "thesis": "Stripes and number roundels as an identity system for each project.",
+      "palette": ["#9ACFEA", "#F68D2E", "#FFFFFF", "#0B2240"],
+      "materials": ["stripe bands", "number roundels"],
+      "viewport": "A stripe spine running nose to tail with a lit roundel per project.",
+      "case": "Speed reads well, but racing borrows credibility the work already has.",
+      "kept": "An identity that reads before any word, carried across every surface.",
+      "risk": "Costume, not substance, for this audience.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-endurance-livery-garage-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "code" },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "The polished developer portfolio: name, one-line pitch, project cards, contact.",
+    "palette": ["#0F172A", "#F8FAFC", "#38BDF8"],
+    "materials": ["clean grid", "project cards", "subtle hover motion"],
+    "viewport": "Name and pitch left, a sticky nav, a card grid of projects with screenshots.",
+    "risk": "Indistinguishable from the other candidates by design."
+  },
+  "steer": true
+}

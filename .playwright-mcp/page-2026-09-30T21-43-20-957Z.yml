@@ -1,0 +1,106 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - paragraph [ref=e5]: erin-nodland.workflow
+      - heading "Erin Nodland" [level=1] [ref=e6]
+      - paragraph [ref=e7]: Software developer at Shoothill. I build AI workflows that are still running after the demo ends.
+    - region [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - paragraph [ref=e11]: Shipped
+          - heading "Figma → spec agent" [level=2] [ref=e13]
+          - paragraph [ref=e14]: "Paste a Figma handoff and it reads every screen, then writes two reports in under two minutes: plain English for the client, technical for the developer. Every question is backed by evidence from the design."
+        - generic [ref=e15]:
+          - list "Figma → spec agent pipeline" [ref=e16]:
+            - listitem [ref=e17]:
+              - generic [ref=e18]: Figma link
+            - listitem [ref=e20]:
+              - generic [ref=e21]: Read every screen
+            - listitem [ref=e23]:
+              - generic [ref=e24]: Client report
+            - listitem [ref=e26]:
+              - generic [ref=e27]: Developer report
+          - 'img "Figma spec agent: choosing the entry point for a project" [ref=e28]'
+    - region [ref=e29]:
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - paragraph [ref=e32]: Shipped · live in production
+          - heading "Shopify product automation" [level=2] [ref=e34]
+          - paragraph [ref=e35]: Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, Claude writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.
+        - generic [ref=e36]:
+          - list "Shopify product automation pipeline" [ref=e37]:
+            - listitem [ref=e38]:
+              - generic [ref=e39]: Drive upload
+            - listitem [ref=e41]:
+              - generic [ref=e42]: Crop + background
+            - listitem [ref=e44]:
+              - generic [ref=e45]: Claude writes copy
+            - listitem [ref=e47]:
+              - generic [ref=e48]: Publish to Shopify
+          - img "The n8n workflow behind the Shopify product automation" [ref=e49]
+    - region [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - paragraph [ref=e53]: Shipped
+          - heading "RAG support assistant" [level=2] [ref=e55]
+          - paragraph [ref=e56]: Retrieval-augmented Q&A with citations over a real document set, scored by a 20-question eval on retrieval hit-rate and answer quality.
+          - link "Read the code on GitHub" [ref=e57] [cursor=pointer]:
+            - /url: https://github.com/erinnod/rag-assistant
+        - list "RAG support assistant pipeline" [ref=e59]:
+          - listitem [ref=e60]:
+            - generic [ref=e61]: Ingest docs
+          - listitem [ref=e63]:
+            - generic [ref=e64]: Chunk + embed
+          - listitem [ref=e66]:
+            - generic [ref=e67]: Retrieve
+          - listitem [ref=e69]:
+            - generic [ref=e70]: Answer + cite
+          - listitem [ref=e72]:
+            - generic [ref=e73]: 20-question eval
+    - region [ref=e74]:
+      - generic [ref=e75]:
+        - generic [ref=e76]:
+          - paragraph [ref=e77]: Shipped
+          - heading "Multi-agent outreach" [level=2] [ref=e79]
+          - paragraph [ref=e80]: Three Claude agents with shared state and structured tool use, run end to end on ten real companies. The Python orchestrator is built from scratch, with no LangChain.
+          - link "Read the code on GitHub" [ref=e81] [cursor=pointer]:
+            - /url: https://github.com/erinnod/multi-agent-outreach
+        - list "Multi-agent outreach pipeline" [ref=e83]:
+          - listitem [ref=e84]:
+            - generic [ref=e85]: Researcher
+          - listitem [ref=e87]:
+            - generic [ref=e88]: Drafter
+          - listitem [ref=e90]:
+            - generic [ref=e91]: Critic
+          - listitem [ref=e93]:
+            - generic [ref=e94]: Ten real companies
+    - region [ref=e95]:
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - paragraph [ref=e98]: Three more workflows
+          - heading "Also on the canvas" [level=2] [ref=e100]
+          - paragraph [ref=e101]: One runs every day, one is being hardened, and one is honestly paused.
+        - list [ref=e102]:
+          - listitem [ref=e103]:
+            - paragraph [ref=e104]: Running
+            - heading "Life-OS" [level=3] [ref=e105]
+            - paragraph [ref=e106]: A personal AI OS that reads a structured vault on every interaction and writes back.
+          - listitem [ref=e107]:
+            - paragraph [ref=e108]: In progress
+            - heading "Migration agent" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Crawl, code read, multimodal synthesis, migration plan. Code complete; crawl being hardened.
+          - listitem [ref=e111]:
+            - paragraph [ref=e112]: Paused
+            - heading "Morning brief" [level=3] [ref=e113]
+            - paragraph [ref=e114]: A daily Telegram brief written by Claude. Built; paused for newer work.
+    - region [ref=e115]:
+      - generic [ref=e117]:
+        - paragraph [ref=e118]: Workflow finished · 7 nodes run
+        - heading "Got a process that should run itself?" [level=2] [ref=e119]
+        - generic [ref=e120]:
+          - link "Message on LinkedIn" [ref=e121] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/erin-nodland/
+          - button "Copy email address noderin1@gmail.com" [ref=e122] [cursor=pointer]: Copy email address
+  - generic [ref=e123]:
+    - generic [ref=e124]: © 2026 Erin Nodland
+    - generic [ref=e125]: Built with Claude Code
