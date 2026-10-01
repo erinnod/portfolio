@@ -139,8 +139,17 @@ function Solo({ project, t, headingId }: { project: Project; t: number; headingI
             height={project.image.height}
             sizes="(min-width: 900px) 45vw, 90vw"
             loading="lazy"
-            className="max-h-[22svh] w-full rounded-xl border-2 border-ink object-cover object-top-left shadow-[0_30px_60px_-30px_rgba(30,31,36,0.5)] sm:max-h-[42svh]"
-            style={{ opacity: img, transform: `translateY(${(1 - img) * 60}px) rotate(${(1 - img) * 2.5}deg)` }}
+            // Small UI screenshots ship as the original PNG: re-encoding at q75 smears their tiny labels.
+            unoptimized={project.image.width < 1200}
+            quality={90}
+            // Whole, never upscaled, and sized before it loads: width = min(column, native pixels, height cap × aspect).
+            className="h-auto w-[min(100%,var(--native),calc(22svh*var(--ar)))] self-start rounded-xl border-2 border-ink object-contain shadow-[0_30px_60px_-30px_rgba(30,31,36,0.5)] sm:w-[min(100%,var(--native),calc(42svh*var(--ar)))]"
+            style={{
+              "--native": `${project.image.width}px`,
+              "--ar": project.image.width / project.image.height,
+              opacity: img,
+              transform: `translateY(${(1 - img) * 60}px) rotate(${(1 - img) * 2.5}deg)`,
+            } as React.CSSProperties}
           />
         )}
       </div>

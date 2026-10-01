@@ -11,14 +11,14 @@ test("every project appears in exactly one scene", () => {
   assert.deepEqual([...SCENES.flat()].sort(), [0, 1, 2, 3, 4, 5, 6]);
 });
 
-test("statuses match PRODUCT.md as of 2026-09-30", () => {
+test("statuses match PRODUCT.md as of 2026-10-01", () => {
   const byTitle = Object.fromEntries(PROJECTS.map((p) => [p.title, p.status]));
   assert.equal(byTitle["Figma → spec agent"], "shipped");
   assert.equal(byTitle["Shopify product automation"], "live");
   assert.equal(byTitle["RAG support assistant"], "shipped");
   assert.equal(byTitle["Multi-agent outreach"], "shipped");
   assert.equal(byTitle["Life-OS"], "running");
-  assert.equal(byTitle["Migration agent"], "in-progress");
+  assert.equal(byTitle["Migration agent"], "shipped");
   assert.equal(byTitle["Morning brief"], "paused");
 });
 
@@ -34,13 +34,12 @@ test("no project status spends the signal orange (reserved for live wires and th
   for (const [status, tone] of Object.entries(STATUS_TONE)) assert.notEqual(tone, "signal", status);
 });
 
-test("migration agent copy says the crawl phase is blocked, as PRODUCT.md does (not softened)", () => {
+test("migration agent is shipped and no longer described as blocked or in progress (Erin, 2026-10-01)", () => {
   const m = PROJECTS.find((p) => p.title === "Migration agent")!;
-  for (const text of [m.summary, m.short ?? ""]) {
-    assert.match(text, /blocked/i);
-    assert.doesNotMatch(text, /harden/i);
+  assert.equal(m.status, "shipped");
+  for (const text of [m.summary, m.short ?? "", GROUP_INTRO.summary]) {
+    assert.doesNotMatch(text, /blocked|harden|in progress/i);
   }
-  assert.doesNotMatch(GROUP_INTRO.summary, /harden/i);
 });
 
 test("group-scene projects carry a short summary", () => {

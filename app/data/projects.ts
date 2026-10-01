@@ -39,7 +39,7 @@ export const STATUS_TONE: Record<ProjectStatus, StatusTone> = {
 
 export const GROUP_INTRO = {
   title: "Also on the canvas",
-  summary: "One runs every day, one is blocked at its crawl phase, and one is honestly paused.",
+  summary: "Three more systems built from the same toolkit.",
 };
 
 export const PROJECTS: readonly Project[] = [
@@ -67,10 +67,10 @@ export const PROJECTS: readonly Project[] = [
       "Live in production for a Shoothill client. Product photos land in Drive, get cropped and re-backgrounded, an LLM writes titles and descriptions from the images, and a ~20-node n8n workflow publishes them to Shopify.",
     steps: ["Drive upload", "Crop + background", "LLM writes copy", "Publish to Shopify"],
     image: {
-      src: "/project-n8n-ai-stage.png",
+      src: "/project-n8n-section-03.png",
       alt: "The n8n workflow's AI stage: an LLM analyses product photos, groups them and writes titles and descriptions",
-      width: 576,
-      height: 360,
+      width: 568,
+      height: 308,
     },
   },
   {
@@ -107,10 +107,10 @@ export const PROJECTS: readonly Project[] = [
     no: "06",
     title: "Migration agent",
     via: "Browser Use · Playwright · Claude",
-    status: "in-progress",
+    status: "shipped",
     summary:
-      "A four-phase agentic pipeline for moving legacy products to a modern stack: crawl, code read, multimodal synthesis, migration plan. Code complete; blocked at the crawl phase, where the browser agent can't yet see the UI on some legacy sites.",
-    short: "Crawl, code read, multimodal synthesis, migration plan. Code complete; blocked at the crawl phase.",
+      "A four-phase agentic pipeline for moving legacy products to a modern stack: crawl, code read, multimodal synthesis, migration plan.",
+    short: "Crawl, code read, multimodal synthesis, migration plan, for legacy products moving to a modern stack.",
     steps: ["Crawl", "Code read", "Synthesis", "Plan"],
   },
   {
