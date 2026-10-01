@@ -1,6 +1,6 @@
 import Image from "next/image";
 import {
-  GROUP_INTRO, PROJECTS, STATUS_LABEL, STATUS_TONE, type Project, type ProjectStatus, type StatusTone,
+  PROJECTS, STATUS_LABEL, STATUS_TONE, type Project, type ProjectStatus, type StatusTone,
 } from "../../data/projects";
 import { SCENES, local } from "../../lib/timeline";
 import { N8N_WORKFLOW } from "../../data/n8nWorkflow";
@@ -173,36 +173,6 @@ function Solo({ project, t, headingId, inStage }: { project: Project; t: number;
   );
 }
 
-function Group({ ids, t, headingId }: { ids: readonly number[]; t: number; headingId: string }) {
-  const text = local(t, 0.28, 0.14);
-  return (
-    <>
-      <div style={rise(text, 24)}>
-        <h2 id={headingId} className={TITLE}>
-          {GROUP_INTRO.title}
-        </h2>
-        <p className={SUMMARY}>{GROUP_INTRO.summary}</p>
-      </div>
-      <ul className="canvas-well grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-2.5 sm:gap-3.5">
-        {ids.map((i, j) => {
-          const p = PROJECTS[i];
-          const a = local(t, 0.36 + j * 0.08, 0.1);
-          return (
-            <li key={p.no} className="rounded-xl border-2 border-ink bg-paper p-3 sm:p-4" style={rise(a, 24)}>
-              <h3 className="text-lg font-black tracking-[-0.02em] sm:text-[22px]">{p.title}</h3>
-              <p className="mt-1 flex items-center gap-2 text-[13px] font-extrabold">
-                <StatusMark status={p.status} />
-                <span className={TONE_TEXT[STATUS_TONE[p.status]]}>{STATUS_LABEL[p.status]}</span>
-              </p>
-              <p className="mt-1.5 text-[13px] leading-normal text-ink-2 sm:mt-2 sm:text-sm">{p.short}</p>
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
-}
-
 /**
  * `inStage`: rendered inside the live sticky stage, so keep clear of its chrome — the status line across the
  * top and, on phones, the jump rail down the right edge. `idPrefix` keeps heading ids unique when the static
@@ -226,11 +196,7 @@ export default function SceneContent({
     : "px-[clamp(20px,6vw,96px)] py-[clamp(28px,7vh,80px)]";
   return (
     <div className={`grid h-full grid-cols-[repeat(auto-fit,minmax(min(100%,440px),1fr))] content-center-safe gap-[clamp(16px,4vw,64px)] ${pad}`}>
-      {ids.length === 1 ? (
-        <Solo project={PROJECTS[ids[0]]} t={t} headingId={headingId} inStage={inStage} />
-      ) : (
-        <Group ids={ids} t={t} headingId={headingId} />
-      )}
+      <Solo project={PROJECTS[ids[0]]} t={t} headingId={headingId} inStage={inStage} />
     </div>
   );
 }

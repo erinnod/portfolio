@@ -1,14 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { GROUP_INTRO, PROJECTS, STATUS_TONE } from "./projects.ts";
+import { PROJECTS, STATUS_TONE } from "./projects.ts";
 import { SCENES } from "../lib/timeline.ts";
 
-test("seven projects numbered 01–07", () => {
-  assert.deepEqual(PROJECTS.map((p) => p.no), ["01", "02", "03", "04", "05", "06", "07"]);
+test("six projects numbered 01–06", () => {
+  assert.deepEqual(PROJECTS.map((p) => p.no), ["01", "02", "03", "04", "05", "06"]);
 });
 
 test("every project appears in exactly one scene", () => {
-  assert.deepEqual([...SCENES.flat()].sort(), [0, 1, 2, 3, 4, 5, 6]);
+  assert.deepEqual([...SCENES.flat()].sort(), [0, 1, 2, 3, 4, 5]);
 });
 
 test("statuses match PRODUCT.md as of 2026-10-01", () => {
@@ -19,7 +19,6 @@ test("statuses match PRODUCT.md as of 2026-10-01", () => {
   assert.equal(byTitle["Multi-agent outreach"], "shipped");
   assert.equal(byTitle["Life-OS"], "running");
   assert.equal(byTitle["ASP.NET → Hono migration"], "shipped");
-  assert.equal(byTitle["Morning brief"], "paused");
 });
 
 test("the two public repos are linked", () => {
@@ -45,20 +44,29 @@ test("migration project reflects Erin's write-up: strangler-fig ASP.NET → Hono
   assert.match(m.summary, /any number of endpoints/i);
   for (const text of [m.summary, ...m.steps]) assert.doesNotMatch(text, /~200/);
   assert.match(m.summary, /130\+ tables/);
-  for (const text of [m.summary, m.via, ...m.steps, GROUP_INTRO.summary]) {
+  for (const text of [m.summary, m.via, ...m.steps]) {
     assert.doesNotMatch(text, /blocked|harden|in progress|Browser Use|Playwright|crawl/i);
   }
 });
 
-test("the migration toolkit gets its own scene; the group holds Life-OS and the morning brief", () => {
-  const mi = PROJECTS.findIndex((p) => p.title === "ASP.NET → Hono migration");
-  assert.ok(SCENES.some((ids) => ids.length === 1 && ids[0] === mi), "migration should be a solo scene");
-  const group = SCENES[SCENES.length - 1].map((i) => PROJECTS[i].title);
-  assert.deepEqual(group, ["Life-OS", "Morning brief"]);
+test("every project gets its own scene (the morning brief is part of Life-OS, not a separate node)", () => {
+  assert.ok(SCENES.every((ids) => ids.length === 1));
+  assert.ok(!PROJECTS.some((p) => /morning brief/i.test(p.title)));
 });
 
-test("group-scene projects carry a short summary", () => {
-  for (const i of SCENES[SCENES.length - 1]) assert.ok(PROJECTS[i].short, PROJECTS[i].title);
+test("Life-OS reflects Erin's write-up: always-on agent, scheduled jobs, one daily brief", () => {
+  const l = PROJECTS.find((p) => p.title === "Life-OS")!;
+  assert.equal(l.status, "running");
+  assert.match(l.via, /Hermes Agent/);
+  assert.match(l.summary, /Raspberry Pi 5/);
+  assert.match(l.summary, /18 scheduled jobs/);
+  assert.match(l.summary, /06:00/);
+  assert.match(l.summary, /since May 2026/);
+  assert.ok(l.steps.length <= 5);
+  // A public page: engineering facts only, nothing personal from the vault.
+  for (const text of [l.summary, l.via, ...l.steps, l.node?.via ?? ""]) {
+    assert.doesNotMatch(text, /Simon|Garmin|sleep|gym|laundry|anime|military|Ellie|partner|Shoothill/i);
+  }
 });
 
 test("email is shown scraper-resistant and only assembled from parts", async () => {

@@ -13,7 +13,6 @@ export interface Project {
   via: string;
   status: ProjectStatus;
   summary: string;
-  short?: string;
   steps: readonly string[];
   link?: { label: string; href: string };
   image?: ProjectImage;
@@ -48,11 +47,6 @@ export const STATUS_TONE: Record<ProjectStatus, StatusTone> = {
   running: "ok",
   "in-progress": "wip",
   paused: "muted",
-};
-
-export const GROUP_INTRO = {
-  title: "Also on the canvas",
-  summary: "Two more systems built from the same toolkit.",
 };
 
 export const PROJECTS: readonly Project[] = [
@@ -115,21 +109,11 @@ export const PROJECTS: readonly Project[] = [
   {
     no: "06",
     title: "Life-OS",
-    via: "Claude Code · Obsidian · MCP",
+    via: "Hermes Agent · Python · OpenRouter · Obsidian · Telegram",
+    node: { via: "Hermes Agent · Python · Pi 5" },
     status: "running",
     summary:
-      "A personal AI operating system. Claude Code reads a structured Obsidian vault on every interaction, writes back as life happens, flags drift and proposes its own new skills.",
-    short: "A personal AI OS that reads a structured vault on every interaction and writes back.",
-    steps: ["Read the vault", "Act through MCP", "Write back"],
-  },
-  {
-    no: "07",
-    title: "Morning brief",
-    via: "n8n · Telegram · Claude",
-    status: "paused",
-    summary:
-      "A daily Telegram brief built from weather, tech news and Notion content, written by Claude. Built and working; paused while newer work takes priority.",
-    short: "A daily Telegram brief written by Claude. Built; paused for newer work.",
-    steps: ["Weather", "Tech news", "Notion", "Telegram"],
+      "A personal AI operating system that runs 24/7 on a Raspberry Pi 5. It reads a 132-note Obsidian vault, runs 18 scheduled jobs and hands work to five specialist agents, then sends one Telegram message: a 06:00 brief with exactly two tasks, each tied to a quarterly goal. Jobs that need no judgement run as plain scripts at zero token cost, and watchdogs treat a silent delivery failure as an outage. In daily use since May 2026.",
+    steps: ["Vault + live data", "18 scheduled jobs", "Five specialist agents", "One 06:00 brief"],
   },
 ];

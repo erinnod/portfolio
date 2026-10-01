@@ -189,7 +189,7 @@ components:
 
 **Creative North Star: "The Running Workflow"**
 
-The site is a node graph that executes. A dark trigger node carrying Erin's name feeds seven white project nodes over bezier wires into a Contact output node, all laid on a pale dotted canvas. Scrolling is execution: a camera travels the graph, an orange bead runs each wire, a node spins, and the node opens (a circular clip-path reveal) into a full-screen white panel that builds its own pipeline. The run ends when the Contact node opens into a full-bleed burnt-orange field.
+The site is a node graph that executes. A dark trigger node carrying Erin's name feeds six white project nodes over bezier wires into a Contact output node, all laid on a pale dotted canvas. Scrolling is execution: a camera travels the graph, an orange bead runs each wire, a node spins, and the node opens (a circular clip-path reveal) into a full-screen white panel that builds its own pipeline. The run ends when the Contact node opens into a full-bleed burnt-orange field.
 
 Density is low and the voice is heavy: one grotesque at weight 900 with tight negative tracking for headings, calm 400 body in ink-2, and 2px ink borders on everything that sits on the canvas. Colour is almost entirely neutral. Orange means "live now", and three separate tones (green, blue and grey) report the honest status of each project, so a status can never be mistaken for the live signal. The world is its own: its palette, type and marks are not n8n's, even though one screenshot shows an n8n canvas.
 
@@ -307,11 +307,11 @@ Heavy, bordered and blunt. Every action is at least 48px tall, and the finish ac
 Status is never shown by colour alone. Each tone has a shape: a filled green check disc for shipped and live, a pulsing green dot for running, a blue half-filled circle for in progress, and a muted pause ring for paused. The mark always sits next to its label, set in the tone's ink colour.
 
 ### Navigation
-- **Status line:** a top bar with no background. It holds the wordmark on the left and a live execution state on the right ("Trigger fired · 7 nodes queued", "Executing node 02", "Workflow finished"), announced politely to screen readers. Text is ink, and turns paper over the finish field.
+- **Status line:** a top bar with no background. It holds the wordmark on the left and a live execution state on the right ("Trigger fired · 6 nodes queued", "Executing node 02", "Workflow finished"), announced politely to screen readers. Text is ink, and turns paper over the finish field.
 - **Jump rail:** a vertical column of 44px buttons on the right, each holding a 10px ring pip. Visited pips are filled, and the current pip stretches to a 26px pill (width transitions over 300ms). Pips are ink on the canvas and paper on the finish field.
 
 ### Contact Output (signature)
-The finish is the Contact node opened. The field is signal-ink, filled by a circular clip-path reveal. From 640px up, seven paper wires at 50% opacity converge on a paper input port, and a 24px-radius paper frame at 50% opacity carries the node-type label "Output · Get in touch", set on the frame border. The display question and the two finish buttons sit inside the frame.
+The finish is the Contact node opened. The field is signal-ink, filled by a circular clip-path reveal. From 640px up, six paper wires at 50% opacity converge on a paper input port, and a 24px-radius paper frame at 50% opacity carries the node-type label "Output · Get in touch", set on the frame border. The display question and the two finish buttons sit inside the frame.
 
 ## Do's and Don'ts
 

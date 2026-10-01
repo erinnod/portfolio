@@ -39,8 +39,7 @@ Real projects and their verified status (as of 2026-10-01):
 - **RAG support assistant** — shipped 2026-05-19. Cited Q&A, 20-question eval (retrieval hit-rate + answer quality). https://github.com/erinnod/rag-assistant
 - **Multi-agent outreach pipeline** — shipped 2026-05-28. Researcher → Drafter → Critic, shared state, Python orchestrator with no LangChain, run on 10 real companies. https://github.com/erinnod/multi-agent-outreach
 - **ASP.NET → Hono migration toolkit** — shipped (Erin's write-up, 2026-10-01). Strangler-fig migration of a legacy ASP.NET + SQL Server backend onto Hono on Cloudflare Workers, one endpoint at a time, with byte-for-byte response contracts. Built migrating a production line-of-business CRM: 200+ endpoints (the method itself isn't bounded by endpoint count), 130+ tables (537 stored procedures, 46 views), dual-valid JWTs, guarded and verified data CLIs (introspect → schema → dump → reset → verify), Vitest in real `workerd` against Neon branches, a .NET behaviour-compatibility layer, Azure Blob → R2, HangFire → Queues, a rehearsed cutover runbook. D1 first, moved to Postgres (Neon) on evidence. Packaged as a reusable agent skill (`migrating-aspnet-to-hono`). Client not named. Replaces the earlier crawl/plan "migration agent" description.
-- **Life-OS** — running. Personal AI OS on Claude Code + Obsidian + MCP.
-- **Morning brief agent** — built, paused. n8n + Telegram + Claude.
+- **Life-OS** — running (daily since May 2026). Personal AI OS on a Raspberry Pi 5: Hermes Agent, a 132-note Obsidian vault, 18 scheduled jobs, five specialist agents, one 06:00 Telegram brief. The morning brief is part of it, not a separate project. Public copy keeps to engineering facts; nothing personal from the vault.
 
 Absent, and not to be fabricated: testimonials, client names beyond "a Shoothill client", metrics beyond those above, demo videos, a live demo URL for any project.
 

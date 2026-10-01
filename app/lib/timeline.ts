@@ -4,8 +4,13 @@ export const WORLD_W = 1300;
 export const WORLD_H = 860;
 export const INTRO = 0.08;
 export const OVER = 0.15;
-/** Solo scenes for 01–05, then one group scene for 06–07. */
-export const SCENES: readonly (readonly number[])[] = [[0], [1], [2], [3], [4], [5, 6]];
+/** One scene per project. A scene may hold several ids; the camera and status line handle groups. */
+export const SCENES: readonly (readonly number[])[] = [[0], [1], [2], [3], [4], [5]];
+const NODE_COUNT = SCENES.flat().length;
+const NODE_H = 76;
+const NODE_GAP = 110;
+/** Height of the node column, first card's top to last card's bottom. */
+const COLUMN_H = (NODE_COUNT - 1) * NODE_GAP + NODE_H;
 export const CONTACT_START = 0.85;
 /** Each scene's share of the run: the span between the overview and the finish, split evenly. */
 export const SCN = (CONTACT_START - OVER) / SCENES.length;
@@ -30,12 +35,13 @@ export function local(t: number, start: number, duration: number): number {
   return easeOut((t - start) / duration);
 }
 
+/** The column is centred on the trigger → Contact line (y 430), whatever the node count. */
 export function nodeTop(i: number): number {
-  return 60 + i * 110;
+  return 430 - COLUMN_H / 2 + i * NODE_GAP;
 }
 
 export function nodeCenter(i: number): Point {
-  return { x: 690, y: nodeTop(i) + 38 };
+  return { x: 690, y: nodeTop(i) + NODE_H / 2 };
 }
 
 export function outWirePath(i: number): string {
@@ -77,8 +83,8 @@ export function fitScale(v: Viewport): number {
 /** Width of the phone jump-rail column; the camera frames everything left of it. */
 export const RAIL_W = 64;
 const PHONE_MAX_W = 640;
-/** Centre of the seven-node column (world x 520..860, y 60..826): the phone overview's home. */
-const COLUMN: Point = { x: 690, y: 443 };
+/** Centre of the node column (world x 520..860): the phone overview's home. */
+const COLUMN: Point = { x: 690, y: 430 };
 
 export function camera(progress: number, v: Viewport): Camera {
   const s = sceneAt(progress);
@@ -87,7 +93,7 @@ export function camera(progress: number, v: Viewport): Camera {
   const fit = fitScale(v);
   // Desktop fits the whole graph. Phones frame the node column instead (trigger and Contact may crop at the
   // edges): fitting the full 1300-wide world would leave the labels ~4px.
-  const base = phone ? Math.min((v.h - 56) / 810, (usable - 24) / 340) : fit;
+  const base = phone ? Math.min((v.h - 56) / (COLUMN_H + 44), (usable - 24) / 340) : fit;
   const home = phone ? COLUMN : OVERVIEW;
   let focus = home;
   let scale = base;
@@ -205,7 +211,7 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
 export function statusLine(progress: number): string {
   const s = sceneAt(progress);
   if (s.phase === "intro") return "Waiting for trigger";
-  if (s.phase === "overview") return "Trigger fired · 7 nodes queued";
+  if (s.phase === "overview") return `Trigger fired · ${NODE_COUNT} nodes queued`;
   if (s.phase === "finish") return "Workflow finished";
   const ids = SCENES[s.sceneIndex];
   return ids.length > 1

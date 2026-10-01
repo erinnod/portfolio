@@ -2,9 +2,9 @@ import CopyEmailLink from "../CopyEmailLink";
 import { GITHUB, LINKEDIN } from "../../data/projects";
 import { local } from "../../lib/timeline";
 
-const WIRE_YS = [8, 22, 36, 50, 64, 78, 92];
+const WIRE_YS = [8, 25, 42, 58, 75, 92];
 
-/** The Contact node, opened: its frame, and (from sm up) the seven wires landing in its input port. */
+/** The Contact node, opened: its frame, and (from sm up) the six wires landing in its input port. */
 function OutputFrame({ a }: { a: number }) {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ opacity: a }}>
