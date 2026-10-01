@@ -106,13 +106,31 @@ export default function RunStage() {
     target?.focus({ preventScroll: true });
   }, [panelKey]);
 
+  // A jump is a cut, not a scroll: smooth-scrolling there would play every scene in between. The stage dips out,
+  // the page moves instantly, and the stage comes back once the target scene has rendered.
+  const cutting = useRef(false);
   const jumpTo = useCallback((target: number) => {
     const el = runRef.current;
     const stage = stageRef.current;
-    if (!el || !stage) return;
-    const span = el.offsetHeight - stage.clientHeight;
-    const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: el.offsetTop + target * span, behavior: smooth ? "smooth" : "auto" });
+    if (!el || !stage || cutting.current) return;
+    const top = el.offsetTop + target * (el.offsetHeight - stage.clientHeight);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      window.scrollTo({ top, behavior: "instant" });
+      return;
+    }
+    cutting.current = true;
+    const out = stage.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 140, easing: "ease-in", fill: "forwards" });
+    out.onfinish = () => {
+      window.scrollTo({ top, behavior: "instant" });
+      // Two frames: one for the scroll handler to set progress, one for React to paint the new scene.
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          stage.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 220, easing: "ease-out" });
+          out.cancel();
+          cutting.current = false;
+        }),
+      );
+    };
   }, []);
 
   const cam = camera(progress, vp);
