@@ -131,7 +131,7 @@ export default function RunStage() {
             <div
               data-dots
               aria-hidden="true"
-              className="dot-layer pointer-events-none absolute left-0 top-0 h-[calc(100%+44px)] w-[calc(100%+44px)] origin-top-left will-change-transform"
+              className="dot-layer pointer-events-none absolute left-0 top-0 h-[calc(100%+44px)] w-[calc(100%+44px)] origin-top-left"
               style={{ transform: `translate3d(${ox}px, ${oy}px, 0) scale(${k})` }}
             />
             <Graph progress={progress} cam={cam} />

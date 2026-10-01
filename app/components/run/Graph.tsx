@@ -20,9 +20,11 @@ export default function Graph({ progress, cam }: { progress: number; cam: Camera
   const lit = contactLit(progress);
   const active = activeIds(progress);
   return (
+    // No will-change here: it freezes the layer's raster scale, so the camera zoom would upscale a bitmap and
+    // blur the text. Without it the browser re-rasterises at each scale and stays crisp.
     <div
       aria-hidden="true"
-      className="absolute left-0 top-0 origin-top-left will-change-transform"
+      className="absolute left-0 top-0 origin-top-left"
       style={{ width: WORLD_W, height: WORLD_H, transform: `translate(${cam.x}px, ${cam.y}px) scale(${cam.scale})` }}
     >
       <svg width={WORLD_W} height={WORLD_H} viewBox={`0 0 ${WORLD_W} ${WORLD_H}`} className="absolute inset-0 overflow-visible">
